@@ -1,0 +1,100 @@
+{
+ "values": [
+  {
+   "var": "Probe own",
+   "period": "2026-01",
+   "expect": 40,
+   "keys": {
+    "PLLine": "Revenue"
+   }
+  },
+  {
+   "var": "Probe own",
+   "period": "2026-01",
+   "expect": 40,
+   "keys": {
+    "PLLine": "COGS"
+   }
+  },
+  {
+   "var": "Probe own",
+   "period": "2026-01",
+   "expect": 40,
+   "keys": {
+    "PLLine": "Opex1"
+   }
+  },
+  {
+   "var": "Probe own",
+   "period": "2026-01",
+   "expect": 40,
+   "keys": {
+    "PLLine": "Opex2"
+   }
+  },
+  {
+   "var": "Probe fk",
+   "period": "2026-01",
+   "expect": 10,
+   "keys": {
+    "PLLine": "Opex1"
+   }
+  },
+  {
+   "var": "Probe fk",
+   "period": "2026-01",
+   "expect": 5,
+   "keys": {
+    "PLLine": "Opex2"
+   }
+  },
+  {
+   "var": "Probe fk",
+   "period": "2026-01",
+   "expect": null,
+   "keys": {
+    "PLLine": "Revenue"
+   }
+  },
+  {
+   "var": "Probe fk",
+   "period": "2026-01",
+   "expect": null,
+   "keys": {
+    "PLLine": "COGS"
+   }
+  },
+  {
+   "var": "Share of Revenue",
+   "period": "2026-01",
+   "expect": 1,
+   "keys": {
+    "PLLine": "Revenue"
+   }
+  },
+  {
+   "var": "Share of Revenue",
+   "period": "2026-01",
+   "expect": 0.4,
+   "keys": {
+    "PLLine": "COGS"
+   }
+  },
+  {
+   "var": "Share of Revenue",
+   "period": "2026-01",
+   "expect": 0.1,
+   "keys": {
+    "PLLine": "Opex1"
+   }
+  },
+  {
+   "var": "Share of Revenue",
+   "period": "2026-01",
+   "expect": 0.05,
+   "keys": {
+    "PLLine": "Opex2"
+   }
+  }
+ ]
+}

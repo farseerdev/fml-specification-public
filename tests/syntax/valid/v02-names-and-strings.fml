@@ -1,0 +1,22 @@
+# Names in identifier and string form (§4.5) and string escapes (§4.6).
+dimension Product
+
+PL_Analytics { Product, YearMonth }
+  @readonly true
+  @notes "identifier form"
+"P&L Total" { Product, YearMonth } = PL_Analytics
+  @readonly true
+"2026 Budget" { Product, YearMonth } = "PL_Analytics"
+  @readonly true
+"Quote \" and backslash \\ in a name" { Product, YearMonth } = "P&L Total"
+  @readonly true
+" Leading space" { Product, YearMonth } = "2026 Budget"
+  @readonly true
+  @notes "LEX-3: the leading space is part of the name (allowed, not recommended)"
+"Umsatz Österreich" { Product, YearMonth } = " Leading space"
+  @readonly true
+  @notes "Line one\nLine two\tafter a tab; # and // inside a string are not comments"
+"Folder escapes" { Product, YearMonth } = "Umsatz Österreich"
+  @folder "Sub/R\\/E"
+  @notes "LEX-4: \q keeps both characters"
+  @readonly true

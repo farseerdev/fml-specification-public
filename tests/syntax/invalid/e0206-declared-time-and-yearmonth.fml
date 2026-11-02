@@ -1,0 +1,8 @@
+# expect: FML-E0206
+# A declared time dimension is a time dimension in every rule: one per grain [DIM-11], [VAR-9].
+dimension Day
+  @semantic time
+  @parent YearMonth
+dimension Product
+
+"A IN" { Product, Day, YearMonth }

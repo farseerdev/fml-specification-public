@@ -1,0 +1,7 @@
+# expect: FML-W1004
+dimension Entity
+
+"Cash Balance IN" { Entity, YearMonth }
+  @notes "Writer: treasury."
+"Receivables IN" { Entity, YearMonth }
+  @notes "The closing balance of trade receivables. Writer: ledger."

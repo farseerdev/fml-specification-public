@@ -1,0 +1,21 @@
+{
+  "description": "A manifest without the required horizon, with versions not a list and membersComplete not a boolean [DOC-5].",
+  "profile": "standard",
+  "diagnostics": [
+    {
+      "code": "FML-E0608",
+      "file": "model.json",
+      "line": 1
+    },
+    {
+      "code": "FML-E0608",
+      "file": "model.json",
+      "line": 3
+    },
+    {
+      "code": "FML-E0608",
+      "file": "model.json",
+      "line": 4
+    }
+  ]
+}

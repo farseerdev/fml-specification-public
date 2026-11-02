@@ -1,0 +1,22 @@
+# dimensions.fml — every dimension of the sales and allocation example
+#
+# Customers are served from one location each; items belong to one category.
+# Attributes hang off the dimension they describe (Modelling Guide §3.5).
+
+dimension Category from "dimensions/Category.csv"
+  @null
+
+dimension Customer from "dimensions/Customer.csv"
+  @parent Location               # each customer is served from one location
+  @parent Segment
+  @null
+
+dimension Item from "dimensions/Item.csv"
+  @parent Category
+  @null
+
+dimension Location from "dimensions/Location.csv"
+  @null
+
+dimension Segment from "dimensions/Segment.csv"
+  @null

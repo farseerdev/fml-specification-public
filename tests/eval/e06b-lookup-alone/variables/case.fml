@@ -1,0 +1,8 @@
+# [EVAL-14]: `T = V` alone is read at every child: a cell on every child
+# whose parent has a value (I1, I2 from G1; I3 from G2), none for I4 (G3 empty).
+"Price IN" { Group, YearMonth }
+  @rollup average
+  @notes "2026-01: G1 = 2, G2 = 3."
+"Price at Item" { Item, YearMonth } = "Price IN"
+  @rollup average
+  @readonly true

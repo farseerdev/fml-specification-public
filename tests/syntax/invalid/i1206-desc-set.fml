@@ -1,0 +1,6 @@
+# expect: FML-I1206
+dimension Product
+
+"A IN" { Product, YearMonth }
+  @desc "Units sold per product per month, from the sales form"
+  @notes "Writer: form."

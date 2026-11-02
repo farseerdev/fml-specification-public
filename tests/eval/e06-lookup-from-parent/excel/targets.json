@@ -1,0 +1,36 @@
+{
+ "values": [
+  {
+   "var": "Revenue",
+   "period": "2026-01",
+   "expect": 20,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Revenue",
+   "period": "2026-02",
+   "expect": null,
+   "keys": {
+    "Item": "I2"
+   }
+  },
+  {
+   "var": "Revenue",
+   "period": "2026-01",
+   "expect": 12,
+   "keys": {
+    "Item": "I3"
+   }
+  },
+  {
+   "var": "Revenue",
+   "period": "2026-01",
+   "expect": null,
+   "keys": {
+    "Item": "I4"
+   }
+  }
+ ]
+}

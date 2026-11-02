@@ -1,0 +1,8 @@
+# [EVAL-21]: two filters on different members of one dimension select nothing
+# (no cell); a union is one selector, or(…), aggregated once.
+"PL Amount IN" { PLLine, YearMonth }
+  @notes "2026-01: Revenue = 100, COGS = 40, Opex1 = 10, Opex2 = 5."
+"Two Members" { YearMonth } = sum("PL Amount IN", PLLine > COGS, PLLine > Revenue)
+  @readonly true
+"Union" { YearMonth } = sum("PL Amount IN", or(PLLine > COGS, PLLine > Revenue))
+  @readonly true

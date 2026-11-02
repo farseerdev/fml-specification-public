@@ -1,0 +1,7 @@
+# expect: FML-E0105
+# A call names a function by an identifier; a string is a name, never a function [EXPR-4].
+dimension Product
+
+"A IN" { Product, YearMonth }
+C { Product, YearMonth } = "round"("A IN")
+  @readonly true

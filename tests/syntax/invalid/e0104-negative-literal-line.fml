@@ -1,0 +1,9 @@
+# expect: FML-E0104
+# may: FML-E0102
+# A line beginning with a negative literal is not a continuation [LEX-5], §4.9 item 5.
+dimension Product
+
+"A IN" { Product, YearMonth }
+B { Product, YearMonth } = "A IN"
+  -3
+  @readonly true

@@ -1,0 +1,66 @@
+{
+  "description": "Member-file rules: a column the declaration does not account for and a @parent without its column (E0705), E0609, E0603, a listed NULL member (E0615), an unterminated quoted cell, a file with no member (E0607), a header naming another dimension (E0208), a blank line (E0105), a parent column empty in every row (W0703), a missing file (E0612); a CSV no declaration names is not read [DIM-3], [DIM-10], [DIM-12].",
+  "profile": "standard",
+  "diagnostics": [
+    {
+      "code": "FML-E0705",
+      "file": "dimensions/Account.csv",
+      "line": 1
+    },
+    {
+      "code": "FML-E0609",
+      "file": "dimensions/Account.csv",
+      "line": 5
+    },
+    {
+      "code": "FML-E0609",
+      "file": "dimensions/Account.csv",
+      "line": 6
+    },
+    {
+      "code": "FML-E0603",
+      "file": "dimensions/PLLine.csv",
+      "line": 4
+    },
+    {
+      "code": "FML-E0615",
+      "file": "dimensions/PLLine.csv",
+      "line": 5
+    },
+    {
+      "code": "FML-E0101",
+      "file": "dimensions/Employee.csv",
+      "line": 2
+    },
+    {
+      "code": "FML-E0607",
+      "file": "dimensions/Grade.csv",
+      "line": 1
+    },
+    {
+      "code": "FML-E0208",
+      "file": "dimensions/Entity.csv",
+      "line": 1
+    },
+    {
+      "code": "FML-E0105",
+      "file": "dimensions/Entity.csv",
+      "line": 3
+    },
+    {
+      "code": "FML-E0705",
+      "file": "dimensions.fml",
+      "line": 4
+    },
+    {
+      "code": "FML-W0703",
+      "file": "dimensions.fml",
+      "line": 13
+    },
+    {
+      "code": "FML-E0612",
+      "file": "dimensions.fml",
+      "line": 17
+    }
+  ]
+}

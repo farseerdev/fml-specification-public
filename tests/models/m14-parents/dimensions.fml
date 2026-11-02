@@ -1,0 +1,13 @@
+# Parents in member files (§7): many, required, @null and the parent cells.
+dimension Account from "dimensions/Account.csv"
+  @parent PLLine many
+  @parent BSLine required
+  @attribute Active boolean
+  @null
+dimension PLLine from "dimensions/PLLine.csv"
+  @null
+dimension BSLine from "dimensions/BSLine.csv"
+  @null
+dimension CostCenter from "dimensions/CostCenter.csv"
+  @parent Department
+dimension Department { Sales, Admin }

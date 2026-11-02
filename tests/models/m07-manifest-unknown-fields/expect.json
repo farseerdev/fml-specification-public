@@ -1,0 +1,5 @@
+{
+  "description": "Unknown manifest fields are accepted and preserved; a versions list need not repeat Actual and Plan [DOC-5]. No diagnostics.",
+  "profile": "standard",
+  "diagnostics": []
+}

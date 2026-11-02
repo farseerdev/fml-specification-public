@@ -1,0 +1,313 @@
+{
+  "values": [
+    {
+      "var": "Price eff",
+      "keys": {
+        "Item": "I01"
+      },
+      "period": "2026-12",
+      "expect": 1
+    },
+    {
+      "var": "Price eff",
+      "keys": {
+        "Item": "I01"
+      },
+      "period": "2027-01",
+      "expect": 1
+    },
+    {
+      "var": "Price eff",
+      "keys": {
+        "Item": "I01"
+      },
+      "period": "2027-02",
+      "expect": 1.05
+    },
+    {
+      "var": "Price eff",
+      "keys": {
+        "Item": "I01"
+      },
+      "period": "2027-03",
+      "expect": 1.05
+    },
+    {
+      "var": "Price eff",
+      "keys": {
+        "Item": "I02"
+      },
+      "period": "2026-12",
+      "expect": 2
+    },
+    {
+      "var": "Price eff",
+      "keys": {
+        "Item": "I02"
+      },
+      "period": "2027-01",
+      "expect": 2
+    },
+    {
+      "var": "Price eff",
+      "keys": {
+        "Item": "I02"
+      },
+      "period": "2027-02",
+      "expect": 2
+    },
+    {
+      "var": "Price eff",
+      "keys": {
+        "Item": "I02"
+      },
+      "period": "2027-03",
+      "expect": 2
+    },
+    {
+      "var": "Price eff",
+      "keys": {
+        "Item": "I03"
+      },
+      "period": "2026-12",
+      "expect": 1.5
+    },
+    {
+      "var": "Price eff",
+      "keys": {
+        "Item": "I03"
+      },
+      "period": "2027-01",
+      "expect": 1.5
+    },
+    {
+      "var": "Price eff",
+      "keys": {
+        "Item": "I03"
+      },
+      "period": "2027-02",
+      "expect": 1.5
+    },
+    {
+      "var": "Price eff",
+      "keys": {
+        "Item": "I03"
+      },
+      "period": "2027-03",
+      "expect": 1.6
+    },
+    {
+      "var": "Net Revenue OUT",
+      "period": "2026-12",
+      "expect": 820,
+      "sum_rows": true
+    },
+    {
+      "var": "COGS OUT",
+      "period": "2026-12",
+      "expect": 406,
+      "sum_rows": true
+    },
+    {
+      "var": "Cost to Serve OUT",
+      "period": "2026-12",
+      "expect": 300,
+      "sum_rows": true,
+      "tol": 0.01
+    },
+    {
+      "var": "Contribution OUT",
+      "period": "2026-12",
+      "expect": 114,
+      "sum_rows": true,
+      "tol": 0.01
+    },
+    {
+      "var": "Contribution Margin Pct",
+      "period": "2026-12",
+      "expect": 0.139024,
+      "tol": 0.0001
+    },
+    {
+      "var": "Net Revenue OUT",
+      "period": "2027-01",
+      "expect": 1049,
+      "sum_rows": true
+    },
+    {
+      "var": "COGS OUT",
+      "period": "2027-01",
+      "expect": 535,
+      "sum_rows": true
+    },
+    {
+      "var": "Cost to Serve OUT",
+      "period": "2027-01",
+      "expect": 400,
+      "sum_rows": true,
+      "tol": 0.01
+    },
+    {
+      "var": "Contribution OUT",
+      "period": "2027-01",
+      "expect": 114,
+      "sum_rows": true,
+      "tol": 0.01
+    },
+    {
+      "var": "Contribution Margin Pct",
+      "period": "2027-01",
+      "expect": 0.108675,
+      "tol": 0.0001
+    },
+    {
+      "var": "Net Revenue OUT",
+      "period": "2027-02",
+      "expect": 1066,
+      "sum_rows": true
+    },
+    {
+      "var": "COGS OUT",
+      "period": "2027-02",
+      "expect": 535,
+      "sum_rows": true
+    },
+    {
+      "var": "Cost to Serve OUT",
+      "period": "2027-02",
+      "expect": 400,
+      "sum_rows": true,
+      "tol": 0.01
+    },
+    {
+      "var": "Contribution OUT",
+      "period": "2027-02",
+      "expect": 131,
+      "sum_rows": true,
+      "tol": 0.01
+    },
+    {
+      "var": "Contribution Margin Pct",
+      "period": "2027-02",
+      "expect": 0.122889,
+      "tol": 0.0001
+    },
+    {
+      "var": "Net Revenue OUT",
+      "period": "2027-03",
+      "expect": 1075,
+      "sum_rows": true
+    },
+    {
+      "var": "COGS OUT",
+      "period": "2027-03",
+      "expect": 535,
+      "sum_rows": true
+    },
+    {
+      "var": "Cost to Serve OUT",
+      "period": "2027-03",
+      "expect": 400,
+      "sum_rows": true,
+      "tol": 0.01
+    },
+    {
+      "var": "Contribution OUT",
+      "period": "2027-03",
+      "expect": 140,
+      "sum_rows": true,
+      "tol": 0.01
+    },
+    {
+      "var": "Contribution Margin Pct",
+      "period": "2027-03",
+      "expect": 0.130233,
+      "tol": 0.0001
+    },
+    {
+      "var": "Price head",
+      "keys": {
+        "Customer": "C03",
+        "Item": "I03"
+      },
+      "period": "2027-03",
+      "expect": 1.44
+    },
+    {
+      "var": "Price head",
+      "keys": {
+        "Customer": "C05",
+        "Item": "I02"
+      },
+      "period": "2027-01",
+      "expect": 1.9
+    },
+    {
+      "var": "Cost to Serve OUT",
+      "keys": {
+        "Customer": "C04",
+        "Item": "I01"
+      },
+      "period": "2027-01",
+      "expect": 99.0991,
+      "tol": 0.01
+    },
+    {
+      "var": "CHECK Price Fallback FINAL",
+      "period": "2027-01",
+      "expect": 1
+    },
+    {
+      "var": "CHECK Price Fallback FINAL",
+      "period": "2026-12",
+      "expect": null
+    },
+    {
+      "var": "Price head",
+      "keys": {
+        "Customer": "C04",
+        "Item": "I04"
+      },
+      "period": "2027-01",
+      "expect": 3
+    },
+    {
+      "var": "Price head",
+      "keys": {
+        "Customer": "C04",
+        "Item": "I04"
+      },
+      "period": "2027-02",
+      "expect": 3
+    },
+    {
+      "var": "Price head",
+      "keys": {
+        "Customer": "C04",
+        "Item": "I04"
+      },
+      "period": "2027-03",
+      "expect": 3
+    }
+  ],
+  "all": [
+    {
+      "var": "CHECK Allocation A",
+      "rule": "zero"
+    },
+    {
+      "var": "CHECK Allocation FINAL",
+      "rule": "empty"
+    },
+    {
+      "var": "CHECK Price Missing FINAL",
+      "rule": "empty"
+    }
+  ],
+  "row_counts": [
+    {
+      "var": "Price head",
+      "rows": 6
+    }
+  ]
+}

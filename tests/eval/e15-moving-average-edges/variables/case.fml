@@ -1,0 +1,13 @@
+# §12.2 avg: the mean of the n periods BEFORE the current one. [FUN-6a]: the
+# window holds only periods inside the horizon, the default divisor stays n,
+# and 2026-01 has no earlier period: no window, no cell. The default form has a
+# cell (possibly 0) in every period with a window; with skip_nulls = 1 the
+# divisor counts from the window's first period with data to its end, and there
+# are cells only where the window holds data.
+# X: 2026-01 = 3, 2026-02 = 6, 2026-03 = 9.
+"X IN" { YearMonth }
+  @notes "See the header."
+Avg2 { YearMonth } = avg("X IN", 2)
+  @readonly true
+"Avg2 skip" { YearMonth } = avg("X IN", 2, 1)
+  @readonly true

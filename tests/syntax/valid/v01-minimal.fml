@@ -1,0 +1,10 @@
+# The smallest model of §5.1, with its operands declared so that it resolves.
+dimension Product
+
+"Units IN" { Product, Versions, YearMonth }
+  @notes "Units sold. Writer: sales form."
+"Price IN" { Product, Versions, YearMonth }
+  @rollup average
+  @notes "Price per unit. Writer: sales form."
+Revenue { Product, Versions, YearMonth } = "Units IN" * "Price IN"
+  @readonly true

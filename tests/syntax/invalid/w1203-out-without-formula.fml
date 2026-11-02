@@ -1,0 +1,5 @@
+# expect: FML-W1203, FML-W1204
+dimension Product
+
+"Net Revenue OUT" { Product, YearMonth }
+  @notes "An output is computed; this one has no formula."

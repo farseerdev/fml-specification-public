@@ -1,0 +1,11 @@
+﻿# A BOM and CR LF line ends (§4.1).
+dimension Region {
+  North,
+  South
+}
+dimension Product
+"A IN" { Product, YearMonth }
+  @notes "Writer: form."
+B { Product, YearMonth } = "A IN" +
+  1
+  @readonly true

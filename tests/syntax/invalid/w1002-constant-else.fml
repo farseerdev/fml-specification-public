@@ -1,0 +1,7 @@
+# expect: FML-W1002
+dimension Product
+
+"A IN" { Product, YearMonth }
+  @notes "Writer: form."
+Positive { Product, YearMonth } = if(gt("A IN", 0), "A IN", 0)
+  @readonly true

@@ -1,0 +1,9 @@
+# expect: FML-W1105
+dimension PLLine
+  @parent PLSection
+dimension PLSection
+
+"PL Amount IN" { PLLine, YearMonth }
+  @notes "Writer: form."
+Mixed { PLLine, YearMonth } = sum("PL Amount IN", PLSection > "Operating expenses") / sum("PL Amount IN", PLLine > Revenue)
+  @readonly true

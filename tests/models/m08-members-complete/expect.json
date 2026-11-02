@@ -1,0 +1,51 @@
+{
+  "description": "membersComplete: unknown members in filters, pins, time and version references are E0302 for dimensions with a member source; a dimension declared without a member source has its members as data, so references to it are not checked at the document stage; a parent cell naming an unlisted parent is E0610 [\u00a75.7], [DIM-10].",
+  "profile": "standard",
+  "diagnostics": [
+    {
+      "code": "FML-E0610",
+      "file": "dimensions/Product.csv",
+      "line": 3
+    },
+    {
+      "code": "FML-E0302",
+      "file": "variables/model.fml",
+      "line": 7
+    },
+    {
+      "code": "FML-E0302",
+      "file": "variables/model.fml",
+      "line": 10
+    },
+    {
+      "code": "FML-E0302",
+      "file": "variables/model.fml",
+      "line": 11
+    },
+    {
+      "code": "FML-E0302",
+      "file": "variables/model.fml",
+      "line": 12
+    },
+    {
+      "code": "FML-E0302",
+      "file": "variables/model.fml",
+      "line": 13
+    },
+    {
+      "code": "FML-E0302",
+      "file": "variables/model.fml",
+      "line": 14
+    },
+    {
+      "code": "FML-E0302",
+      "file": "variables/model.fml",
+      "line": 17
+    },
+    {
+      "code": "FML-W0403",
+      "file": "variables/model.fml",
+      "line": 16
+    }
+  ]
+}

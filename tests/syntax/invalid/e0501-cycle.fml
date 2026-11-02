@@ -1,0 +1,9 @@
+# expect: FML-E0501
+dimension Product
+
+A { Product, YearMonth } = B + 1
+  @readonly true
+B { Product, YearMonth } = C * 2
+  @readonly true
+C { Product, YearMonth } = A
+  @readonly true

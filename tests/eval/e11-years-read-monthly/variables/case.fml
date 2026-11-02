@@ -1,0 +1,16 @@
+# [EVAL-28a]: a YearMonth consumer reads a Years variable at each month's year,
+# and a Months variable (a seasonal profile) at each month of the year, in
+# every year. In the sample data a Months variable is keyed by the months of
+# the first year of the horizon.
+"Rate IN" { Years }
+  @rollup average
+  @notes "2026 = 0.1, 2027 = 0.2."
+"Season IN" { Months }
+  @rollup average
+  @notes "\"01\" = 1, \"02\" = 2, \"12\" = 12; other months empty."
+"Base IN" { YearMonth }
+  @notes "100 in every month."
+Cost { YearMonth } = "Base IN" * "Rate IN"
+  @readonly true
+Seasonal { YearMonth } = "Base IN" * "Season IN"
+  @readonly true

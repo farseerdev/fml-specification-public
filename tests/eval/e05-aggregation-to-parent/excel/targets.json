@@ -1,0 +1,60 @@
+{
+ "values": [
+  {
+   "var": "Sales at Group",
+   "period": "2026-01",
+   "expect": 30,
+   "keys": {
+    "Group": "G1"
+   }
+  },
+  {
+   "var": "Sales at Group",
+   "period": "2026-01",
+   "expect": 5,
+   "keys": {
+    "Group": "G2"
+   }
+  },
+  {
+   "var": "Sales at Group",
+   "period": "2026-01",
+   "expect": 7,
+   "keys": {
+    "Group": "NULL (Group)"
+   }
+  },
+  {
+   "var": "Sales at Group",
+   "period": "2026-02",
+   "expect": 1,
+   "keys": {
+    "Group": "G1"
+   }
+  },
+  {
+   "var": "Sales at Group",
+   "period": "2026-02",
+   "expect": null,
+   "keys": {
+    "Group": "G2"
+   }
+  },
+  {
+   "var": "Sales Total",
+   "period": "2026-01",
+   "expect": 42
+  },
+  {
+   "var": "Sales Total",
+   "period": "2026-02",
+   "expect": 1
+  }
+ ],
+ "row_counts": [
+  {
+   "var": "Sales at Group",
+   "rows": 3
+  }
+ ]
+}

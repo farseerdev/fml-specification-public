@@ -1,0 +1,10 @@
+# expect: FML-E0410
+dimension Product
+
+"Code IN" { Product, YearMonth }
+  @type string
+"A IN" { Product, YearMonth }
+C1 { Product, YearMonth } = "Code IN" * "A IN"
+  @readonly true
+C2 { Product, YearMonth } = if(eq("Code IN", 1), "A IN")
+  @readonly true

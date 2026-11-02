@@ -1,0 +1,12 @@
+# expect: FML-E0903
+dimension Product
+
+"A IN" { Product, YearMonth }
+  @type money
+  @format euro
+  @decimals -1
+  @readonly yes
+  @folder Import
+  @notes 42
+  @numberFormat { type: MONEY, decimals: 1.5, custom: maybe }
+  @numberValidation { min: 10, max: 1 }

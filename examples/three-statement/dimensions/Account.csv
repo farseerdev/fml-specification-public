@@ -1,0 +1,16 @@
+Account,@description,PLLine,BSLine
+1000,Bank accounts,NULL (PLLine),Cash
+1100,Receivables from customers,NULL (PLLine),Trade receivables
+1500,Fixed assets net of depreciation,NULL (PLLine),"Property, plant and equipment"
+2000,Payables to suppliers,NULL (PLLine),Trade payables
+2500,Bank loan,NULL (PLLine),Borrowings
+3000,Share capital,NULL (PLLine),Share capital
+3100,Retained earnings including current-year result,NULL (PLLine),Retained earnings
+4000,Sales revenue,Operating revenue,NULL (BSLine)
+5000,Cost of goods sold,Cost of sales,NULL (BSLine)
+6000,Personnel cost,Personnel expenses,NULL (BSLine)
+6100,Rent,Other operating expenses,NULL (BSLine)
+6200,Other operating expenses,Other operating expenses,NULL (BSLine)
+6900,Depreciation,Depreciation and amortisation,NULL (BSLine)
+7000,Interest expense,Financial expense,NULL (BSLine)
+8000,Income tax,Income tax,NULL (BSLine)

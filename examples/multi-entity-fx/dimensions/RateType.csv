@@ -1,0 +1,4 @@
+RateType,@description
+Closing,Month-end rate: balances
+Average,Average rate of the month: flows
+Historical,Rate at the transaction date: equity

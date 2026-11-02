@@ -1,0 +1,6 @@
+Account,@description,PLLine,CostCenter
+4000,"Sales, domestic",Revenue,CC1
+4100,Sales abroad,Revenue,CC1
+5000,,Cost of sales,
+5000X,,,,,
+5100,Cost of sales

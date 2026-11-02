@@ -1,0 +1,5 @@
+Product,@description,Weight,Category
+P1,"Standard unit, boxed",1.5,Hardware
+P2,"Bundle
+spanning two lines",,Hardware|Services
+"P 3",Unmapped: reaches NULL (Category),2,

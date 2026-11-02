@@ -1,0 +1,8 @@
+# expect: FML-E0501
+# A recurrence is written with cumsum, not a self-reference [EVAL-29].
+dimension Product
+
+"Net IN" { Product, YearMonth }
+Balance { Product, YearMonth } = Balance + "Net IN"
+  @rollup closing_state
+  @readonly true

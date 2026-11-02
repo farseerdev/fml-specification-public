@@ -1,0 +1,5 @@
+Item,@description,Group
+I1,,G1
+I2,,G1
+I3,,G2
+I4,empty key: reaches NULL (Group),

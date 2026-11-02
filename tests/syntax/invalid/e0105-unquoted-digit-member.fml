@@ -1,0 +1,3 @@
+# expect: FML-E0105
+# A name that begins with a digit is written in string form [LEX-1].
+"Cash to Account" { Account = 1000, YearMonth }

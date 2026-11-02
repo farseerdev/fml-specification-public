@@ -1,0 +1,34 @@
+{
+  "version": null,
+  "periods": ["2027-01", "2027-02"],
+  "inputs": {
+    "IMPORT GL Activity E1": [
+      {"keys": {"LocalAccountE1": "400"}, "values": {"2027-01": 1000, "2027-02": 1100}},
+      {"keys": {"LocalAccountE1": "500"}, "values": {"2027-01": 700, "2027-02": 750}}
+    ],
+    "IMPORT GL Activity E2": [
+      {"keys": {"LocalAccountE2": "4100"}, "values": {"2027-01": 2000, "2027-02": 2200}},
+      {"keys": {"LocalAccountE2": "5200"}, "values": {"2027-01": 1500, "2027-02": 1600}}
+    ],
+    "IMPORT GL Balance E1": [
+      {"keys": {"LocalAccountE1": "100"}, "values": {"2027-01": 1500, "2027-02": 1950}},
+      {"keys": {"LocalAccountE1": "200"}, "values": {"2027-01": 400, "2027-02": 500}},
+      {"keys": {"LocalAccountE1": "300"}, "values": {"2027-01": 800, "2027-02": 800}},
+      {"keys": {"LocalAccountE1": "310"}, "values": {"2027-01": 300, "2027-02": 650}}
+    ],
+    "IMPORT GL Balance E2": [
+      {"keys": {"LocalAccountE2": "1010"}, "values": {"2027-01": 3000, "2027-02": 3700}},
+      {"keys": {"LocalAccountE2": "2010"}, "values": {"2027-01": 1000, "2027-02": 1100}},
+      {"keys": {"LocalAccountE2": "3010"}, "values": {"2027-01": 1500, "2027-02": 1500}},
+      {"keys": {"LocalAccountE2": "3110"}, "values": {"2027-01": 500, "2027-02": 1100}}
+    ],
+    "FX Rate IN": [
+      {"keys": {"Currency": "EUR", "RateType": "Closing"}, "from": "2027-01", "value": 1},
+      {"keys": {"Currency": "EUR", "RateType": "Average"}, "from": "2027-01", "value": 1},
+      {"keys": {"Currency": "EUR", "RateType": "Historical"}, "from": "2027-01", "value": 1},
+      {"keys": {"Currency": "USD", "RateType": "Closing"}, "values": {"2027-01": 0.90, "2027-02": 0.88}},
+      {"keys": {"Currency": "USD", "RateType": "Average"}, "values": {"2027-01": 0.92, "2027-02": 0.91}},
+      {"keys": {"Currency": "USD", "RateType": "Historical"}, "from": "2027-01", "value": 0.85}
+    ]
+  }
+}

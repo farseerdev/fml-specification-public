@@ -1,0 +1,6 @@
+# expect: FML-E0105
+dimension Product
+
+"A IN" { Product, YearMonth }
+B { Product, YearMonth } = sum("A IN", Months > 03)
+  @readonly true

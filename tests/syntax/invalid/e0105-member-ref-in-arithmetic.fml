@@ -1,0 +1,8 @@
+# expect: FML-E0105
+# A member reference is not an operand of arithmetic [§10.3].
+dimension Product
+dimension Region
+
+"A IN" { Product, Region, YearMonth }
+C { Product, YearMonth } = "A IN" * (Region > North)
+  @readonly true

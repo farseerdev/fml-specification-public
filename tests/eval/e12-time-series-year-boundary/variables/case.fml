@@ -1,0 +1,24 @@
+# [FUN-2]: delay carries December into January; delay(x, 12) reads the same
+# month a year earlier; a fractional shift rounds half up (2.5 -> 3, -0.5 -> 0).
+# [FUN-6a]: delay reads null in its first n periods, a value moved past the
+# last period is dropped; cumsum starts from 0 and carries its total on to the
+# end of the horizon even where x is null.
+# X: 2026-11 = 1, 2026-12 = 2, 2027-01 = 3.
+"X IN" { YearMonth }
+  @notes "See the header."
+D1 { YearMonth } = delay("X IN", 1)
+  @readonly true
+D12 { YearMonth } = delay("X IN", 12)
+  @readonly true
+"D 2.5" { YearMonth } = delay("X IN", 2.5)
+  @readonly true
+"D -0.5" { YearMonth } = delay("X IN", -0.5)
+  @readonly true
+Running { YearMonth } = cumsum("X IN")
+  @rollup closing_state
+  @readonly true
+Compound { YearMonth } = cumsum("X IN", 0.5)
+  @rollup closing_state
+  @readonly true
+Spread { YearMonth } = spread("X IN", 3, 1)
+  @readonly true

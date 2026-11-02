@@ -1,0 +1,5 @@
+# expect: FML-W0606
+# A dimension that is a parent of another declares @null, so that unmapped members are visible [DIM-5].
+dimension Category
+dimension Product
+  @parent Category

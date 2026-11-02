@@ -1,0 +1,22 @@
+# [EVAL-18]: a pin writes, it does not read: the unfiltered sum reads every
+# line (150) and writes it on COGS. The filter is where the reading happens.
+# [EVAL-19]: a transfer variable moves a value to the member where it is used.
+# §11.5: pinned operands added together are aligned (a collector).
+"PL Amount IN" { PLLine, YearMonth }
+  @notes "2026-01: Revenue = 100, COGS = 40, Opex = 10."
+"Rate IN" { PLLine, YearMonth }
+  @notes "2026-01: COGS = 0.5."
+"Pinned Unfiltered" { PLLine = COGS, YearMonth } = sum("PL Amount IN")
+  @readonly true
+"COGS Total" { YearMonth } = sum("PL Amount IN", PLLine > COGS)
+  @readonly true
+"Vol at COGS" { PLLine = COGS, YearMonth } = sum("PL Amount IN", PLLine > Revenue)
+  @readonly true
+"Rate x Vol" { PLLine, YearMonth } = "Rate IN" * "Vol at COGS"
+  @readonly true
+"Revenue Part" { PLLine = Revenue, YearMonth } = sum("PL Amount IN", PLLine > Revenue)
+  @readonly true
+"Opex Part" { PLLine = Opex, YearMonth } = sum("PL Amount IN", PLLine > Opex)
+  @readonly true
+Collector { PLLine, YearMonth } = "Revenue Part" + "Opex Part"
+  @readonly true

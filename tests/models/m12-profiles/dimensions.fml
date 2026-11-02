@@ -1,0 +1,6 @@
+dimension A
+  @parent B
+  @null
+dimension B
+  @parent A
+  @null

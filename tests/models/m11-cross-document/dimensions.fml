@@ -1,0 +1,4 @@
+dimension Product
+  @parent Category
+dimension Category
+  @null

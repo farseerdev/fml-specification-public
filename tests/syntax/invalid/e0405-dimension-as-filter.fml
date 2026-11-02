@@ -1,0 +1,7 @@
+# expect: FML-E0405
+dimension Product
+dimension Region
+
+"A IN" { Product, Region, YearMonth }
+C { Product, YearMonth } = sum("A IN", Region)
+  @readonly true

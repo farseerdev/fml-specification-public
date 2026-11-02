@@ -1,0 +1,10 @@
+# expect: FML-W0204
+# Repeated properties warn; attributes are keyed by name. Duplicate parents are E0707 [DIM-13].
+dimension Category
+  @null
+dimension Product
+  @folder "Sales"
+  @folder "Products"
+  @attribute Color string
+  @attribute Color date
+  @parent Category

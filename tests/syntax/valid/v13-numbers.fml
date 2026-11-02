@@ -1,0 +1,7 @@
+# Numeric literals (§4.7).
+dimension Product
+
+"X IN" { Product, Versions, YearMonth }
+  @notes "Writer: form."
+K { Product, Versions, YearMonth } = "X IN" * 0 + "X IN" * 12 + "X IN" * 0.05 + "X IN" * -3 + "X IN" * 1.50
+  @readonly true

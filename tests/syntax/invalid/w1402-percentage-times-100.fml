@@ -1,0 +1,10 @@
+# expect: FML-W1402
+dimension Product
+
+"Margin IN" { Product, YearMonth }
+  @notes "Writer: form."
+"Revenue IN" { Product, YearMonth }
+  @notes "Writer: form."
+"Margin Pct" { Product, YearMonth } = "Margin IN" / "Revenue IN" * 100
+  @format percentage
+  @readonly true

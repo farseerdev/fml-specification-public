@@ -1,0 +1,14 @@
+# expect: FML-W1107
+# No read aggregates across a dimension declared @rollup none [DIM-13].
+dimension Product
+dimension Scenario { Base, Upside }
+  @rollup none
+
+"Sales IN" { Product, Scenario, Versions, YearMonth }
+  @notes "Writer: form."
+"Total Sales" { Product, Versions, YearMonth } = "Sales IN"
+  @readonly true
+"Base Sales" { Product, Versions, YearMonth } = sum("Sales IN", Scenario > Base)
+  @readonly true
+"Sales by Scenario" { Product, Scenario, Versions, YearMonth } = "Sales IN" * 2
+  @readonly true

@@ -1,0 +1,6 @@
+# expect: FML-E0105
+# A formula is followed by a line terminator before any property line [VAR-1].
+dimension Product
+
+"A IN" { Product, YearMonth }
+C { Product, YearMonth } = "A IN" * 2 @readonly true

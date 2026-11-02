@@ -1,0 +1,17 @@
+# Each declaration names its member file (§6.4); dimensions/Unused.csv is named by none and is not read.
+dimension Account from "dimensions/Account.csv"
+  @parent PLLine
+  @parent BSLine
+dimension PLLine from "dimensions/PLLine.csv"
+  @null
+dimension BSLine { Assets, Liabilities }
+  @null
+dimension CostCenter from "dimensions/CostCenter.csv"
+dimension Employee from "dimensions/Employee.csv"
+dimension Grade from "dimensions/Grade.csv"
+dimension Region from "dimensions/Region.csv"
+  @parent Country
+dimension Country from "dimensions/Country.csv"
+  @null
+dimension Entity from "dimensions/Entity.csv"
+dimension Scenario from "dimensions/NoSuchFile.csv"

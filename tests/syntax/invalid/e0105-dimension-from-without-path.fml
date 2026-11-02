@@ -1,0 +1,3 @@
+# expect: FML-E0105
+# `from` takes the path of the member file as a string [§6.1].
+dimension Product from Products

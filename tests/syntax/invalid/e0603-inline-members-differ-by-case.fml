@@ -1,0 +1,3 @@
+# expect: FML-E0603
+# Member names are unique case-insensitively, in an inline list too [DIM-1].
+dimension Region { North, South, north }

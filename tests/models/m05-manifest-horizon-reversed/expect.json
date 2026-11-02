@@ -1,0 +1,11 @@
+{
+  "description": "A horizon whose `from` is after its `to` [DOC-5].",
+  "profile": "standard",
+  "diagnostics": [
+    {
+      "code": "FML-E0608",
+      "file": "model.json",
+      "line": 3
+    }
+  ]
+}

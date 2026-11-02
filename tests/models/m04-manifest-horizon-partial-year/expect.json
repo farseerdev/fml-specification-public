@@ -1,0 +1,11 @@
+{
+  "description": "A horizon that does not cover whole years [DOC-5], [DIM-9].",
+  "profile": "standard",
+  "diagnostics": [
+    {
+      "code": "FML-E0608",
+      "file": "model.json",
+      "line": 3
+    }
+  ]
+}

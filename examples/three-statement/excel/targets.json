@@ -1,0 +1,109 @@
+{
+  "values": [
+    {
+      "var": "Revenue Plan Total",
+      "period": "2027-01",
+      "expect": 3050
+    },
+    {
+      "var": "PBT Plan",
+      "period": "2027-01",
+      "expect": 1326
+    },
+    {
+      "var": "Income Tax",
+      "period": "2027-01",
+      "expect": 265.2
+    },
+    {
+      "var": "Net Income Plan",
+      "period": "2027-01",
+      "expect": 1060.8
+    },
+    {
+      "var": "Depreciation",
+      "period": "2027-01",
+      "expect": 20
+    },
+    {
+      "var": "Interest Expense",
+      "period": "2027-01",
+      "expect": 4
+    },
+    {
+      "var": "Receivables Plan",
+      "period": "2027-01",
+      "expect": 1525
+    },
+    {
+      "var": "Payables Plan",
+      "period": "2027-01",
+      "expect": 1660
+    },
+    {
+      "var": "Net Cash Flow",
+      "period": "2027-01",
+      "expect": 1305.8
+    },
+    {
+      "var": "Cash Plan",
+      "period": "2027-01",
+      "expect": 1805.8
+    },
+    {
+      "var": "Fixed Assets Plan",
+      "period": "2027-01",
+      "expect": 1180
+    },
+    {
+      "var": "Loan Balance",
+      "period": "2027-01",
+      "expect": 790
+    },
+    {
+      "var": "Retained Earnings Plan",
+      "period": "2027-01",
+      "expect": 1460.8
+    },
+    {
+      "var": "PL Gross Profit",
+      "period": "2027-01",
+      "expect": 1460,
+      "sum_rows": true
+    },
+    {
+      "var": "Cash Plan",
+      "period": "2026-12",
+      "expect": 500
+    },
+    {
+      "var": "Depreciation",
+      "period": "2027-04",
+      "expect": 22
+    }
+  ],
+  "all": [
+    {
+      "var": "CHECK BS A",
+      "rule": "zero"
+    },
+    {
+      "var": "CHECK BS FINAL",
+      "rule": "empty"
+    },
+    {
+      "var": "BS OUT",
+      "rule": "populated"
+    }
+  ],
+  "row_counts": [
+    {
+      "var": "BS OUT",
+      "rows": 7
+    },
+    {
+      "var": "Sales Revenue",
+      "rows": 3
+    }
+  ]
+}

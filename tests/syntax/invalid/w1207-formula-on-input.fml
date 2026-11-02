@@ -1,0 +1,9 @@
+# expect: FML-W1207
+dimension Product
+
+"IMPORT Price" { Product, YearMonth }
+  @folder "Import"
+  @readonly true
+  @notes "Writer: ERP."
+"Price IN" { Product, YearMonth } = "IMPORT Price"
+  @notes "An unfenced formula on an input."

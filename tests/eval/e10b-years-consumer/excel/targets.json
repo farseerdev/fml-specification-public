@@ -1,0 +1,24 @@
+{
+ "values": [
+  {
+   "var": "Flow Year",
+   "period": "2026",
+   "expect": 78
+  },
+  {
+   "var": "Flow Year",
+   "period": "2027",
+   "expect": 5
+  },
+  {
+   "var": "Balance Year",
+   "period": "2026",
+   "expect": 120
+  },
+  {
+   "var": "Balance Year",
+   "period": "2027",
+   "expect": null
+  }
+ ]
+}

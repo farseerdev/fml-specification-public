@@ -1,0 +1,16 @@
+# controls.fml — conservation invariants (Modelling Guide §7.3)
+
+"CHECK Ledger A" { Versions, YearMonth } = round("HR Cost OUT" - "Total Cost", 2)
+  @folder "Controls"
+  @notes "Ledger-grain output minus position-grain cost. Non-zero means a salary element without an account or a position without a cost centre."
+  @readonly true
+
+"CHECK Ledger FINAL" { Versions, YearMonth } = if(gt(abs("CHECK Ledger A"), 0), "CHECK Ledger A" * 0 + 1)
+  @folder "Controls"
+  @readonly true
+
+"CHECK Contribution A" { Versions, YearMonth } =
+  round("EL201 Employer Contribution" - "Contribution Base" * "Employer Rate IN", 2)
+  @folder "Controls"
+  @notes "Contributions equal the rate times the liable base, in total."
+  @readonly true

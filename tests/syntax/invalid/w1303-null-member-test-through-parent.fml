@@ -1,0 +1,10 @@
+# expect: FML-W1303
+dimension Employee
+  @parent CostCenter
+dimension CostCenter
+  @null
+
+"Pay IN" { Employee, YearMonth }
+  @notes "Writer: payroll."
+Unassigned { Employee, YearMonth } = if(hasDMember(CostCenter > "NULL (CostCenter)"), "Pay IN")
+  @readonly true

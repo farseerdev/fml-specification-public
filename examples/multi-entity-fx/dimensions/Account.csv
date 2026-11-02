@@ -1,0 +1,8 @@
+Account,@description,PLLine,BSLine,RateType
+4000,Revenue,Revenue,NULL (BSLine),Average
+5000,Operating expenses,Expenses,NULL (BSLine),Average
+1000,Cash,NULL (PLLine),Cash,Closing
+2000,Payables,NULL (PLLine),Payables,Closing
+3000,Share capital,NULL (PLLine),Share capital,Historical
+3100,Retained earnings,NULL (PLLine),Retained earnings,Historical
+3900,Translation reserve,NULL (PLLine),Translation reserve,Closing

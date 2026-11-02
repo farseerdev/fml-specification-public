@@ -1,0 +1,7 @@
+{
+  "fml": "1.0",
+  "horizon": { "from": "2026-01", "to": "2026-12" },
+  "versions": ["Forecast"],
+  "owner": "Controlling",
+  "x-engine": { "tenant": "demo" }
+}

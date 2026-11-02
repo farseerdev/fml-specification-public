@@ -1,0 +1,8 @@
+# [EXPR-2]: -x is null where x is null (it is not 0 - x there), so a product
+# that consumes it is null: A * -B has no value in 2026-02, where B is null.
+"A IN" { Item, YearMonth }
+  @notes "2026-01 = 6, 02 = 6, 04 = 6."
+"B IN" { Item, YearMonth }
+  @notes "2026-01 = 3, 03 = 3, 04 = 0."
+"Times Neg" { Item, YearMonth } = "A IN" * -"B IN"
+  @readonly true

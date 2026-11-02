@@ -1,0 +1,5 @@
+# expect: FML-E0206
+# Quarters is a reading level: read there, never stored [VAR-9].
+dimension Product
+
+"A IN" { Product, Years, Quarters }

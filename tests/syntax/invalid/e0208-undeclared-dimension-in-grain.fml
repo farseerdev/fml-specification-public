@@ -1,0 +1,6 @@
+# expect: FML-E0208
+# A grain names only declared or system dimensions; a name never creates a dimension [DOC-6].
+dimension Product
+
+"A IN" { Product, Prodcut, YearMonth }
+  @notes "Writer: form."

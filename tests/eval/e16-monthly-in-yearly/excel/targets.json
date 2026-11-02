@@ -1,0 +1,26 @@
+{
+ "values": [
+  {
+   "var": "Delta",
+   "keys": {
+    "Region": "North"
+   },
+   "period": "2026",
+   "expect": 70
+  },
+  {
+   "var": "Delta",
+   "keys": {
+    "Region": "North"
+   },
+   "period": "2027",
+   "expect": null
+  }
+ ],
+ "row_counts": [
+  {
+   "var": "Delta",
+   "rows": 1
+  }
+ ]
+}

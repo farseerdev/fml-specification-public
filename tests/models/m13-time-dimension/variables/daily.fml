@@ -1,0 +1,19 @@
+@defaults
+  @folder "Daily"
+
+"Units IN" { Product, Versions, Day }
+  @notes "Units sold per day. Writer: sales feed. Reader: the daily outputs."
+"Shift Units IN" { Product, Shift }
+  @notes "Units per shift. Writer: production feed."
+
+@defaults
+  @folder "Daily"
+  @readonly true
+
+"Units to Date" { Product, Versions, Day } = cumsum("Units IN")
+"Units Previous Day" { Product, Versions, Day } = delay("Units IN", 1)
+"Monthly Units OUT" { Product, Versions, YearMonth } = "Units IN"
+  @notes "Days aggregated to months through the parent. Reader: management report."
+"New Year Units" { Product, Versions } = sum("Units IN", Day > "2026-01-01")
+"Last Day Units" { Product, Versions } = sum("Units IN", Day > "2026-01-31")
+"Night Units" { Product } = sum("Shift Units IN", Shift > Night)

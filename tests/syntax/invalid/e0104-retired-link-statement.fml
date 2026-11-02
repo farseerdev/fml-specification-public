@@ -1,0 +1,6 @@
+# expect: FML-E0104
+# The link statement is retired: a parent is declared by @parent (§7.1).
+dimension Product
+dimension Category
+
+link Product -> Category

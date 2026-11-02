@@ -1,0 +1,7 @@
+# expect: FML-E0707
+# Reordering equivalent modifiers still repeats the same parent [PARENT-4].
+dimension Category
+  @null
+dimension Product
+  @parent Category many required
+  @parent Category required many

@@ -1,0 +1,14 @@
+# expect: FML-E0406
+dimension Product
+
+"A IN" { Product, YearMonth }
+C1 { Product, YearMonth } = max("A IN", 1, 2)
+  @readonly true
+C2 { Product, YearMonth } = if(gt("A IN", 0))
+  @readonly true
+C3 { Product, YearMonth } = delay("A IN")
+  @readonly true
+C4 { Product, YearMonth } = "A IN" * currentMonth(1)
+  @readonly true
+C5 { Product, YearMonth } = sum()
+  @readonly true

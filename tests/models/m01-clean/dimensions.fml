@@ -1,0 +1,8 @@
+# Dimension declarations (§6.1); the member files are named by `from` (§6.4).
+dimension Category from "dimensions/Category.csv"
+  @null
+dimension Product from "dimensions/Product.csv"
+  @parent Category many
+  @attribute Weight number
+  @null
+  @folder "Sales/Products"

@@ -1,0 +1,7 @@
+# expect: FML-W0203
+dimension Account
+  @parent PLLine
+dimension PLLine
+
+"Revenue 4000 IN" { Account = "4000", PLLine = Revenue, YearMonth }
+  @notes "Writer: form."

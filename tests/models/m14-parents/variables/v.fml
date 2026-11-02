@@ -1,0 +1,6 @@
+"Amount IN" { Account, CostCenter, Versions, YearMonth }
+  @notes "Writer: ledger."
+"Amount by Line" { PLLine, Versions, YearMonth } = "Amount IN"
+  @readonly true
+"Unmapped Amount" { Versions, YearMonth } = sum("Amount IN", BSLine > "NULL (BSLine)")
+  @readonly true

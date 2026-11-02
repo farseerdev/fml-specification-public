@@ -1,0 +1,16 @@
+# [EVAL-4a] rule 1: X carries the whole output grain, so only X's cells exist
+# and Rate adds its value there; while the full-grain operand is empty there
+# are no cells at all. Rule 2: with no full-grain reference, Rate is read at
+# every version. The workbook renders the version Plan.
+"X IN" { Versions, YearMonth }
+  @notes "Plan: 2026-01 = 10."
+"Empty IN" { Versions, YearMonth }
+  @notes "No data."
+"Rate IN" { YearMonth }
+  @notes "2026-01 = 1, 2026-02 = 2, 2026-03 = 3."
+T1 { Versions, YearMonth } = "X IN" + "Rate IN"
+  @readonly true
+T2 { Versions, YearMonth } = 0 + "Rate IN"
+  @readonly true
+T3 { Versions, YearMonth } = "Empty IN" + "Rate IN"
+  @readonly true

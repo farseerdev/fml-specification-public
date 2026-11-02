@@ -1,0 +1,7 @@
+# expect: FML-E0707
+# Even identical parent declarations are errors [PARENT-4].
+dimension Category
+  @null
+dimension Product
+  @parent Category
+  @parent Category

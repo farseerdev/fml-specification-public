@@ -1,0 +1,5 @@
+# expect: FML-E0105
+# `true` as a dimension or variable name is written in string form [§4.5].
+dimension "true"
+
+"A IN" { true, YearMonth }

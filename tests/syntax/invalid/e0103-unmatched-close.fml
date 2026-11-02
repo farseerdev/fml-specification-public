@@ -1,0 +1,6 @@
+# expect: FML-E0103
+dimension Product
+
+"A IN" { Product, YearMonth }
+B { Product, YearMonth } = round("A IN", 2))
+  @readonly true

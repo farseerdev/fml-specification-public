@@ -1,0 +1,7 @@
+# expect: FML-W1401
+# Without custom: true, formatString is derived from type and decimals [FMT-1].
+dimension Product
+
+"Amount IN" { Product, YearMonth }
+  @numberFormat { type: NUMBER, decimals: 0, formatString: "#,##0.00" }
+  @notes "Writer: form."

@@ -1,0 +1,6 @@
+# expect: FML-I0901
+dimension Product
+
+"A IN" { Product, YearMonth }
+  @owner "Controlling"
+  @notes "Writer: form."

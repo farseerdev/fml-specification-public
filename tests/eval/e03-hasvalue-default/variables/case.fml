@@ -1,0 +1,11 @@
+# [EVAL-4] consequence 2: a default taken through hasValue does not widen the
+# cells — the literal 1 never appears. [EVAL-25]: with a carrier in the
+# else-branch, the else-branch applies wherever the carrier anchors a cell.
+"Fraction IN" { Position, YearMonth }
+  @notes "P1: 2026-01 = 0.5; P3: 2026-02 = 0.25."
+"Anchor IN" { Position, YearMonth }
+  @notes "P1 and P2: 1 in 2026-01 … 2026-03; P3: 1 in 2026-01."
+Weight { Position, YearMonth } = if(hasValue("Fraction IN"), "Fraction IN", 1)
+  @readonly true
+"Weight Carrier" { Position, YearMonth } = if(hasValue("Fraction IN"), "Fraction IN", "Anchor IN")
+  @readonly true

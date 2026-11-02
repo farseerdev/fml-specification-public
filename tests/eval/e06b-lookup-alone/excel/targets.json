@@ -1,0 +1,42 @@
+{
+ "values": [
+  {
+   "var": "Price at Item",
+   "period": "2026-01",
+   "expect": 2,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Price at Item",
+   "period": "2026-01",
+   "expect": 2,
+   "keys": {
+    "Item": "I2"
+   }
+  },
+  {
+   "var": "Price at Item",
+   "period": "2026-01",
+   "expect": 3,
+   "keys": {
+    "Item": "I3"
+   }
+  },
+  {
+   "var": "Price at Item",
+   "period": "2026-02",
+   "expect": null,
+   "keys": {
+    "Item": "I1"
+   }
+  }
+ ],
+ "row_counts": [
+  {
+   "var": "Price at Item",
+   "rows": 3
+  }
+ ]
+}

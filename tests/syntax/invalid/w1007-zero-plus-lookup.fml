@@ -1,0 +1,9 @@
+# expect: FML-W1007
+dimension Item
+  @parent Group
+dimension Group
+
+"Group Price IN" { Group, YearMonth }
+  @notes "Writer: form."
+"Item Price" { Item, YearMonth } = 0 + "Group Price IN"
+  @readonly true

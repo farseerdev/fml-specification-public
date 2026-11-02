@@ -1,0 +1,4 @@
+# expect: FML-E0106
+# Only @null takes no value [DIM-13], [§9.1].
+dimension Product
+  @folder

@@ -1,0 +1,6 @@
+# expect: FML-W1204
+dimension Product
+
+"A IN" { Product, YearMonth }
+  @notes "Writer: form."
+Doubled { Product, YearMonth } = "A IN" * 2

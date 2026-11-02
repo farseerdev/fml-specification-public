@@ -1,0 +1,9 @@
+# expect: FML-W1205
+dimension Employee
+
+"Gross Salary IN" { Employee, YearMonth }
+  @notes "Writer: form."
+"Closing_Balance OUT" { Employee, YearMonth } = "Gross Salary IN"
+  @rollup closing_state
+  @notes "Reader: report."
+  @readonly true

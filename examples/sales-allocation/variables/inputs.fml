@@ -1,0 +1,35 @@
+# inputs.fml — planner inputs. Only these variables are writable.
+
+"Qty Plan IN" { Customer, Item, Versions, YearMonth }
+  @folder "Inputs"
+  @notes "Planned units per customer and item. Writer: key-account managers."
+
+"Price Change IN" { Item, Versions, YearMonth }
+  @rollup average
+  @format percentage
+  @folder "Inputs"
+  @notes "Price change in the month it takes effect, as a share of the last realised price. Two changes in one year ADD (+3% then +2% = +5%), they do not compound. Editable on any level. Writer: pricing."
+
+"Price Set IN" { Item, Versions, YearMonth }
+  @rollup average
+  @folder "Inputs"
+  @notes "Absolute price that wins over the carried curve in the months entered. Rare: a negotiated price. Leaf level only; aggregates are locked. Writer: pricing."
+
+"Customer Discount IN" { Customer, Versions, Years }
+  @rollup average
+  @format percentage
+  @folder "Inputs"
+  @notes "Discount granted to the customer, as a share of gross revenue. Writer: sales management."
+
+"Unit Cost IN" { Item, Versions, Years }
+  @rollup average
+  @folder "Inputs"
+  @notes "Standard cost per unit, used for actual and plan periods alike. Writer: controlling."
+
+"Orders Plan IN" { Customer, Versions, YearMonth }
+  @folder "Inputs"
+  @notes "Planned number of orders per customer. Writer: logistics planning."
+
+"Location Opex Plan IN" { Location, Versions, YearMonth }
+  @folder "Inputs"
+  @notes "Planned warehouse and delivery cost per location. Writer: operations."

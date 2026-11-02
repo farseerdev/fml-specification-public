@@ -1,0 +1,77 @@
+# pay.fml — salary elements, each pinned to its member (Modelling Guide §9.7)
+#
+# Recurring pay scales with FTE, per-head payments with headcount. Classification
+# is data: which elements enter the contribution base is the ContributionClass
+# parent of SalaryElement, not a formula branch.
+
+"Raise Applies" { Versions, YearMonth } =
+  if(gte(currentMonth(), "Raise Month IN"), "Planning Horizon IN")
+  @rollup average
+  @folder "Pay"
+  @notes "1 from the raise month on, empty before."
+  @readonly true
+
+"Raise Pct by Position" { Position, Versions, YearMonth } = "Raise Pct IN" * "Position Anchor"
+  @rollup average
+  @format percentage
+  @folder "Pay"
+  @notes "The grade's raise, looked up through Position -> PayGrade and lifted onto the position grain by the anchor."
+  @readonly true
+
+"Raise Uplift" { Position, Versions, YearMonth } = "Raise Pct by Position" * "Raise Applies"
+  @rollup average
+  @format percentage
+  @folder "Pay"
+  @notes "The raise from the raise month on; empty before."
+  @readonly true
+
+"Raise Factor" { Position, Versions, YearMonth } = "Position Anchor" + "Raise Uplift"
+  @rollup average
+  @folder "Pay"
+  @notes "1 before the raise month, 1 + the raise from it. Both operands carry the full grain, so each places its own cells (spec EVAL-4a)."
+  @readonly true
+
+"Base Salary effective" { Position, Versions, YearMonth } = "Base Salary IN" * "Raise Factor"
+  @rollup average
+  @folder "Pay"
+  @readonly true
+
+"EL101 Base Pay" { Position, SalaryElement = EL101, Versions, YearMonth } =
+  "Base Salary effective" * "FTE"
+  @folder "Pay"
+  @readonly true
+
+"EL102 Seniority" { Position, SalaryElement = EL102, Versions, YearMonth } =
+  "EL101 Base Pay" * "Seniority Rate IN" * "Tenure Years IN"
+  @folder "Pay"
+  @readonly true
+
+"EL301 Year End Gift" { Position, SalaryElement = EL301, Versions, YearMonth } =
+  if(hasDMember(Months > "12"), "Gift Amount IN" * "HC Active")
+  @folder "Pay"
+  @notes "Per head, paid in December. Gift Amount IN is looked up through Position -> PayGrade."
+  @readonly true
+
+"Gross Pay" { Position, SalaryElement, Versions, YearMonth } =
+  "EL101 Base Pay" + "EL102 Seniority" + "EL301 Year End Gift"
+  @folder "Pay"
+  @notes "Collector: each operand is pinned to its own salary element."
+  @readonly true
+
+"Contribution Base by Element" { Position, SalaryElement, Versions, YearMonth } =
+  if(hasDMember(ContributionClass > Liable), "Gross Pay")
+  @folder "Pay"
+  @readonly true
+
+"Contribution Base" { Position, Versions, YearMonth } = "Contribution Base by Element"
+  @folder "Pay"
+  @readonly true
+
+"EL201 Employer Contribution" { Position, SalaryElement = EL201, Versions, YearMonth } =
+  "Contribution Base" * "Employer Rate IN"
+  @folder "Pay"
+  @readonly true
+
+"Total Cost" { Position, SalaryElement, Versions, YearMonth } = "Gross Pay" + "EL201 Employer Contribution"
+  @folder "Pay"
+  @readonly true

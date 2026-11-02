@@ -1,0 +1,3 @@
+"X IN" { A, YearMonth }
+  @desc "Shown in place of the name"
+Doubled { A, YearMonth } = "X IN" * 2

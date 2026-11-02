@@ -1,0 +1,6 @@
+# expect: FML-E0107
+# A document is UTF-8 (Â§4.1); the byte 0xE9 below is Latin-1.
+dimension Product
+
+"Café IN" { Product, YearMonth }
+  @notes "Writer: form."

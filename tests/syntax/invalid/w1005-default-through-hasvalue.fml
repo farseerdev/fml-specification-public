@@ -1,0 +1,7 @@
+# expect: FML-W1005
+dimension Position
+
+"Fraction IN" { Position, YearMonth }
+  @notes "Writer: form."
+Weight { Position, YearMonth } = if(hasValue("Fraction IN"), "Fraction IN", 1)
+  @readonly true

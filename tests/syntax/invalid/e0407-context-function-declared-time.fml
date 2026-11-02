@@ -1,0 +1,9 @@
+# expect: FML-E0407
+# A dimension declared @semantic time does not give a context function its period [FUN-8], [DIM-11].
+dimension Day
+  @semantic time
+dimension Product
+
+"Sales IN" { Product, Day }
+"Month No" { Product, Day } = "Sales IN" * 0 + currentMonth()
+  @readonly true

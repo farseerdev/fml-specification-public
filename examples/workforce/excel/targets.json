@@ -1,0 +1,281 @@
+{
+  "values": [
+    {
+      "var": "Headcount OUT",
+      "keys": {
+        "CostCenter": "CC100"
+      },
+      "period": "2027-01",
+      "expect": 2
+    },
+    {
+      "var": "Headcount OUT",
+      "keys": {
+        "CostCenter": "CC200"
+      },
+      "period": "2027-01",
+      "expect": 2
+    },
+    {
+      "var": "HR Cost OUT",
+      "period": "2027-01",
+      "expect": 12386.28,
+      "sum_rows": true,
+      "tol": 0.01
+    },
+    {
+      "var": "Cost per FTE",
+      "period": "2027-01",
+      "expect": 3538.9371,
+      "tol": 0.01
+    },
+    {
+      "var": "Headcount OUT",
+      "keys": {
+        "CostCenter": "CC100"
+      },
+      "period": "2027-02",
+      "expect": 2
+    },
+    {
+      "var": "Headcount OUT",
+      "keys": {
+        "CostCenter": "CC200"
+      },
+      "period": "2027-02",
+      "expect": 2
+    },
+    {
+      "var": "HR Cost OUT",
+      "period": "2027-02",
+      "expect": 12386.28,
+      "sum_rows": true,
+      "tol": 0.01
+    },
+    {
+      "var": "Cost per FTE",
+      "period": "2027-02",
+      "expect": 3538.9371,
+      "tol": 0.01
+    },
+    {
+      "var": "Headcount OUT",
+      "keys": {
+        "CostCenter": "CC100"
+      },
+      "period": "2027-04",
+      "expect": 2
+    },
+    {
+      "var": "Headcount OUT",
+      "keys": {
+        "CostCenter": "CC200"
+      },
+      "period": "2027-04",
+      "expect": 2
+    },
+    {
+      "var": "HR Cost OUT",
+      "period": "2027-04",
+      "expect": 11340.11,
+      "sum_rows": true,
+      "tol": 0.01
+    },
+    {
+      "var": "Cost per FTE",
+      "period": "2027-04",
+      "expect": 3240.0314,
+      "tol": 0.01
+    },
+    {
+      "var": "Headcount OUT",
+      "keys": {
+        "CostCenter": "CC100"
+      },
+      "period": "2027-07",
+      "expect": 1
+    },
+    {
+      "var": "Headcount OUT",
+      "keys": {
+        "CostCenter": "CC200"
+      },
+      "period": "2027-07",
+      "expect": 2
+    },
+    {
+      "var": "HR Cost OUT",
+      "period": "2027-07",
+      "expect": 8983.1403,
+      "sum_rows": true,
+      "tol": 0.01
+    },
+    {
+      "var": "Cost per FTE",
+      "period": "2027-07",
+      "expect": 3593.2561,
+      "tol": 0.01
+    },
+    {
+      "var": "Headcount OUT",
+      "keys": {
+        "CostCenter": "CC100"
+      },
+      "period": "2027-09",
+      "expect": 2
+    },
+    {
+      "var": "Headcount OUT",
+      "keys": {
+        "CostCenter": "CC200"
+      },
+      "period": "2027-09",
+      "expect": 2
+    },
+    {
+      "var": "HR Cost OUT",
+      "period": "2027-09",
+      "expect": 12462.9952,
+      "sum_rows": true,
+      "tol": 0.01
+    },
+    {
+      "var": "Cost per FTE",
+      "period": "2027-09",
+      "expect": 3560.8558,
+      "tol": 0.01
+    },
+    {
+      "var": "Headcount OUT",
+      "keys": {
+        "CostCenter": "CC100"
+      },
+      "period": "2027-12",
+      "expect": 2
+    },
+    {
+      "var": "Headcount OUT",
+      "keys": {
+        "CostCenter": "CC200"
+      },
+      "period": "2027-12",
+      "expect": 2
+    },
+    {
+      "var": "HR Cost OUT",
+      "period": "2027-12",
+      "expect": 13662.9952,
+      "sum_rows": true,
+      "tol": 0.01
+    },
+    {
+      "var": "Cost per FTE",
+      "period": "2027-12",
+      "expect": 3903.7129,
+      "tol": 0.01
+    },
+    {
+      "var": "HR Cost OUT",
+      "keys": {
+        "Account": "6010"
+      },
+      "period": "2027-12",
+      "expect": 1200,
+      "sum_rows": true
+    },
+    {
+      "var": "EL101 Base Pay",
+      "keys": {
+        "Position": "P001"
+      },
+      "period": "2027-07",
+      "expect": 3090
+    },
+    {
+      "var": "EL101 Base Pay",
+      "keys": {
+        "Position": "P003"
+      },
+      "period": "2027-01",
+      "expect": 2250
+    },
+    {
+      "var": "Payroll Variance OUT",
+      "keys": {
+        "Employee": "E03",
+        "SalaryElement": "EL101"
+      },
+      "period": "2027-01",
+      "expect": 50
+    },
+    {
+      "var": "Payroll Variance OUT",
+      "keys": {
+        "Employee": "E01",
+        "SalaryElement": "EL101"
+      },
+      "period": "2027-01",
+      "expect": 0
+    },
+    {
+      "var": "Payroll Variance OUT",
+      "keys": {
+        "Employee": "E01",
+        "SalaryElement": "EL101"
+      },
+      "period": "2027-02",
+      "expect": null
+    },
+    {
+      "var": "HC Active",
+      "keys": {
+        "Position": "P002"
+      },
+      "period": "2027-07",
+      "expect": null
+    },
+    {
+      "var": "HC Active",
+      "keys": {
+        "Position": "P004"
+      },
+      "period": "2027-03",
+      "expect": null
+    },
+    {
+      "var": "HC Active",
+      "keys": {
+        "Position": "P004"
+      },
+      "period": "2027-04",
+      "expect": 1
+    },
+    {
+      "var": "HR Cost OUT",
+      "period": "2027 Total",
+      "expect": 136821.2615,
+      "sum_rows": true,
+      "tol": 0.01
+    }
+  ],
+  "all": [
+    {
+      "var": "CHECK Ledger A",
+      "rule": "zero"
+    },
+    {
+      "var": "CHECK Ledger FINAL",
+      "rule": "empty"
+    },
+    {
+      "var": "CHECK Contribution A",
+      "rule": "zero"
+    }
+  ],
+  "row_counts": [
+    {
+      "var": "HC Active",
+      "rows": 6
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "description": "A manifest naming an FML version the processor does not implement [DOC-5].",
+  "profile": "standard",
+  "diagnostics": [
+    {
+      "code": "FML-E0608",
+      "file": "model.json",
+      "line": 2
+    }
+  ]
+}

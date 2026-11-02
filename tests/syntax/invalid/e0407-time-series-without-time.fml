@@ -1,0 +1,6 @@
+# expect: FML-E0407
+dimension Product
+
+"A IN" { Product, YearMonth }
+C { Product } = cumsum("A IN")
+  @readonly true

@@ -1,0 +1,16 @@
+{
+  "description": "Declared time dimensions (§6.9, [DIM-11]) under membersComplete: Day's member file lists its periods in row order with their YearMonth parent; cumsum and delay run along Day (no E0407); a member reference to a day the file does not list is E0302. Shift, a time dimension without a member source, is not E0607 and its members are not checked (they are data).",
+  "profile": "standard",
+  "diagnostics": [
+    {
+      "code": "FML-E0302",
+      "file": "variables/daily.fml",
+      "line": 18
+    }
+  ],
+  "exit": {
+    "lenient": 1,
+    "standard": 1,
+    "strict": 1
+  }
+}

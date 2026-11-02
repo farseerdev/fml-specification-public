@@ -1,0 +1,11 @@
+# expect: FML-W1103
+# sum(A * F) aggregates A and F first and multiplies the aggregates [EVAL-8].
+dimension Dim
+dimension Position
+
+"Amount IN" { Dim, Position, YearMonth }
+  @notes "Writer: form."
+"Flag IN" { Dim }
+  @notes "Writer: form."
+Target { YearMonth } = sum("Amount IN" * "Flag IN")
+  @readonly true

@@ -1,0 +1,7 @@
+# expect: FML-W1302
+dimension Product
+
+"IMPORT Sales" { Product, Versions, YearMonth }
+  @folder "Import"
+  @readonly true
+  @notes "Writer: ERP."

@@ -1,0 +1,23 @@
+# Grains: system time grains, pins [VAR-5], one time dimension each [VAR-9].
+dimension Account
+  @parent PLLine
+dimension PLLine
+dimension Entity
+dimension Grade
+dimension Product
+
+"Opening Cash IN" { Entity, Versions, YearMonth = "2026-01" }
+  @rollup closing_state
+  @notes "Pinned to the first month. Writer: treasury."
+"Annual Rate IN" { Grade, Versions, Years }
+  @rollup average
+  @notes "An annual assumption."
+"Season IN" { Product, Months }
+  @rollup average
+  @notes "A seasonal profile, the same in every year."
+"Static IN" { Product }
+  @notes "No time dimension."
+"Budget Opex IN" { Account, Versions = Budget, YearMonth }
+  @notes "Pinned version."
+"Cost of Sales Total" { Versions, YearMonth } = sum("Budget Opex IN", PLLine > "Cost of sales")
+  @readonly true

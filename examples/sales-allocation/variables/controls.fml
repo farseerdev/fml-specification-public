@@ -1,0 +1,49 @@
+# controls.fml — allocation completeness (Modelling Guide §7.3)
+
+"CHECK Allocation A" { Versions, YearMonth } =
+  round("Cost to Serve OUT" - "Location Opex OUT", 2)
+  @folder "Controls"
+  @notes "Allocated cost minus location cost. Non-zero means a location had cost but no orders, or a customer had orders but no revenue."
+  @readonly true
+
+"CHECK Allocation FINAL" { Versions, YearMonth } =
+  if(gt(abs("CHECK Allocation A"), 0), "CHECK Allocation A" * 0 + 1)
+  @folder "Controls"
+  @notes "1 where the allocation loses or creates cost; empty = complete."
+  @readonly true
+
+# Planned quantity without a price (Modelling Guide §9.9). Both flags
+# return the anchor rather than a literal, so they stay sparse and return
+# nothing when the model is healthy.
+"Price Present Flag" { Customer, Item, Versions, YearMonth } = if(gt("Price head", 0), "Qty Anchor")
+  @folder "Controls"
+  @readonly true
+
+"CHECK Price Missing Flag" { Customer, Item, Versions, YearMonth } =
+  if(not(hasValue("Price Present Flag")), "Qty Anchor")
+  @folder "Controls"
+  @notes "1 where a quantity is planned but no positive price exists (no realised price to anchor on, or a non-positive one); empty = every planned quantity is priced."
+  @readonly true
+
+"CHECK Price Missing FINAL" { Versions, YearMonth } = "CHECK Price Missing Flag"
+  @folder "Controls"
+  @notes "Number of planned quantity cells without a price, for the checks board; empty = none."
+  @readonly true
+
+# Planned quantity priced from the list price: a warning, not an error
+# (Modelling Guide §9.9). List prices can sit well above
+# realised prices, and the fallback would otherwise hide that silently.
+"Price Known Anchor" { Customer, Item, Versions, YearMonth } = "Qty Anchor" * "Price Decided Flag"
+  @folder "Controls"
+  @readonly true
+
+"CHECK Price Fallback Flag" { Customer, Item, Versions, YearMonth } =
+  if(not(hasValue("Price Known Anchor")), "Qty Anchor")
+  @folder "Controls"
+  @notes "1 where a planned quantity is priced from the list price; price it explicitly before the plan is signed."
+  @readonly true
+
+"CHECK Price Fallback FINAL" { Versions, YearMonth } = "CHECK Price Fallback Flag"
+  @folder "Controls"
+  @notes "Number of planned quantity cells priced from the list price; empty = none."
+  @readonly true

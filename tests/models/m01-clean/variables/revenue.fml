@@ -1,0 +1,11 @@
+@defaults
+  @folder "Revenue"
+  @readonly true
+
+Revenue { Product, Versions, YearMonth } = "Units IN" * "Price IN"
+"Hardware Revenue OUT" { Versions, YearMonth } = sum(Revenue, Category > Hardware)
+  @notes "Reader: management report."
+"Actual Revenue" { Product, Versions, YearMonth } = if(hasDMember(Versions > Actual), Revenue)
+"Q1 Revenue" { Product, Versions, Years } = sum(Revenue, Quarters > Q1)
+"March 2026 Revenue" { Product, Versions } = sum(Revenue, YearMonth > "2026-03")
+"Unmapped P3 Revenue" { Versions, YearMonth } = sum(Revenue, Product > "P 3")

@@ -1,0 +1,14 @@
+# import.fml — landing variables written by integrations (Modelling Guide §1.1)
+# All amounts use all-positive storage: revenue, expense, assets, liabilities
+# and equity are stored positive (Modelling Guide §9.1).
+
+"IMPORT GL Activity" { Account, CostCenter, YearMonth }
+  @folder "Import"
+  @notes "Ledger period activity on P&L accounts. Writer: ledger integration. Reader: PL Actual upstream."
+  @readonly true
+
+"IMPORT GL Balance" { Account, YearMonth }
+  @rollup closing_state
+  @folder "Import"
+  @notes "Ledger closing balances on balance-sheet accounts. Writer: ledger integration. Reader: BS Actual upstream."
+  @readonly true

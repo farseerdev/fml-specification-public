@@ -1,0 +1,5 @@
+# expect: FML-E0613
+# An inline list has no column for parents [DIM-12].
+dimension Category { Hardware, Services }
+dimension Product { P1, P2 }
+  @parent Category

@@ -1,0 +1,9 @@
+# [EVAL-13]: read at a parent, a child-grain variable aggregates (under its
+# @rollup) over the children that reach the parent. No sum is needed.
+# [EVAL-15]: I4 has an empty foreign key and reaches NULL (Group).
+"Sales IN" { Item, YearMonth }
+  @notes "2026-01: I1 = 10, I2 = 20, I3 = 5, I4 = 7; 2026-02: I1 = 1."
+"Sales at Group" { Group, YearMonth } = "Sales IN"
+  @readonly true
+"Sales Total" { YearMonth } = "Sales at Group"
+  @readonly true

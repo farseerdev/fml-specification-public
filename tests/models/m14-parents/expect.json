@@ -1,0 +1,31 @@
+{
+  "description": "Parents (§7): a multi-parent cell under @parent … many and the parent's NULL member are valid; an empty cell under @parent … required (E0617), several parents without many (E0616), a parent cell naming no member (E0610), a NULL member of a parent that does not declare @null (E0610), and a parent without @null (W0606) [PARENT-2], [PARENT-3], [DIM-5].",
+  "profile": "standard",
+  "diagnostics": [
+    {
+      "code": "FML-W0606",
+      "file": "dimensions.fml",
+      "line": 13
+    },
+    {
+      "code": "FML-E0617",
+      "file": "dimensions/Account.csv",
+      "line": 4
+    },
+    {
+      "code": "FML-E0616",
+      "file": "dimensions/Account.csv",
+      "line": 5
+    },
+    {
+      "code": "FML-E0610",
+      "file": "dimensions/Account.csv",
+      "line": 6
+    },
+    {
+      "code": "FML-E0610",
+      "file": "dimensions/CostCenter.csv",
+      "line": 3
+    }
+  ]
+}

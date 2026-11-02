@@ -1,0 +1,35 @@
+# dimensions.fml — every dimension of the workforce example
+#
+# Every attribute hangs off the position (Modelling Guide §3.5, §9.7). Employee and
+# CostCenter are sisters reached from Position; neither is a parent of the other.
+#
+# Position has no NULL member: positions are entity-style. P006 is a planned
+# hire not yet filled, so its Employee is NULL (Employee).
+#
+# Salary elements are numbered in semantic blocks (Modelling Guide §2.5).
+
+dimension Account from "dimensions/Account.csv"
+  @null
+
+dimension ContributionClass from "dimensions/ContributionClass.csv"
+
+dimension CostCenter from "dimensions/CostCenter.csv"
+  @null
+
+dimension ElementClass from "dimensions/ElementClass.csv"
+
+dimension Employee from "dimensions/Employee.csv"
+  @null                          # NULL (Employee): vacant and planned positions
+
+dimension PayGrade from "dimensions/PayGrade.csv"
+  @null
+
+dimension Position from "dimensions/Position.csv"
+  @parent CostCenter
+  @parent Employee
+  @parent PayGrade
+
+dimension SalaryElement from "dimensions/SalaryElement.csv"
+  @parent Account
+  @parent ContributionClass required
+  @parent ElementClass required

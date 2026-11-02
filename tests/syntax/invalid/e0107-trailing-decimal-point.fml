@@ -1,0 +1,6 @@
+# expect: FML-E0107
+dimension Product
+
+"A IN" { Product, YearMonth }
+C { Product, YearMonth } = "A IN" * 5.
+  @readonly true

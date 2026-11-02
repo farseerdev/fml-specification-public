@@ -1,0 +1,6 @@
+# import.fml — payroll actuals, landed per employee and salary element
+
+"IMPORT Payroll Actual" { Employee, SalaryElement, YearMonth }
+  @folder "Import"
+  @notes "Payroll cost per employee and salary element, employer contributions included. Writer: payroll integration. Reader: Payroll Actual at Version."
+  @readonly true

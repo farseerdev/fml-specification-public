@@ -1,0 +1,12 @@
+# Reserved words in string form (§4.5, §4.8); function names are not reserved.
+dimension Product
+
+"link" { Product, YearMonth }
+  @readonly true
+  @notes "A variable named link."
+"true" { Product, YearMonth } = "link"
+  @readonly true
+sum { Product, YearMonth } = "true" + 1
+  @readonly true
+Total { Product, YearMonth } = sum + sum(sum, Product > "false")
+  @readonly true

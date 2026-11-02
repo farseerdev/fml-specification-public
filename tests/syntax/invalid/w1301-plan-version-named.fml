@@ -1,0 +1,7 @@
+# expect: FML-W1301
+dimension Product
+
+"A IN" { Product, Versions, YearMonth }
+  @notes "Writer: form."
+Budgeted { Product, YearMonth } = sum("A IN", Versions > Budget)
+  @readonly true

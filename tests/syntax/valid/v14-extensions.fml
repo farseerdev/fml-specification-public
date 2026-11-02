@@ -1,0 +1,10 @@
+# expect: FML-I0408, FML-I0901, FML-I0905
+# Extensions are accepted and preserved [EXT-2], [PROP-12].
+dimension Product
+
+"X IN" { Product, Versions, YearMonth }
+  @notes "Writer: form."
+  @reviewedBy "Finance"
+Growth { Product, Versions, YearMonth } = yoy("X IN")
+  @rollup formula
+  @readonly true

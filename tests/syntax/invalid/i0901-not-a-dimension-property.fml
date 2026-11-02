@@ -1,0 +1,4 @@
+# expect: FML-I0901
+# A variable property on a dimension declaration is not a dimension property (preserved) [DIM-13].
+dimension Product
+  @readonly true

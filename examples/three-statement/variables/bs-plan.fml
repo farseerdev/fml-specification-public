@@ -1,0 +1,154 @@
+# bs-plan.fml — the plan balance sheet and cash, consistent by construction
+#
+# Every balance is a cumulative trail from its opening value (Modelling Guide §9.3), and
+# cash is the trail of the indirect cash flow. Opening values are read from
+# "Opening Balances IN" in the month before the first plan month.
+
+# --- Totals of the plan P&L used as drivers ---------------------------------------
+
+"Revenue Plan Total" { Versions, YearMonth } = sum("PL Plan", PLLine > "Operating revenue")
+  @folder "BS/Plan"
+  @readonly true
+"Purchases Plan Total" { Versions, YearMonth } =
+    sum("PL Plan", PLLine > "Cost of sales")
+  + sum("PL Plan", PLLine > "Other operating expenses")
+  @folder "BS/Plan"
+  @readonly true
+
+# --- Opening balances ----------------------------------------------------------------
+
+"Opening Cash" { Versions, YearMonth } = sum("Opening Balances IN", BSLine > Cash)
+  @rollup closing_state
+  @folder "BS/Plan"
+  @readonly true
+"Opening Receivables" { Versions, YearMonth } = sum("Opening Balances IN", BSLine > "Trade receivables")
+  @rollup closing_state
+  @folder "BS/Plan"
+  @readonly true
+"Opening Fixed Assets" { Versions, YearMonth } = sum("Opening Balances IN", BSLine > "Property, plant and equipment")
+  @rollup closing_state
+  @folder "BS/Plan"
+  @readonly true
+"Opening Payables" { Versions, YearMonth } = sum("Opening Balances IN", BSLine > "Trade payables")
+  @rollup closing_state
+  @folder "BS/Plan"
+  @readonly true
+"Opening Share Capital" { Versions, YearMonth } = sum("Opening Balances IN", BSLine > "Share capital")
+  @rollup closing_state
+  @folder "BS/Plan"
+  @readonly true
+"Opening Retained Earnings" { Versions, YearMonth } = sum("Opening Balances IN", BSLine > "Retained earnings")
+  @rollup closing_state
+  @folder "BS/Plan"
+  @readonly true
+
+# --- Working capital ------------------------------------------------------------------
+
+"Receivables from DSO" { Versions, YearMonth } = "Revenue Plan Total" * "DSO Days IN" / 30
+  @rollup closing_state
+  @folder "BS/Plan"
+  @readonly true
+"Receivables Plan" { Versions, YearMonth } =
+  if(hasValue("Opening Receivables"), "Opening Receivables", "Receivables from DSO")
+  @rollup closing_state
+  @folder "BS/Plan"
+  @readonly true
+"Receivables Prior" { Versions, YearMonth } = delay("Receivables Plan", 1)
+  @rollup closing_state
+  @folder "BS/Plan"
+  @notes "Relies on delay carrying December into January (spec FUN-2); CHECK BS FINAL detects it if not."
+  @readonly true
+"Receivables Change" { Versions, YearMonth } = "Receivables from DSO" - "Receivables Prior"
+  @folder "BS/Plan"
+  @notes "Null in the opening month, where no plan revenue exists."
+  @readonly true
+
+"Payables from DPO" { Versions, YearMonth } = "Purchases Plan Total" * "DPO Days IN" / 30
+  @rollup closing_state
+  @folder "BS/Plan"
+  @readonly true
+"Payables Plan" { Versions, YearMonth } =
+  if(hasValue("Opening Payables"), "Opening Payables", "Payables from DPO")
+  @rollup closing_state
+  @folder "BS/Plan"
+  @readonly true
+"Payables Prior" { Versions, YearMonth } = delay("Payables Plan", 1)
+  @rollup closing_state
+  @folder "BS/Plan"
+  @notes "Relies on delay carrying December into January (spec FUN-2); CHECK BS FINAL detects it if not."
+  @readonly true
+"Payables Change" { Versions, YearMonth } = "Payables from DPO" - "Payables Prior"
+  @folder "BS/Plan"
+  @readonly true
+
+# --- Fixed assets, equity -----------------------------------------------------------------
+
+"Fixed Asset Movement" { Versions, YearMonth } = "Capex IN" - "Depreciation"
+  @folder "BS/Plan"
+  @readonly true
+"Fixed Assets Plan" { Versions, YearMonth } = cumsum("Fixed Asset Movement", 0, "Opening Fixed Assets")
+  @rollup closing_state
+  @folder "BS/Plan"
+  @readonly true
+
+"Share Capital Plan" { Versions, YearMonth } = cumsum("Share Capital Movement IN", 0, "Opening Share Capital")
+  @rollup closing_state
+  @folder "BS/Plan"
+  @readonly true
+"Retained Earnings Plan" { Versions, YearMonth } = cumsum("Net Income Plan", 0, "Opening Retained Earnings")
+  @rollup closing_state
+  @folder "BS/Plan"
+  @readonly true
+
+# --- Cash -------------------------------------------------------------------------------
+
+"Net Cash Flow" { Versions, YearMonth } =
+    "Net Income Plan" + "Depreciation" - "Receivables Change" + "Payables Change"
+  - "Capex IN" + "Loan Movement" + "Share Capital Movement IN"
+  @folder "BS/Plan"
+  @notes "Indirect method. All operands share one grain, so null operands count as zero."
+  @readonly true
+
+"Cash Plan" { Versions, YearMonth } = cumsum("Net Cash Flow", 0, "Opening Cash")
+  @rollup closing_state
+  @folder "BS/Plan"
+  @readonly true
+
+# --- Plan balances on accounts (pinned transfers + collector) ---------------------------------
+
+"BS Cash to Account"        { Account = "1000", Versions, YearMonth } = "Cash Plan"
+  @rollup closing_state
+  @folder "BS/Plan"
+  @readonly true
+"BS Receivables to Account" { Account = "1100", Versions, YearMonth } = "Receivables Plan"
+  @rollup closing_state
+  @folder "BS/Plan"
+  @readonly true
+"BS Fixed Assets to Account" { Account = "1500", Versions, YearMonth } = "Fixed Assets Plan"
+  @rollup closing_state
+  @folder "BS/Plan"
+  @readonly true
+"BS Payables to Account"    { Account = "2000", Versions, YearMonth } = "Payables Plan"
+  @rollup closing_state
+  @folder "BS/Plan"
+  @readonly true
+"BS Loans to Account"       { Account = "2500", Versions, YearMonth } = "Loan Balance"
+  @rollup closing_state
+  @folder "BS/Plan"
+  @readonly true
+"BS Share Capital to Account" { Account = "3000", Versions, YearMonth } = "Share Capital Plan"
+  @rollup closing_state
+  @folder "BS/Plan"
+  @readonly true
+"BS Retained Earnings to Account" { Account = "3100", Versions, YearMonth } = "Retained Earnings Plan"
+  @rollup closing_state
+  @folder "BS/Plan"
+  @readonly true
+
+"BS Plan" { Account, Versions, YearMonth } =
+    "BS Cash to Account" + "BS Receivables to Account" + "BS Fixed Assets to Account"
+  + "BS Payables to Account" + "BS Loans to Account"
+  + "BS Share Capital to Account" + "BS Retained Earnings to Account"
+  @rollup closing_state
+  @folder "BS/Plan"
+  @readonly true

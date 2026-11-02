@@ -1,0 +1,7 @@
+# expect: FML-E0105
+# `5 -3` is the two tokens 5 and -3, not a subtraction [LEX-5].
+dimension Product
+
+"A IN" { Product, YearMonth }
+B { Product, YearMonth } = "A IN" -3
+  @readonly true

@@ -1,0 +1,6 @@
+# expect: FML-E0614
+# An attribute and a parent of one dimension cannot share a column name [DIM-3].
+dimension Category
+dimension Product
+  @parent Category
+  @attribute Category string

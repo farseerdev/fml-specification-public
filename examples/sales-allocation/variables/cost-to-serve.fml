@@ -1,0 +1,65 @@
+# cost-to-serve.fml — location cost allocated to customers by orders, then to
+# items by each customer's revenue mix (Modelling Guide §9.8: keys, result, expansion).
+
+"Orders ACT part" { Customer, Versions, YearMonth } = if(eq("FC Actual Flag", 1), "Orders upstream")
+  @folder "Cost to Serve"
+  @readonly true
+
+"Orders PLAN part" { Customer, Versions, YearMonth } = if(not(eq("FC Actual Flag", 1)), "Orders Plan IN")
+  @folder "Cost to Serve"
+  @readonly true
+
+"Orders OUT" { Customer, Versions, YearMonth } = "Orders ACT part" + "Orders PLAN part"
+  @folder "Cost to Serve"
+  @notes "Orders per customer: actual periods from the order system, plan periods from planners. Readers: cost-to-serve allocation, sales reports."
+  @readonly true
+
+"Location Opex ACT part" { Location, Versions, YearMonth } =
+  if(eq("FC Actual Flag", 1), "Location Opex upstream")
+  @folder "Cost to Serve"
+  @readonly true
+
+"Location Opex PLAN part" { Location, Versions, YearMonth } =
+  if(not(eq("FC Actual Flag", 1)), "Location Opex Plan IN")
+  @folder "Cost to Serve"
+  @readonly true
+
+"Location Opex OUT" { Location, Versions, YearMonth } =
+  "Location Opex ACT part" + "Location Opex PLAN part"
+  @folder "Cost to Serve"
+  @notes "Cost to allocate. Reader: Cost to Serve Result."
+  @readonly true
+
+# Step 1 — keys: each customer's share of its location's orders
+"Orders by Location" { Location, Versions, YearMonth } = "Orders OUT"
+  @folder "Cost to Serve"
+  @notes "Projection Customer -> Location."
+  @readonly true
+
+"Cost to Serve Keys" { Customer, Versions, YearMonth } =
+  if(gt("Orders by Location", 0), "Orders OUT" / "Orders by Location")
+  @rollup average
+  @folder "Cost to Serve"
+  @notes "Orders by Location is looked up through Customer -> Location; Orders OUT gives the cells."
+  @readonly true
+
+# Step 2 — result: the location's cost times the key
+"Cost to Serve Result" { Customer, Versions, YearMonth } = "Location Opex OUT" * "Cost to Serve Keys"
+  @folder "Cost to Serve"
+  @readonly true
+
+# Step 3 — expansion to items, by the customer's revenue mix
+"Net Revenue at Customer" { Customer, Versions, YearMonth } = "Net Revenue OUT"
+  @folder "Cost to Serve"
+  @readonly true
+
+"Item Mix Keys" { Customer, Item, Versions, YearMonth } =
+  if(gt("Net Revenue at Customer", 0), "Net Revenue OUT" / "Net Revenue at Customer")
+  @rollup average
+  @folder "Cost to Serve"
+  @readonly true
+
+"Cost to Serve OUT" { Customer, Item, Versions, YearMonth } = "Cost to Serve Result" * "Item Mix Keys"
+  @folder "Cost to Serve"
+  @notes "Allocated cost per customer and item. The key at item grain gives the cells (Modelling Guide §9.8)."
+  @readonly true

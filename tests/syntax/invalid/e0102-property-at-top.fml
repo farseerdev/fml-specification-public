@@ -1,0 +1,4 @@
+# expect: FML-E0102
+@readonly true
+dimension Product
+"A IN" { Product, YearMonth }

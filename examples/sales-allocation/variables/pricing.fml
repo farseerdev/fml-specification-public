@@ -1,0 +1,94 @@
+# pricing.fml — prices derived from realised behaviour; planners enter only the
+# change (Modelling Guide §9.9). On actual periods the realised price resets the curve;
+# on plan periods the reset is empty, so the curve carries forward.
+
+"Net Revenue by Item" { Item, YearMonth } = "Net Revenue upstream"
+  @folder "Pricing"
+  @readonly true
+
+"Qty by Item" { Item, YearMonth } = "Sales Qty upstream"
+  @folder "Pricing"
+  @readonly true
+
+"Realised Price" { Item, YearMonth } =
+  if(and(gt("Net Revenue by Item", 0), gt("Qty by Item", 0)), "Net Revenue by Item" / "Qty by Item")
+  @rollup average
+  @folder "Pricing"
+  @notes "Net realised price per unit. Guarded so that a negative or empty month never anchors the curve."
+  @readonly true
+
+"Price Reset" { Item, Versions, YearMonth } = if(eq("FC Actual Flag", 1), "Realised Price")
+  @rollup average
+  @folder "Pricing"
+  @readonly true
+
+"Price Base" { Item, Versions, YearMonth } = cumsum(0, 0, "Price Reset")
+  @rollup average
+  @folder "Pricing"
+  @notes "The last realised price, carried into plan periods."
+  @readonly true
+
+"Price Step" { Item, Versions, YearMonth } = "Price Change IN" * "Price Base"
+  @folder "Pricing"
+  @notes "The month's price change in currency. An item without a change has no step; its curve still runs on the reset alone."
+  @readonly true
+
+"Price Curve" { Item, Versions, YearMonth } = cumsum("Price Step", 0, "Price Reset")
+  @rollup average
+  @folder "Pricing"
+  @notes "Net list price per unit: realised on actual periods, carried and stepped on plan periods."
+  @readonly true
+
+"Price Set Flag" { Item, Versions, YearMonth } = if(hasValue("Price Set IN"), 1)
+  @rollup average
+  @folder "Pricing"
+  @readonly true
+
+"Price Curve Flag" { Item, Versions, YearMonth } = if(hasValue("Price Curve"), 1)
+  @rollup average
+  @folder "Pricing"
+  @readonly true
+
+"Price Decided Flag" { Item, Versions, YearMonth } =
+  if(hasValue("Price Set IN"), "Price Set Flag", "Price Curve Flag")
+  @rollup average
+  @folder "Pricing"
+  @notes "1 where the item price is set or carried from realised prices; empty where only the list price is available."
+  @readonly true
+
+"Price Fallback Item" { Item } = "IMPORT List Price"
+  @rollup average
+  @folder "Pricing"
+  @notes "List price: prices an item that has no decided price (a new item). Applied on Price head, where the quantity anchor places the cell."
+  @readonly true
+
+"Price eff" { Item, Versions, YearMonth } =
+    "Price Set IN"
+  + "Price Curve" * (1 - "Price Set Flag")
+  @rollup average
+  @folder "Pricing"
+  @notes "Decided price per item: set price, else the carried curve. Flags hold 1 or null; 1 - null reads 1. Read-only row shown next to the entry cells."
+  @readonly true
+
+# Customer-specific price, anchored on planned quantity (Modelling Guide §5.5
+# and §9.9). "Price eff" is dense over item-months and
+# "Price Factor" over customers; without the anchor their product is dense on
+# every item-month x customer. The anchor keeps a price only where a quantity
+# is planned.
+"Price Factor" { Customer, Versions, Years } = 1 - "Customer Discount IN"
+  @rollup average
+  @folder "Pricing"
+  @readonly true
+
+"Qty Anchor" { Customer, Item, Versions, YearMonth } = "Qty Plan IN" * 0 + 1
+  @folder "Pricing"
+  @notes "1 wherever a quantity is planned; the cell domain of every customer-level price."
+  @readonly true
+
+"Price head" { Customer, Item, Versions, YearMonth } =
+    "Price eff" * "Price Factor" * "Qty Anchor"
+  + "Price Fallback Item" * "Price Factor" * "Qty Anchor" * (1 - "Price Decided Flag")
+  @rollup average
+  @folder "Pricing"
+  @notes "Net price per customer and item: the decided price, else the list price, present exactly where a quantity is planned. The fallback sits here because only the anchor gives a new item a cell (FML §11.3, consequence 5)."
+  @readonly true

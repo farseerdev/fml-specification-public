@@ -1,0 +1,101 @@
+{
+  "values": [
+    {
+      "var": "Group Revenue",
+      "keys": {
+        "EntityGroup": "Group"
+      },
+      "period": "2027-01",
+      "expect": 2840.0
+    },
+    {
+      "var": "Group Revenue",
+      "keys": {
+        "EntityGroup": "Group"
+      },
+      "period": "2027-02",
+      "expect": 3102.0
+    },
+    {
+      "var": "Group Net Result",
+      "keys": {
+        "EntityGroup": "Group"
+      },
+      "period": "2027-01",
+      "expect": 760.0
+    },
+    {
+      "var": "Group Net Result",
+      "keys": {
+        "EntityGroup": "Group"
+      },
+      "period": "2027-02",
+      "expect": 896.0
+    },
+    {
+      "var": "Translation Difference",
+      "keys": {
+        "Entity": "E2"
+      },
+      "period": "2027-01",
+      "expect": 100.0
+    },
+    {
+      "var": "Translation Difference",
+      "keys": {
+        "Entity": "E2"
+      },
+      "period": "2027-02",
+      "expect": 78.0
+    },
+    {
+      "var": "Translation Difference",
+      "keys": {
+        "Entity": "E1"
+      },
+      "period": "2027-01",
+      "expect": 0
+    },
+    {
+      "var": "BS Reporting OUT",
+      "keys": {
+        "Entity": "E2",
+        "Account": "1000"
+      },
+      "period": "2027-01",
+      "expect": 2700
+    },
+    {
+      "var": "BS Reporting OUT",
+      "keys": {
+        "Entity": "E2",
+        "Account": "3900"
+      },
+      "period": "2027-02",
+      "expect": 78.0
+    },
+    {
+      "var": "PL Reporting OUT",
+      "keys": {
+        "Entity": "E2",
+        "Account": "5000"
+      },
+      "period": "2027-01",
+      "expect": 1380
+    }
+  ],
+  "all": [
+    {
+      "var": "CHECK BS Local A",
+      "rule": "zero"
+    },
+    {
+      "var": "CHECK BS Reporting A",
+      "rule": "zero"
+    },
+    {
+      "var": "CHECK Mapping A",
+      "rule": "zero"
+    }
+  ]
+}

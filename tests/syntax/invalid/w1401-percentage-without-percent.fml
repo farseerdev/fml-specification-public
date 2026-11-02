@@ -1,0 +1,7 @@
+# expect: FML-W1401
+dimension Product
+
+"Rate IN" { Product, YearMonth }
+  @format percentage
+  @numberFormat { formatString: "#,##0.00" }
+  @notes "Writer: form."

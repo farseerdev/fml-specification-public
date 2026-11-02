@@ -1,0 +1,7 @@
+# expect: FML-E0407
+# currentDate() reads its period from YearMonth; a grain with Years only has no month [FUN-8].
+dimension Product
+
+"Rate IN" { Product, Versions, Years }
+"Start" { Product, Versions, Years } = "Rate IN" * 0 + currentDate()
+  @readonly true

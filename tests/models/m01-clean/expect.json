@@ -1,0 +1,5 @@
+{
+  "description": "A conforming model: manifest, declarations with member files, a parent declared many with a multi-parent cell, an attribute column, @null, quoted multi-line cells, defaults blocks, filters on business and system dimensions. No diagnostics.",
+  "profile": "standard",
+  "diagnostics": []
+}

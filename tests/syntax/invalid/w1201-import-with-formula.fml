@@ -1,0 +1,16 @@
+# expect: FML-W1201
+dimension BSLine
+dimension Account
+
+"IMPORT GL Balance" { BSLine, YearMonth }
+  @rollup closing_state
+  @folder "Import"
+  @readonly true
+  @notes "Writer: ledger integration."
+"IMPORT Balance by Line" { BSLine, YearMonth } = "IMPORT GL Balance"
+  @rollup closing_state
+  @readonly true
+"GL Activity" { Account, YearMonth }
+  @folder "Import"
+  @readonly true
+  @notes "A landing variable without the IMPORT prefix."

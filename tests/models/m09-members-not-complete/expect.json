@@ -1,0 +1,21 @@
+{
+  "description": "The same model without membersComplete: unknown members are not errors [§15.1], except a malformed system-dimension member and a parent cell that the parent's member file does not list [DIM-10].",
+  "profile": "standard",
+  "diagnostics": [
+    {
+      "code": "FML-E0610",
+      "file": "dimensions/Product.csv",
+      "line": 3
+    },
+    {
+      "code": "FML-E0302",
+      "file": "variables/model.fml",
+      "line": 13
+    },
+    {
+      "code": "FML-W0403",
+      "file": "variables/model.fml",
+      "line": 16
+    }
+  ]
+}

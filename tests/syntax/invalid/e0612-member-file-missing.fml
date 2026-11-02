@@ -1,0 +1,3 @@
+# expect: FML-E0612
+# The member file a declaration names MUST exist, relative to the model directory [DIM-12].
+dimension Product from "dimensions/NoSuchProduct.csv"

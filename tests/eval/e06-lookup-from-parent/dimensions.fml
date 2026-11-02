@@ -1,0 +1,4 @@
+dimension Group from "dimensions/Group.csv"
+
+dimension Item from "dimensions/Item.csv"
+  @parent Group required

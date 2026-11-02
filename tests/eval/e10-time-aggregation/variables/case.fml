@@ -1,0 +1,18 @@
+# [EVAL-28]: read at a year, a YearMonth variable aggregates its months under
+# its own @rollup: sum totals, closing_state takes December strictly (null when
+# December is empty), beginning_state January strictly, average the mean of the
+# existing values. The workbook reads a year in its "<year> Total" column.
+"Flow IN" { YearMonth }
+  @notes "2026-01 … 2026-12 = 1 … 12 (total 78); 2027-01 = 5."
+"Balance IN" { YearMonth }
+  @rollup closing_state
+  @notes "2026-06 = 100, 2026-12 = 120; 2027-03 = 50 (December 2027 empty)."
+"Opening IN" { YearMonth }
+  @rollup beginning_state
+  @notes "2026-01 = 7, 2026-02 = 8; 2027-02 = 9 (January 2027 empty)."
+"Rate IN" { YearMonth }
+  @rollup average
+  @notes "2026-01 = 1, 2026-02 = 3."
+"Balance Calc" { YearMonth } = "Balance IN" * 2
+  @rollup closing_state
+  @readonly true

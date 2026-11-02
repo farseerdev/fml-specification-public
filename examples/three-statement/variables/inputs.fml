@@ -1,0 +1,78 @@
+# inputs.fml — planner inputs (Modelling Guide §1.1). Only variables in this file are
+# writable; every other variable in the model is @readonly true.
+
+"Sales Volume IN" { Product, Versions, YearMonth }
+  @folder "Inputs"
+  @notes "Units planned per product and month. Writer: sales planning form."
+
+"Unit Price IN" { Product, Versions, YearMonth }
+  @rollup average
+  @folder "Inputs"
+  @notes "Planned selling price per unit. Writer: sales planning form."
+
+"COGS Rate IN" { ProductGroup, Versions, Years }
+  @rollup average
+  @format percentage
+  @folder "Inputs"
+  @notes "Cost of goods sold as a share of revenue. Writer: controlling."
+
+"Headcount IN" { CostCenter, Versions, YearMonth }
+  @rollup closing_state
+  @decimals 1
+  @folder "Inputs"
+  @notes "Planned headcount at month end. Writer: department heads."
+
+"Average Monthly Cost IN" { CostCenter, Versions, Years }
+  @rollup average
+  @folder "Inputs"
+  @notes "Average monthly personnel cost per head, employer contributions included."
+
+"Other Opex IN" { Account, CostCenter, Versions, YearMonth }
+  @folder "Inputs"
+  @notes "Other operating expenses, entered on accounts 6100 and 6200 only."
+
+"Capex IN" { Versions, YearMonth }
+  @folder "Inputs"
+  @notes "Capital expenditure in the month of purchase."
+
+"Existing Depreciation IN" { Versions, YearMonth }
+  @folder "Inputs"
+  @notes "Depreciation of assets held at the opening date."
+
+"Loan Drawdown IN"  { Versions, YearMonth }
+  @folder "Inputs"
+  @notes "New borrowing in the month received. Writer: treasury."
+"Loan Repayment IN" { Versions, YearMonth }
+  @folder "Inputs"
+  @notes "Principal repaid in the month paid. Writer: treasury."
+
+"Interest Rate IN" { Versions, Years }
+  @rollup average
+  @format percentage
+  @folder "Inputs"
+  @notes "Annual interest rate on the loan balance."
+
+"Tax Rate IN" { Versions, Years }
+  @rollup average
+  @format percentage
+  @folder "Inputs"
+  @notes "Corporate income tax rate. Writer: controlling."
+
+"DSO Days IN" { Versions, Years }
+  @rollup average
+  @folder "Inputs"
+  @notes "Days sales outstanding, drives trade receivables."
+
+"DPO Days IN" { Versions, Years }
+  @rollup average
+  @folder "Inputs"
+  @notes "Days payables outstanding, drives trade payables."
+
+"Share Capital Movement IN" { Versions, YearMonth }
+  @folder "Inputs"
+  @notes "Capital contributions (positive) or reductions (negative). Writer: controlling."
+
+"Opening Balances IN" { Account, Versions, YearMonth }
+  @rollup closing_state
+  @folder "Inputs"
+  @notes "Balance-sheet balances of the month before the first plan month, entered on balance-sheet accounts. All plan inputs are empty in that month."

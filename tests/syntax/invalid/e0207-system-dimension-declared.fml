@@ -1,0 +1,7 @@
+# expect: FML-E0207
+# A declaration MUST NOT name a system dimension; the engine provides YearMonth [DIM-12].
+dimension Product
+dimension YearMonth
+  @semantic time
+
+"A IN" { Product, YearMonth }

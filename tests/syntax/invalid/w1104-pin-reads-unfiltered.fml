@@ -1,0 +1,8 @@
+# expect: FML-W1104, FML-I1003
+# A pin writes, it does not read [EVAL-18].
+dimension PLLine
+
+"PL Amount IN" { PLLine, YearMonth }
+  @notes "Writer: form."
+"Cost of Sales Total" { PLLine = "Cost of sales", YearMonth } = sum("PL Amount IN")
+  @readonly true

@@ -1,0 +1,3 @@
+Entity,@description,EntityGroup,Currency
+E1,Parent company,Group,EUR
+E2,Subsidiary,Group,USD

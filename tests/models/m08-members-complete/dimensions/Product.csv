@@ -1,0 +1,3 @@
+Product,@description,Category
+P1,,Hardware
+P2,a parent member that Category does not list,Gadgets

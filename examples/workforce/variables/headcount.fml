@@ -1,0 +1,39 @@
+# headcount.fml — headcount derived from contract dates (Modelling Guide §9.7)
+
+"Position Anchor" { Position, Versions, YearMonth } = "Contract Start IN" * 0 + "Planning Horizon IN"
+  @folder "Headcount"
+  @notes "1 for every position with a start date, in every horizon month: the carrier of the chain."
+  @readonly true
+
+"Open End Date" { Position, Versions } = "Contract Start IN" * 0 + 2958465
+  @folder "Headcount"
+  @notes "Serial number of 9999-12-31, present wherever a start date exists."
+  @readonly true
+
+"Contract Start Month" { Position, Versions } =
+  date(year("Contract Start IN"), month("Contract Start IN"), 1)
+  @type date
+  @format date
+  @folder "Headcount"
+  @readonly true
+
+"Contract End effective" { Position, Versions } =
+  if(hasValue("Contract End IN"), "Contract End IN", "Open End Date")
+  @type date
+  @format date
+  @folder "Headcount"
+  @readonly true
+
+"HC Active" { Position, Versions, YearMonth } =
+  if(and(gte(currentDate(), "Contract Start Month"), lte(currentDate(), "Contract End effective")),
+     "Position Anchor")
+  @rollup closing_state
+  @folder "Headcount"
+  @notes "1 in the months of the contract window, empty elsewhere. No proration of the first and last month."
+  @readonly true
+
+"FTE" { Position, Versions, YearMonth } = "HC Active" * "FTE IN"
+  @rollup closing_state
+  @decimals 2
+  @folder "Headcount"
+  @readonly true

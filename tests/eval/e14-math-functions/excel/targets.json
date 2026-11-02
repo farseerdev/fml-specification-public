@@ -1,0 +1,180 @@
+{
+ "values": [
+  {
+   "var": "R0",
+   "period": "2026-01",
+   "expect": 3,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "R0",
+   "period": "2026-02",
+   "expect": -3,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "R0",
+   "period": "2026-03",
+   "expect": 1234,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "R0",
+   "period": "2026-04",
+   "expect": null,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Rm2",
+   "period": "2026-03",
+   "expect": 1200,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Rm2",
+   "period": "2026-01",
+   "expect": 0,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "R1",
+   "period": "2026-01",
+   "expect": 0.6,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "R1",
+   "period": "2026-02",
+   "expect": -0.6,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Mx",
+   "period": "2026-01",
+   "expect": 2.5,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Mx",
+   "period": "2026-02",
+   "expect": -2.5,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Mx",
+   "period": "2026-03",
+   "expect": 1234,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Mx",
+   "period": "2026-04",
+   "expect": -5,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Mx",
+   "period": "2026-05",
+   "expect": null,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Mn",
+   "period": "2026-01",
+   "expect": 1,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Mn",
+   "period": "2026-02",
+   "expect": -2.5,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Mn",
+   "period": "2026-04",
+   "expect": -5,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "D Year",
+   "period": "2026-01",
+   "expect": 2026,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "D Year",
+   "period": "2026-02",
+   "expect": null,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "D Month",
+   "period": "2026-01",
+   "expect": 3,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "D Month",
+   "period": "2026-02",
+   "expect": null,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "D Plus One Month",
+   "period": "2026-01",
+   "expect": 46127,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "D Plus One Month",
+   "period": "2026-02",
+   "expect": null,
+   "keys": {
+    "Item": "I1"
+   }
+  }
+ ]
+}

@@ -1,0 +1,11 @@
+@defaults
+  @folder "Inputs"
+
+"Units IN" { Product, Versions, YearMonth }
+  @notes "Units sold. Writer: sales form. Reader: Revenue."
+"Price IN" { Product, Versions, YearMonth }
+  @rollup average
+  @notes "Price per unit. Writer: sales form. Reader: Revenue."
+"Opening Stock IN" { Product, Versions, YearMonth = "2026-01" }
+  @rollup closing_state
+  @notes "Stock at the start of the horizon. Writer: controlling."

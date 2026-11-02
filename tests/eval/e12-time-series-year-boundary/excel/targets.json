@@ -1,0 +1,174 @@
+{
+ "values": [
+  {
+   "var": "D1",
+   "period": "2026-11",
+   "expect": null
+  },
+  {
+   "var": "D1",
+   "period": "2026-12",
+   "expect": 1
+  },
+  {
+   "var": "D1",
+   "period": "2027-01",
+   "expect": 2
+  },
+  {
+   "var": "D1",
+   "period": "2027-02",
+   "expect": 3
+  },
+  {
+   "var": "D1",
+   "period": "2027-03",
+   "expect": null
+  },
+  {
+   "var": "D1",
+   "period": "2026-01",
+   "expect": null
+  },
+  {
+   "var": "D12",
+   "period": "2027-01",
+   "expect": null
+  },
+  {
+   "var": "D12",
+   "period": "2027-11",
+   "expect": 1
+  },
+  {
+   "var": "D12",
+   "period": "2027-12",
+   "expect": 2
+  },
+  {
+   "var": "D 2.5",
+   "period": "2027-01",
+   "expect": null
+  },
+  {
+   "var": "D 2.5",
+   "period": "2027-02",
+   "expect": 1
+  },
+  {
+   "var": "D 2.5",
+   "period": "2027-03",
+   "expect": 2
+  },
+  {
+   "var": "D 2.5",
+   "period": "2027-04",
+   "expect": 3
+  },
+  {
+   "var": "D -0.5",
+   "period": "2026-11",
+   "expect": 1
+  },
+  {
+   "var": "D -0.5",
+   "period": "2027-01",
+   "expect": 3
+  },
+  {
+   "var": "Running",
+   "period": "2026-10",
+   "expect": null
+  },
+  {
+   "var": "Running",
+   "period": "2026-11",
+   "expect": 1
+  },
+  {
+   "var": "Running",
+   "period": "2026-12",
+   "expect": 3
+  },
+  {
+   "var": "Running",
+   "period": "2027-01",
+   "expect": 6
+  },
+  {
+   "var": "Running",
+   "period": "2027-02",
+   "expect": 6
+  },
+  {
+   "var": "Running",
+   "period": "2027-12",
+   "expect": 6
+  },
+  {
+   "var": "Running",
+   "period": "2026 Total",
+   "expect": 3
+  },
+  {
+   "var": "Running",
+   "period": "2027 Total",
+   "expect": 6
+  },
+  {
+   "var": "Compound",
+   "period": "2026-11",
+   "expect": 1
+  },
+  {
+   "var": "Compound",
+   "period": "2026-12",
+   "expect": 3.5
+  },
+  {
+   "var": "Compound",
+   "period": "2027-01",
+   "expect": 8.25
+  },
+  {
+   "var": "Compound",
+   "period": "2027-02",
+   "expect": 12.375
+  },
+  {
+   "var": "Spread",
+   "period": "2026-11",
+   "expect": null
+  },
+  {
+   "var": "Spread",
+   "period": "2026-12",
+   "expect": 0.3333
+  },
+  {
+   "var": "Spread",
+   "period": "2027-01",
+   "expect": 1
+  },
+  {
+   "var": "Spread",
+   "period": "2027-02",
+   "expect": 2
+  },
+  {
+   "var": "Spread",
+   "period": "2027-03",
+   "expect": 1.6667
+  },
+  {
+   "var": "Spread",
+   "period": "2027-04",
+   "expect": 1
+  },
+  {
+   "var": "Spread",
+   "period": "2027-05",
+   "expect": null
+  }
+ ]
+}

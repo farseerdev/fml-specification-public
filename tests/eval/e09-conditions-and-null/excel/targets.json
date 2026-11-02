@@ -1,0 +1,260 @@
+{
+ "values": [
+  {
+   "var": "Gt Gate",
+   "period": "2026-01",
+   "expect": 1,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Gt Gate",
+   "period": "2026-02",
+   "expect": null,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Gt Gate",
+   "period": "2026-03",
+   "expect": null,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Gt Gate",
+   "period": "2026-04",
+   "expect": null,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Gt Gate",
+   "period": "2026-05",
+   "expect": null,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Eq Gate",
+   "period": "2026-01",
+   "expect": null,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Eq Gate",
+   "period": "2026-02",
+   "expect": 1,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Eq Gate",
+   "period": "2026-03",
+   "expect": 1,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Eq Gate",
+   "period": "2026-04",
+   "expect": null,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Eq Gate",
+   "period": "2026-05",
+   "expect": 1,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Fallback",
+   "period": "2026-01",
+   "expect": 5,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Fallback",
+   "period": "2026-02",
+   "expect": 1,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Fallback",
+   "period": "2026-03",
+   "expect": 0,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Fallback",
+   "period": "2026-04",
+   "expect": 1,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Fallback",
+   "period": "2026-06",
+   "expect": null,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Bare Gt",
+   "period": "2026-01",
+   "expect": 1,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Bare Gt",
+   "period": "2026-02",
+   "expect": null,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Bare Gt",
+   "period": "2026-03",
+   "expect": 0,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Bare Gt",
+   "period": "2026-05",
+   "expect": 0,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Carrier Times HV",
+   "period": "2026-01",
+   "expect": 1,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Carrier Times HV",
+   "period": "2026-02",
+   "expect": null,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Carrier Times HV",
+   "period": "2026-03",
+   "expect": 1,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Carrier Plus HV",
+   "period": "2026-01",
+   "expect": 2,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Carrier Plus HV",
+   "period": "2026-02",
+   "expect": 1,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Carrier Plus HV",
+   "period": "2026-04",
+   "expect": 1,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Carrier Times And",
+   "period": "2026-01",
+   "expect": 1,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Carrier Times And",
+   "period": "2026-04",
+   "expect": null,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Carrier Times And",
+   "period": "2026-05",
+   "expect": 1,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Carrier Times Not",
+   "period": "2026-01",
+   "expect": 0,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Carrier Times Not",
+   "period": "2026-02",
+   "expect": 1,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Carrier Times Not",
+   "period": "2026-03",
+   "expect": 1,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Carrier Times Not",
+   "period": "2026-04",
+   "expect": 1,
+   "keys": {
+    "Item": "I1"
+   }
+  }
+ ]
+}

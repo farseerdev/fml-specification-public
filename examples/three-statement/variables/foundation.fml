@@ -1,0 +1,13 @@
+# foundation.fml — version routing shared by every merged output (Modelling Guide §6)
+
+"FC Actual IN" { Versions, YearMonth }
+  @type integer
+  @folder "Foundation"
+  @notes "1 = this period of this version takes actuals; empty = plan. Writer: model administrator. Reader: FC Actual Flag."
+
+"FC Actual Flag" { Versions, YearMonth } = "FC Actual IN"
+  @type integer
+  @rollup average
+  @folder "Foundation"
+  @notes "Routing flag read by the ACT and PLAN halves of every merged output."
+  @readonly true

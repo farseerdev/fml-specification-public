@@ -1,0 +1,12 @@
+# expect: FML-E0903
+# The values of the dimension properties [DIM-13].
+dimension Category
+dimension Product
+  @parent Category often
+  @attribute Color colour
+  @attribute Size
+  @semantic money
+  @rollup sum
+  @null true
+  @folder Sales
+  @desc 3

@@ -1,0 +1,8 @@
+# expect: FML-E0209
+# A dimension is declared exactly once [DOC-6].
+dimension Day
+  @semantic time
+dimension Product
+dimension Day
+
+"A IN" { Product, Day }

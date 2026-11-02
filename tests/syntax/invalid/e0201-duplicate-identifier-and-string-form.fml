@@ -1,0 +1,8 @@
+# expect: FML-E0201
+# Identifier and string form denote the same name [LEX-1].
+dimension Product
+
+Revenue { Product, YearMonth }
+  @readonly true
+"Revenue" { Product, YearMonth }
+  @readonly true

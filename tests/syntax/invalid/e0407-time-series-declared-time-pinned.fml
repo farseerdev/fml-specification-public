@@ -1,0 +1,9 @@
+# expect: FML-E0407
+# A declared time dimension counts only when free: a pinned day is one member [FUN-6], [DIM-11].
+dimension Day
+  @semantic time
+dimension Product
+
+"A IN" { Product, Day }
+C { Product, Day = "2026-01-01" } = cumsum("A IN")
+  @readonly true

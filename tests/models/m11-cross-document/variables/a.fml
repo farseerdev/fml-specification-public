@@ -1,0 +1,9 @@
+# This defaults block applies to this document only [DOC-3].
+@defaults
+  @readonly true
+  @notes "Documented once for the block."
+
+"Volume IN" { Product, YearMonth }
+  @readonly false
+Revenue { Product, YearMonth } = "Volume IN" * "Price IN"
+"Step A" { Product, YearMonth } = "Step B" + 1

@@ -1,0 +1,8 @@
+# expect: FML-E0303
+# `>` qualifies a member by its dimension; "A IN" is a variable [§10.4].
+dimension Product
+
+"A IN" { Product, YearMonth }
+  @notes "Writer: form."
+C { Product, YearMonth } = sum("A IN", "A IN" > North)
+  @readonly true

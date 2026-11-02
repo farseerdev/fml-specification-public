@@ -1,0 +1,2 @@
+"Amount IN" { Account, Region, Employee, YearMonth }
+  @notes "Writer: ledger."

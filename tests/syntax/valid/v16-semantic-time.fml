@@ -1,0 +1,22 @@
+# Time dimensions of a model (§6.9, [DIM-11]): @semantic time, and `time` as a
+# plain name now that the time statement is retired (§4.8).
+dimension Day
+  @semantic time
+  @parent YearMonth
+dimension "Trading Day"
+  @semantic time
+dimension Product
+dimension Desk
+
+"Units IN" { Product, Versions, Day }
+  @notes "Daily units. Writer: form."
+"Units to Date" { Product, Versions, Day } = cumsum("Units IN")
+  @readonly true
+"Units Previous Day" { Product, Versions, Day } = delay("Units IN", 1)
+  @readonly true
+"Trades IN" { Desk, "Trading Day" }
+  @notes "Trades per trading day. Writer: feed."
+"Trades 5-Day Average" { Desk, "Trading Day" } = avg("Trades IN", 5)
+  @readonly true
+time { Product, Versions, Day } = "Units IN"
+  @readonly true

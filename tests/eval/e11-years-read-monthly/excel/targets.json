@@ -1,0 +1,54 @@
+{
+ "values": [
+  {
+   "var": "Cost",
+   "period": "2026-01",
+   "expect": 10
+  },
+  {
+   "var": "Cost",
+   "period": "2026-12",
+   "expect": 10
+  },
+  {
+   "var": "Cost",
+   "period": "2027-01",
+   "expect": 20
+  },
+  {
+   "var": "Cost",
+   "period": "2027-12",
+   "expect": 20
+  },
+  {
+   "var": "Seasonal",
+   "period": "2026-01",
+   "expect": 100
+  },
+  {
+   "var": "Seasonal",
+   "period": "2026-02",
+   "expect": 200
+  },
+  {
+   "var": "Seasonal",
+   "period": "2026-03",
+   "expect": null
+  },
+  {
+   "var": "Seasonal",
+   "period": "2027-01",
+   "expect": 100
+  },
+  {
+   "var": "Seasonal",
+   "period": "2027-02",
+   "expect": 200
+  },
+  {
+   "var": "Seasonal",
+   "period": "2027-12",
+   "expect": 1200
+  }
+ ]
+}

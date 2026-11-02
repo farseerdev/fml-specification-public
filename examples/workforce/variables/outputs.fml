@@ -1,0 +1,49 @@
+# outputs.fml — the reconciliation grains (Modelling Guide §9.7): ledger and payroll
+
+"HR Cost OUT" { Account, CostCenter, Versions, YearMonth } = "Total Cost"
+  @folder "Outputs"
+  @notes "Personnel cost at ledger grain. Projection over SalaryElement -> Account and Position -> CostCenter. Reader: P&L."
+  @readonly true
+
+"Headcount OUT" { CostCenter, Versions, YearMonth } = "HC Active"
+  @rollup closing_state
+  @folder "Outputs"
+  @notes "Headcount at month end per cost centre. Reader: HR dashboard."
+  @readonly true
+
+"FTE OUT" { CostCenter, Versions, YearMonth } = "FTE"
+  @rollup closing_state
+  @decimals 2
+  @folder "Outputs"
+  @notes "FTE at month end per cost centre. Reader: HR dashboard."
+  @readonly true
+
+"Cost per FTE" { Versions, YearMonth } = "Total Cost" / "FTE"
+  @rollup formula
+  @folder "Outputs"
+  @notes "Recomputed from the totals at quarter and year (Farseer extension: @rollup formula). Nothing reads it."
+  @readonly true
+
+# Plan against payroll, per employee and element, on closed periods only.
+# The import has no Versions; beside the versioned plan it would contribute a
+# value only where the plan has cells (spec EVAL-4a, EVAL-12), so it is first
+# projected onto the closed periods of each version, where it places its own.
+"Plan by Employee" { Employee, SalaryElement, Versions, YearMonth } = "Total Cost"
+  @folder "Outputs"
+  @readonly true
+
+"Payroll Actual at Version" { Employee, SalaryElement, Versions, YearMonth } =
+  if(eq("FC Actual Flag", 1), "IMPORT Payroll Actual")
+  @folder "Outputs"
+  @readonly true
+
+"Plan on Closed Periods" { Employee, SalaryElement, Versions, YearMonth } =
+  if(eq("FC Actual Flag", 1), "Plan by Employee")
+  @folder "Outputs"
+  @readonly true
+
+"Payroll Variance OUT" { Employee, SalaryElement, Versions, YearMonth } =
+  "Payroll Actual at Version" - "Plan on Closed Periods"
+  @folder "Outputs"
+  @notes "Actual minus plan on closed periods; positive = paid more than planned. Reader: payroll review."
+  @readonly true

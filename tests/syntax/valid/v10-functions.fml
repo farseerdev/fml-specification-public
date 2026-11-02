@@ -1,0 +1,52 @@
+# Every standard function of §12 with a valid number of arguments.
+dimension Product
+  @parent Category
+dimension Category
+dimension Region
+
+"X IN" { Product, Region, Versions, YearMonth }
+  @notes "Writer: form."
+"S IN" { Product, Region, Versions, YearMonth }
+  @notes "Writer: form."
+"D IN" { Product, Region, Versions, YearMonth }
+  @type date
+  @format date
+  @notes "A date. Writer: form."
+"Carrier" { Product, Region, Versions, YearMonth } = ("X IN" + "S IN") * 0 + 1
+  @readonly true
+
+M1 { Product, Region, Versions, YearMonth } = round("X IN") + round("X IN", 2) + floor("X IN") + ceil("X IN") + abs("X IN")
+  @readonly true
+M2 { Product, Region, Versions, YearMonth } = power("X IN", 2) + max("X IN", 0) + min("X IN", 0)
+  @readonly true
+A1 { Product, Versions, YearMonth } = sum("X IN", Region > North)
+  @readonly true
+A2 { Product, Versions, YearMonth } = sum("X IN", or(Region > North, Region > "South East"), Category > Hardware)
+  @readonly true
+A3 { Product, Versions, YearMonth } = sum("X IN", not(Region > North))
+  @readonly true
+A4 { Product, Versions, YearMonth } = SUM("X IN", and(Region > North, Category > Hardware))
+  @readonly true
+T1 { Product, Region, Versions, YearMonth } = avg("X IN", 3) + avg("X IN", 3, 1)
+  @readonly true
+T2 { Product, Region, Versions, YearMonth } = cumsum("X IN") + cumsum("X IN", 0.1) + cumsum("X IN", 0, "S IN")
+  @rollup closing_state
+  @readonly true
+T3 { Product, Region, Versions, YearMonth } = delay("X IN", 1) + spread("X IN", 3) + spread("X IN", 3, 1)
+  @readonly true
+L1 { Product, Region, Versions, YearMonth } = if(gt("X IN", 0), "X IN")
+  @readonly true
+L2 { Product, Region, Versions, YearMonth } = if(and(gte("X IN", 1), lte("X IN", 9), lt("S IN", 2)), "Carrier", "X IN")
+  @readonly true
+L3 { Product, Region, Versions, YearMonth } = if(or(eq("X IN", 1), not(hasValue("S IN"))), "Carrier")
+  @readonly true
+L4 { Product, Region, Versions, YearMonth } = if(hasDMember(Versions > Actual, Category > Hardware), "X IN")
+  @readonly true
+L5 { Product, Region, Versions, YearMonth } = "Carrier" * hasValue("S IN") + gt("X IN", 1)
+  @readonly true
+D1 { Product, Region, Versions, YearMonth } = if(gte(currentDate(), "D IN"), "Carrier" * (currentMonth() + currentYear() + daysInCurrentMonth()))
+  @readonly true
+D2 { Product, Region, Versions, YearMonth } = date(year("D IN"), month("D IN"), day("D IN")) + edate("D IN", 1)
+  @type date
+  @format date
+  @readonly true

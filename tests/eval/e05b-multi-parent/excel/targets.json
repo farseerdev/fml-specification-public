@@ -1,0 +1,33 @@
+{
+ "values": [
+  {
+   "var": "Sales at Group",
+   "period": "2026-01",
+   "expect": 35,
+   "keys": {
+    "Group": "G1"
+   }
+  },
+  {
+   "var": "Sales at Group",
+   "period": "2026-01",
+   "expect": 5,
+   "keys": {
+    "Group": "G2"
+   }
+  },
+  {
+   "var": "Sales at Group",
+   "period": "2026-01",
+   "expect": 7,
+   "keys": {
+    "Group": "NULL (Group)"
+   }
+  },
+  {
+   "var": "Group Total",
+   "period": "2026-01",
+   "expect": 47
+  }
+ ]
+}

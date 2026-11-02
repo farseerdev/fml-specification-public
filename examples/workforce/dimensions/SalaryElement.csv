@@ -1,0 +1,5 @@
+SalaryElement,@description,ElementClass,ContributionClass,Account
+EL101,Base pay,Fixed,Liable,6000
+EL102,Seniority allowance,Fixed,Liable,6000
+EL201,Employer contribution,Contribution,Exempt,6050
+EL301,Year-end gift,One-off,Exempt,6010

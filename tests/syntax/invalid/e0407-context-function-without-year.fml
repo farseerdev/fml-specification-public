@@ -1,0 +1,7 @@
+# expect: FML-E0407
+# currentYear() reads its period from YearMonth or Years; Months alone has no year [FUN-8].
+dimension Product
+
+"Season IN" { Product, Months }
+"Year No" { Product, Months } = "Season IN" * 0 + currentYear()
+  @readonly true

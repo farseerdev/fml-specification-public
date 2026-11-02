@@ -1,0 +1,6 @@
+# expect: FML-E0104
+# The time statement is retired: a time dimension declares @semantic time (§6.9).
+dimension Product
+
+time Day
+"A IN" { Product, YearMonth }

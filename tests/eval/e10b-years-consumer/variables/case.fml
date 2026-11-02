@@ -1,0 +1,13 @@
+# [EVAL-28]: a consumer held by Years reads each year as the aggregate of its
+# months under the source's @rollup. Expected per year (period key "<year>"):
+# Flow Year 2026 = 78, 2027 = 5; Balance Year 2026 = 120, 2027 = null.
+"Flow IN" { YearMonth }
+  @notes "2026-01 … 2026-12 = 1 … 12; 2027-01 = 5."
+"Balance IN" { YearMonth }
+  @rollup closing_state
+  @notes "2026-06 = 100, 2026-12 = 120; 2027-03 = 50."
+"Flow Year" { Years } = "Flow IN"
+  @readonly true
+"Balance Year" { Years } = "Balance IN"
+  @rollup closing_state
+  @readonly true

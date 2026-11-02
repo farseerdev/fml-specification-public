@@ -1,0 +1,36 @@
+{
+ "values": [
+  {
+   "var": "Times Neg",
+   "period": "2026-01",
+   "expect": -18,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Times Neg",
+   "period": "2026-02",
+   "expect": null,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Times Neg",
+   "period": "2026-03",
+   "expect": null,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Times Neg",
+   "period": "2026-04",
+   "expect": 0,
+   "keys": {
+    "Item": "I1"
+   }
+  }
+ ]
+}

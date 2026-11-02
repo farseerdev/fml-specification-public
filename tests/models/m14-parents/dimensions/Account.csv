@@ -1,0 +1,6 @@
+Account,@description,BSLine,Active,PLLine
+4000,Sales of goods,NULL (BSLine),true,Revenue
+1210,Mixed-use account,Receivables,true,Revenue|Other income
+1300,Unmapped balance,,false,
+1400,Two balance-sheet lines,Receivables|Cash,,
+1500,Unknown P&L line,Receivables,,Nowhere

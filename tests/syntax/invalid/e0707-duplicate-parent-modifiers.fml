@@ -1,0 +1,7 @@
+# expect: FML-E0707
+# Quoting the target and adding modifiers does not make a different parent [PARENT-4].
+dimension Category
+  @null
+dimension Product
+  @parent Category
+  @parent "Category" many required

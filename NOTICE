@@ -1,0 +1,30 @@
+Financial Modeling Language (FML) — Open Specification, Version 1.0
+Copyright (c) 2026 Farseer d.o.o., Zagreb, Croatia
+
+Financial Modeling Language (FML) is an open specification originally developed
+and published by Farseer.
+
+This work is licensed under the Creative Commons Attribution 4.0 International
+License (CC BY 4.0). The full legal code is in the LICENSE file and at
+https://creativecommons.org/licenses/by/4.0/legalcode
+
+The specification may be freely used, copied, implemented, and adapted,
+including for commercial purposes, provided that appropriate attribution is
+given to Farseer and any modifications are clearly identified.
+
+Suggested attribution for unmodified copies:
+
+  "Financial Modeling Language (FML) Specification, Version 1.0" by Farseer,
+  licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).
+
+Suggested attribution for adaptations:
+
+  Based on the "Financial Modeling Language (FML) Specification, Version 1.0"
+  by Farseer, licensed under CC BY 4.0
+  (https://creativecommons.org/licenses/by/4.0/). Modified by <name>:
+  <short description of the changes>.
+
+An implementation of FML (a parser, linter, engine or authoring tool) does not
+need to reproduce the specification text. It is good practice to state in its
+documentation that it implements the Financial Modeling Language (FML)
+specification by Farseer, and which version.

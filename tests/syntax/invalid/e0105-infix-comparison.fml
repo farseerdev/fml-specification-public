@@ -1,0 +1,8 @@
+# expect: FML-E0105
+# There are no infix comparisons [EXPR-3]; `A > B` is not a condition.
+dimension Product
+
+"A IN" { Product, YearMonth }
+"B IN" { Product, YearMonth }
+C { Product, YearMonth } = if("A IN" > "B IN", "A IN")
+  @readonly true

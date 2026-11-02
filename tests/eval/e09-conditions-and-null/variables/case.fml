@@ -1,0 +1,30 @@
+# [EVAL-24] two-argument if is null where false; [EVAL-25] a null condition is
+# false; [EVAL-26] one null operand of a comparison reads as 0, two null
+# operands compare false, and/or of nulls is null, not(null) is 1;
+# [EVAL-6] a bare comparison is 1 or 0 where its operand has data, and
+# hasValue in value position is 1 or null.
+# A: 01 = 5, 02 = null, 03 = 0, 04 = null, 05 = 1
+# B: 01 = 3, 02 = 0,    03 = null, 04 = null, 05 = 1
+# C: 1 in 01 … 05 (a carrier)
+"A IN" { Item, YearMonth }
+  @notes "See the header."
+"B IN" { Item, YearMonth }
+  @notes "See the header."
+"C IN" { Item, YearMonth }
+  @notes "See the header."
+"Gt Gate" { Item, YearMonth } = if(gt("A IN", "B IN"), "C IN")
+  @readonly true
+"Eq Gate" { Item, YearMonth } = if(eq("A IN", "B IN"), "C IN")
+  @readonly true
+"Fallback" { Item, YearMonth } = if(hasValue("A IN"), "A IN", "C IN")
+  @readonly true
+"Bare Gt" { Item, YearMonth } = gt("A IN", 2)
+  @readonly true
+"Carrier Times HV" { Item, YearMonth } = "C IN" * hasValue("A IN")
+  @readonly true
+"Carrier Plus HV" { Item, YearMonth } = "C IN" + hasValue("A IN")
+  @readonly true
+"Carrier Times And" { Item, YearMonth } = "C IN" * and("A IN", "B IN")
+  @readonly true
+"Carrier Times Not" { Item, YearMonth } = "C IN" * not("A IN")
+  @readonly true

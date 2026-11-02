@@ -1,0 +1,5 @@
+# expect: FML-E0903
+dimension Product
+
+"A IN" { Product, YearMonth }
+  @rollup "sum"

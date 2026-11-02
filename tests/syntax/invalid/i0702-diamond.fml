@@ -1,0 +1,9 @@
+# expect: FML-I0702
+dimension Position
+  @parent Employee
+  @parent CostCenter
+dimension Employee
+  @parent Department
+dimension CostCenter
+  @parent Department
+dimension Department

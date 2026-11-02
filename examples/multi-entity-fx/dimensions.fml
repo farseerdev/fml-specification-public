@@ -1,0 +1,42 @@
+# dimensions.fml — every dimension of the multi-entity example (Modelling Guide §9.5)
+#
+# Each entity keeps its own local chart of accounts, whose parent is one group
+# chart. Each group account names the statement line it belongs to and the rate
+# at which it is translated — both are data, not formula branches.
+#
+# Account is the group chart of accounts: each account has one statement line
+# and one rate type as parents.
+
+dimension Account from "dimensions/Account.csv"
+  @parent BSLine
+  @parent PLLine
+  @parent RateType
+  @null
+
+dimension BSLine from "dimensions/BSLine.csv"
+  @parent BSSide
+  @null                          # NULL (BSLine): accounts without a balance-sheet line
+
+dimension BSSide from "dimensions/BSSide.csv"
+
+dimension Currency from "dimensions/Currency.csv"
+
+dimension Entity from "dimensions/Entity.csv"
+  @parent Currency required
+  @parent EntityGroup required
+
+dimension EntityGroup from "dimensions/EntityGroup.csv"
+
+dimension LocalAccountE1 from "dimensions/LocalAccountE1.csv"
+  @parent Account                # the local chart of entity E1
+  @null
+
+dimension LocalAccountE2 from "dimensions/LocalAccountE2.csv"
+  @parent Account                # the local chart of entity E2
+  @null
+
+dimension PLLine from "dimensions/PLLine.csv"
+  @null
+
+dimension RateType from "dimensions/RateType.csv"
+  @null

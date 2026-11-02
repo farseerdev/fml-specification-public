@@ -1,0 +1,38 @@
+# revenue.fml — plan revenue from volume, price and discount; merged outputs
+
+"Net Revenue Plan" { Customer, Item, Versions, YearMonth } = "Qty Plan IN" * "Price head"
+  @folder "Revenue"
+  @notes "Planned units times the customer's net price."
+  @readonly true
+
+"Net Revenue ACT part" { Customer, Item, Versions, YearMonth } =
+  if(eq("FC Actual Flag", 1), "Net Revenue upstream")
+  @folder "Revenue"
+  @readonly true
+
+"Net Revenue PLAN part" { Customer, Item, Versions, YearMonth } =
+  if(not(eq("FC Actual Flag", 1)), "Net Revenue Plan")
+  @folder "Revenue"
+  @readonly true
+
+"Net Revenue OUT" { Customer, Item, Versions, YearMonth } =
+  "Net Revenue ACT part" + "Net Revenue PLAN part"
+  @folder "Revenue"
+  @notes "Net revenue: actuals on actual periods, plan on plan periods. Readers: margin, cost-to-serve mix, reports."
+  @readonly true
+
+"Sales Qty ACT part" { Customer, Item, Versions, YearMonth } =
+  if(eq("FC Actual Flag", 1), "Sales Qty upstream")
+  @folder "Revenue"
+  @readonly true
+
+"Sales Qty PLAN part" { Customer, Item, Versions, YearMonth } =
+  if(not(eq("FC Actual Flag", 1)), "Qty Plan IN")
+  @folder "Revenue"
+  @readonly true
+
+"Sales Qty OUT" { Customer, Item, Versions, YearMonth } =
+  "Sales Qty ACT part" + "Sales Qty PLAN part"
+  @folder "Revenue"
+  @notes "Units: actuals on actual periods, plan on plan periods. Reader: COGS."
+  @readonly true

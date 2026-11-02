@@ -1,0 +1,6 @@
+Customer,@description,Segment,Location
+C01,Corner shop chain,Retail,WH1
+C02,Convenience stores,Retail,WH1
+C03,Regional wholesaler,Wholesale,WH1
+C04,Supermarket group,Retail,WH2
+C05,Cash and carry,Wholesale,WH2

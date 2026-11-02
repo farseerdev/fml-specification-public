@@ -1,0 +1,28 @@
+# Property value kinds (§9.1), the inline form [VAR-1] and every standard property (§9.3).
+dimension Product
+
+"Price IN" { Product, Versions, YearMonth } @rollup average
+  @type number
+  @format currency
+  @decimals 0
+  @numberFormat { type: CURRENCY, decimals: 0, formatString: "#,##0", currency: "EUR" }
+  @folder "Pricing/Inputs"
+  @notes "Price per unit. Writer: pricing form."
+  @readonly false
+  @numberValidation { min: 0, max: 10000 }
+
+"Margin Pct" { Product, Versions, YearMonth } = "Price IN" / "Price IN"
+  @rollup avg
+  @format percentage
+  @decimals 1
+  @numberFormat {
+    type: PERCENTAGE,
+    decimals: 1
+    formatString: "#,##0.0%",
+  }
+  @readonly true
+
+"Signed Check" { Product, Versions, YearMonth } = "Price IN" - "Price IN"
+  @numberFormat { type: NUMBER, custom: true, decimals: 0, formatString: "[=0]\"OK\";[<0]0 \"short\";0 \"over\"" }
+  @numberValidation { "min": -5 }
+  @readonly true

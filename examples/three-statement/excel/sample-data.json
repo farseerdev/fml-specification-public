@@ -1,0 +1,61 @@
+{
+  "version": "Plan",
+  "periods": ["2026-12", "2027-01", "2027-02", "2027-03", "2027-04", "2027-05", "2027-06",
+              "2027-07", "2027-08", "2027-09", "2027-10", "2027-11", "2027-12"],
+  "inputs": {
+    "FC Actual IN": [{"keys": {}, "values": {"2026-12": 1}}],
+    "Opening Balances IN": [
+      {"keys": {"Account": "1000"}, "values": {"2026-12": 500}},
+      {"keys": {"Account": "1100"}, "values": {"2026-12": 300}},
+      {"keys": {"Account": "1500"}, "values": {"2026-12": 1200}},
+      {"keys": {"Account": "2000"}, "values": {"2026-12": 200}},
+      {"keys": {"Account": "2500"}, "values": {"2026-12": 800}},
+      {"keys": {"Account": "3000"}, "values": {"2026-12": 600}},
+      {"keys": {"Account": "3100"}, "values": {"2026-12": 400}}
+    ],
+    "IMPORT GL Balance": [
+      {"keys": {"Account": "1000"}, "values": {"2026-12": 500}},
+      {"keys": {"Account": "1100"}, "values": {"2026-12": 300}},
+      {"keys": {"Account": "1500"}, "values": {"2026-12": 1200}},
+      {"keys": {"Account": "2000"}, "values": {"2026-12": 200}},
+      {"keys": {"Account": "2500"}, "values": {"2026-12": 800}},
+      {"keys": {"Account": "3000"}, "values": {"2026-12": 600}},
+      {"keys": {"Account": "3100"}, "values": {"2026-12": 400}}
+    ],
+    "Sales Volume IN": [
+      {"keys": {"Product": "P100"}, "from": "2027-01", "value": 100},
+      {"keys": {"Product": "P200"}, "from": "2027-01", "value": 50},
+      {"keys": {"Product": "P300"}, "from": "2027-01", "value": 20}
+    ],
+    "Unit Price IN": [
+      {"keys": {"Product": "P100"}, "from": "2027-01", "value": 10},
+      {"keys": {"Product": "P200"}, "from": "2027-01", "value": 25},
+      {"keys": {"Product": "P300"}, "from": "2027-01", "value": 40}
+    ],
+    "COGS Rate IN": [
+      {"keys": {"ProductGroup": "Hardware"}, "years": {"2027": 0.6}},
+      {"keys": {"ProductGroup": "Services"}, "years": {"2027": 0.3}}
+    ],
+    "Headcount IN": [
+      {"keys": {"CostCenter": "CC100"}, "from": "2027-01", "value": 3},
+      {"keys": {"CostCenter": "CC200"}, "from": "2027-01", "value": 5},
+      {"keys": {"CostCenter": "CC300"}, "from": "2027-01", "value": 2}
+    ],
+    "Average Monthly Cost IN": [
+      {"keys": {"CostCenter": "CC100"}, "years": {"2027": 4}},
+      {"keys": {"CostCenter": "CC200"}, "years": {"2027": 4}},
+      {"keys": {"CostCenter": "CC300"}, "years": {"2027": 4}}
+    ],
+    "Other Opex IN": [
+      {"keys": {"Account": "6100", "CostCenter": "CC300"}, "from": "2027-01", "value": 50},
+      {"keys": {"Account": "6200", "CostCenter": "CC100"}, "from": "2027-01", "value": 20}
+    ],
+    "Existing Depreciation IN": [{"keys": {}, "from": "2027-01", "value": 20}],
+    "Loan Repayment IN": [{"keys": {}, "from": "2027-01", "value": 10}],
+    "Capex IN": [{"keys": {}, "values": {"2027-03": 120}}],
+    "Interest Rate IN": [{"keys": {}, "years": {"2027": 0.06}}],
+    "Tax Rate IN": [{"keys": {}, "years": {"2027": 0.2}}],
+    "DSO Days IN": [{"keys": {}, "years": {"2027": 15}}],
+    "DPO Days IN": [{"keys": {}, "years": {"2027": 30}}]
+  }
+}

@@ -1,0 +1,9 @@
+# expect: FML-W1006
+dimension Entity
+
+"A IN" { Entity, YearMonth }
+  @notes "Writer: form."
+"B IN" { Entity, YearMonth }
+  @notes "Writer: form."
+Ready { Entity, YearMonth } = if(and(eq("A IN", 1), eq("B IN", 1)), 1)
+  @readonly true

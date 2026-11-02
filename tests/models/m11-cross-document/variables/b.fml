@@ -1,0 +1,11 @@
+# Variables of a.fml resolve here [EXPR-6]; a.fml's defaults do not apply [DOC-3].
+"Price IN" { Product, YearMonth }
+  @rollup average
+  @notes "Writer: pricing."
+"Revenue by Category" { Category, YearMonth } = Revenue
+"Step B" { Product, YearMonth } = "Step A" * 2
+  @readonly true
+Revenue { Product, YearMonth } = "Volume IN"
+  @readonly true
+Margin_Total { Product, YearMonth } = Revenue
+  @readonly true

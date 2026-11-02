@@ -1,0 +1,8 @@
+# expect: FML-E0101
+# may: FML-E0105
+# A string ends on its line; a line feed is written \n [§4.6].
+dimension Product
+
+"A IN" { Product, YearMonth }
+  @notes "first line
+  second line"

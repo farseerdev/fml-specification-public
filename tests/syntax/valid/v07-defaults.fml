@@ -1,0 +1,29 @@
+# Defaults blocks [PROP-3]: own wins, a later block replaces, an empty block ends inheritance.
+dimension Product
+
+"Before Any IN" { Product, Versions, YearMonth }
+  @notes "Nothing is inherited before the first block."
+
+@defaults
+  @folder "Import"
+  @readonly true
+
+"IMPORT Sales Volume" { Product, YearMonth }
+  @notes "Writer: ERP integration."
+"IMPORT Sales Price"  { Product, YearMonth }
+  @rollup average
+  @notes "Writer: ERP integration."
+
+@defaults
+  @folder "Revenue"
+
+"Volume IN" { Product, Versions, YearMonth }
+  @notes "Writer: planners."
+Revenue { Product, Versions, YearMonth } = "Volume IN" * "IMPORT Sales Price"
+  @folder "Revenue/Own"
+  @readonly true
+
+@defaults
+
+"After Empty IN" { Product, Versions, YearMonth }
+  @notes "The empty block above ends inheritance."

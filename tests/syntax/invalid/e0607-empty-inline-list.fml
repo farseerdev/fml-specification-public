@@ -1,0 +1,4 @@
+# expect: FML-E0607
+# A dimension has at least one member other than its NULL member [DIM-8].
+dimension Region { }
+  @null

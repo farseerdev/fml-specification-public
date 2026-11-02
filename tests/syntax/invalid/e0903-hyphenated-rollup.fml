@@ -1,0 +1,6 @@
+# expect: FML-E0903
+# `closing-state` is not an identifier [PROP-5].
+dimension Product
+
+"Cash IN" { Product, YearMonth }
+  @rollup closing-state

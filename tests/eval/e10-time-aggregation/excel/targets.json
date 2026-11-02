@@ -1,0 +1,54 @@
+{
+ "values": [
+  {
+   "var": "Flow IN",
+   "period": "2026 Total",
+   "expect": 78
+  },
+  {
+   "var": "Flow IN",
+   "period": "2027 Total",
+   "expect": 5
+  },
+  {
+   "var": "Balance IN",
+   "period": "2026 Total",
+   "expect": 120
+  },
+  {
+   "var": "Balance IN",
+   "period": "2027 Total",
+   "expect": null
+  },
+  {
+   "var": "Opening IN",
+   "period": "2026 Total",
+   "expect": 7
+  },
+  {
+   "var": "Opening IN",
+   "period": "2027 Total",
+   "expect": null
+  },
+  {
+   "var": "Rate IN",
+   "period": "2026 Total",
+   "expect": 2
+  },
+  {
+   "var": "Rate IN",
+   "period": "2027 Total",
+   "expect": null
+  },
+  {
+   "var": "Balance Calc",
+   "period": "2026 Total",
+   "expect": 240
+  },
+  {
+   "var": "Balance Calc",
+   "period": "2027 Total",
+   "expect": null
+  }
+ ]
+}

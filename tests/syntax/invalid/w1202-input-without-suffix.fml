@@ -1,0 +1,7 @@
+# expect: FML-W1202
+dimension Product
+
+"Sales Volume" { Product, YearMonth }
+  @notes "Planner entry without the IN suffix."
+"Bonus IN Override" { Product, YearMonth }
+  @notes "The suffix is not last."

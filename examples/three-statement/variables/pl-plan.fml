@@ -1,0 +1,115 @@
+# pl-plan.fml — the plan P&L, built from drivers and placed on accounts
+#
+# Each driver block computes in its natural grain, then a pinned transfer
+# variable places the result on its account and cost centre (FML §11.7). The
+# collector "PL Plan Pre Tax" adds the transfers: each operand sits on its own
+# member, so the addition is aligned (FML §11.5).
+
+# --- Revenue and cost of goods sold ------------------------------------------
+
+"Sales Revenue" { Product, Versions, YearMonth } = "Sales Volume IN" * "Unit Price IN"
+  @folder "PL/Plan"
+  @readonly true
+
+"Cost of Goods Sold" { Product, Versions, YearMonth } = "Sales Revenue" * "COGS Rate IN"
+  @folder "PL/Plan"
+  @notes "COGS Rate IN is looked up through Product -> ProductGroup and broadcast to months."
+  @readonly true
+
+"PL Revenue to Account" { Account = "4000", CostCenter = CC100, Versions, YearMonth } = "Sales Revenue"
+  @folder "PL/Plan"
+  @readonly true
+"PL COGS to Account"    { Account = "5000", CostCenter = CC200, Versions, YearMonth } = "Cost of Goods Sold"
+  @folder "PL/Plan"
+  @readonly true
+
+# --- Personnel ----------------------------------------------------------------
+
+"Personnel Cost" { CostCenter, Versions, YearMonth } = "Headcount IN" * "Average Monthly Cost IN"
+  @folder "PL/Plan"
+  @readonly true
+
+"PL Personnel to Account" { Account = "6000", CostCenter, Versions, YearMonth } = "Personnel Cost"
+  @folder "PL/Plan"
+  @readonly true
+
+# --- Depreciation ---------------------------------------------------------------
+
+"Depreciation" { Versions, YearMonth } = spread("Capex IN", 60, 1) + "Existing Depreciation IN"
+  @folder "PL/Plan"
+  @notes "New capex depreciated straight-line over 60 months, starting the month after purchase."
+  @readonly true
+
+"PL Depreciation to Account" { Account = "6900", CostCenter = CC300, Versions, YearMonth } = "Depreciation"
+  @folder "PL/Plan"
+  @readonly true
+
+# --- Financing ------------------------------------------------------------------
+
+"Loan Movement" { Versions, YearMonth } = "Loan Drawdown IN" - "Loan Repayment IN"
+  @folder "PL/Plan"
+  @readonly true
+
+"Opening Loans" { Versions, YearMonth } = sum("Opening Balances IN", BSLine > Borrowings)
+  @rollup closing_state
+  @folder "PL/Plan"
+  @readonly true
+
+"Loan Balance" { Versions, YearMonth } = cumsum("Loan Movement", 0, "Opening Loans")
+  @rollup closing_state
+  @folder "PL/Plan"
+  @readonly true
+
+"Loan Balance Prior" { Versions, YearMonth } = delay("Loan Balance", 1)
+  @rollup closing_state
+  @folder "PL/Plan"
+  @readonly true
+
+"Interest Expense" { Versions, YearMonth } = "Loan Balance Prior" * "Interest Rate IN" / 12
+  @folder "PL/Plan"
+  @readonly true
+
+"PL Interest to Account" { Account = "7000", CostCenter = CC300, Versions, YearMonth } = "Interest Expense"
+  @folder "PL/Plan"
+  @readonly true
+
+# --- Collector before tax ---------------------------------------------------------
+
+"PL Plan Pre Tax" { Account, CostCenter, Versions, YearMonth } =
+    "PL Revenue to Account" + "PL COGS to Account" + "PL Personnel to Account"
+  + "Other Opex IN" + "PL Depreciation to Account" + "PL Interest to Account"
+  @folder "PL/Plan"
+  @readonly true
+
+# --- Income tax -------------------------------------------------------------------
+# Tax is computed from a separate pre-tax collector: if it read "PL Plan", which
+# contains the tax, the dependency graph would have a cycle (FML §11.11).
+
+"PBT Plan" { Versions, YearMonth } =
+    sum("PL Plan Pre Tax", PLLine > "Operating revenue")
+  - sum("PL Plan Pre Tax", PLLine > "Cost of sales")
+  - sum("PL Plan Pre Tax", PLLine > "Personnel expenses")
+  - sum("PL Plan Pre Tax", PLLine > "Other operating expenses")
+  - sum("PL Plan Pre Tax", PLLine > "Depreciation and amortisation")
+  - sum("PL Plan Pre Tax", PLLine > "Financial expense")
+  @folder "PL/Plan"
+  @readonly true
+
+"Income Tax" { Versions, YearMonth } = max("PBT Plan", 0) * "Tax Rate IN"
+  @folder "PL/Plan"
+  @notes "Simplification: tax on positive monthly profit; no loss carry-forward."
+  @readonly true
+
+"PL Tax to Account" { Account = "8000", CostCenter = CC300, Versions, YearMonth } = "Income Tax"
+  @folder "PL/Plan"
+  @readonly true
+
+"Net Income Plan" { Versions, YearMonth } = "PBT Plan" - "Income Tax"
+  @folder "PL/Plan"
+  @readonly true
+
+# --- Plan P&L on accounts -----------------------------------------------------------
+
+"PL Plan" { Account, CostCenter, Versions, YearMonth } = "PL Plan Pre Tax" + "PL Tax to Account"
+  @folder "PL/Plan"
+  @readonly true

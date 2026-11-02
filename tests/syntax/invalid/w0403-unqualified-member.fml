@@ -1,0 +1,10 @@
+# expect: FML-W0403
+dimension Product
+dimension Quarter2
+
+"A IN" { Product, Quarter2, YearMonth }
+  @notes "Writer: form."
+C { Product, YearMonth } = sum("A IN", Q1)
+  @readonly true
+D { Product, YearMonth } = if(hasDMember(Actual), "A IN")
+  @readonly true

@@ -1,0 +1,7 @@
+# expect: FML-W0701
+dimension A
+  @parent B
+dimension B
+  @parent C
+dimension C
+  @parent A

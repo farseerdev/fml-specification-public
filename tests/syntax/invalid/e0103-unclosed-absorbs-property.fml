@@ -1,0 +1,9 @@
+# expect: FML-E0103
+# A missing `)` must not absorb the property lines below [EXPR-5].
+dimension Product
+
+"A IN" { Product, YearMonth }
+B { Product, YearMonth } = round("A IN", 2
+  @readonly true
+C { Product, YearMonth } = B
+  @readonly true

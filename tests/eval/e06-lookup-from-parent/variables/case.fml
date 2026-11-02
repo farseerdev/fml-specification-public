@@ -1,0 +1,10 @@
+# [EVAL-14]: read at a child, a parent-grain variable takes the parent's value.
+# Beside a full-grain operand (Qty) the lookup only supplies values to that
+# operand's cells [EVAL-4a] rule 1; a product is null where either is null.
+"Price IN" { Group, YearMonth }
+  @rollup average
+  @notes "2026-01: G1 = 2, G2 = 3. G3 has no price."
+"Qty IN" { Item, YearMonth }
+  @notes "I1: 2026-01 = 10; I2: 2026-02 = 5; I3: 2026-01 = 4; I4: 2026-01 = 1."
+Revenue { Item, YearMonth } = "Qty IN" * "Price IN"
+  @readonly true

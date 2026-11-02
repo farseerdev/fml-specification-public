@@ -1,0 +1,12 @@
+{
+  "fml": "1.0",
+  "horizon": {
+    "from": "2027-01",
+    "to": "2027-12"
+  },
+  "versions": [
+    "Actual",
+    "Plan"
+  ],
+  "membersComplete": true
+}

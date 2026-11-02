@@ -1,0 +1,7 @@
+# expect: FML-W0204
+dimension Product
+
+"A IN" { Product, YearMonth }
+  @folder "One"
+  @folder "Two"
+  @notes "Writer: form."

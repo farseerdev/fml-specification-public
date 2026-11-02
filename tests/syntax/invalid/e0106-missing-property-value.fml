@@ -1,0 +1,5 @@
+# expect: FML-E0106
+dimension Product
+
+"A IN" { Product, YearMonth }
+  @folder

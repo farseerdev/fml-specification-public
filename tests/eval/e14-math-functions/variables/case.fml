@@ -1,0 +1,30 @@
+# [FUN-7]: round rounds half away from zero; a negative d rounds to hundreds.
+# §12.1: max and min skip a null argument and have a cell wherever either has one.
+# A: 2026-01 = 2.5, 02 = -2.5, 03 = 1234.   B: 2026-01 = 1, 2026-04 = -5.
+"A IN" { Item, YearMonth }
+  @notes "See the header."
+"B IN" { Item, YearMonth }
+  @notes "See the header."
+R0 { Item, YearMonth } = round("A IN")
+  @readonly true
+Rm2 { Item, YearMonth } = round("A IN", -2)
+  @readonly true
+R1 { Item, YearMonth } = round("A IN" / 4, 1)
+  @readonly true
+Mx { Item, YearMonth } = max("A IN", "B IN")
+  @readonly true
+Mn { Item, YearMonth } = min("A IN", "B IN")
+  @readonly true
+# [FUN-5]: a function of a null date is null. D: 2026-01 = 2026-03-15 (serial 46096).
+"D IN" { Item, YearMonth }
+  @type date
+  @format date
+  @notes "See above."
+"D Year" { Item, YearMonth } = year("D IN")
+  @readonly true
+"D Month" { Item, YearMonth } = month("D IN")
+  @readonly true
+"D Plus One Month" { Item, YearMonth } = edate("D IN", 1)
+  @type date
+  @format date
+  @readonly true

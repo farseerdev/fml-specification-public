@@ -1,0 +1,3 @@
+# expect: FML-E0105
+dimension Region { North, South
+dimension Product

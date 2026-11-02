@@ -1,0 +1,62 @@
+# group.fml — local ledgers on the group chart, translated once (Modelling Guide §9.5)
+
+"PL Local" { Entity, Account, YearMonth } = "IMPORT GL Activity E1" + "IMPORT GL Activity E2"
+  @folder "Group"
+  @notes "Each import is pinned to its entity and reaches Account through its own local chart, so the sum keeps the entities apart. The only place entities are listed."
+  @readonly true
+
+"BS Local" { Entity, Account, YearMonth } = "IMPORT GL Balance E1" + "IMPORT GL Balance E2"
+  @rollup closing_state
+  @folder "Group"
+  @readonly true
+
+# The rate is looked up through two parents at once: Entity -> Currency and
+# Account -> RateType. The account decides the rate type; the entity decides
+# the currency.
+"PL Reporting" { Entity, Account, YearMonth } = "PL Local" * "FX Rate IN"
+  @folder "Group"
+  @readonly true
+
+"BS Reporting" { Entity, Account, YearMonth } = "BS Local" * "FX Rate IN"
+  @rollup closing_state
+  @folder "Group"
+  @readonly true
+
+# Translation reserve: assets at the closing rate and equity at the historical
+# rate no longer balance. The difference is computed at entity grain — where
+# both filters are plain filtered aggregates — and then placed on one equity
+# account by a pinned transfer variable (spec EVAL-19).
+"Translation Difference" { Entity, YearMonth } =
+    sum("BS Reporting", BSSide > Assets)
+  - sum("BS Reporting", BSSide > "Liabilities and equity")
+  @rollup closing_state
+  @folder "Group"
+  @readonly true
+
+"Translation Reserve" { Entity, Account = "3900", YearMonth } = "Translation Difference"
+  @rollup closing_state
+  @folder "Group"
+  @notes "Places the translation difference on account 3900 (Translation reserve)."
+  @readonly true
+
+"BS Reporting OUT" { Entity, Account, YearMonth } = "BS Reporting" + "Translation Reserve"
+  @rollup closing_state
+  @folder "Group"
+  @notes "Translated balance sheet per entity, balanced by the translation reserve. Group totals by Entity -> EntityGroup. Reader: group balance sheet."
+  @readonly true
+
+"PL Reporting OUT" { Entity, Account, YearMonth } = "PL Reporting"
+  @folder "Group"
+  @notes "Translated P&L per entity. Reader: group P&L."
+  @readonly true
+
+"Group Revenue" { EntityGroup, YearMonth } = sum("PL Reporting OUT", PLLine > Revenue)
+  @folder "Group"
+  @notes "Revenue of the group, in reporting currency. Entity rolls up to its parent EntityGroup."
+  @readonly true
+
+"Group Net Result" { EntityGroup, YearMonth } =
+    sum("PL Reporting OUT", PLLine > Revenue)
+  - sum("PL Reporting OUT", PLLine > Expenses)
+  @folder "Group"
+  @readonly true

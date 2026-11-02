@@ -1,0 +1,3 @@
+# expect: FML-E0615
+# Only @null gives a dimension its NULL member; a member source does not list it [DIM-5].
+dimension Region { North, South, "NULL (Region)" }

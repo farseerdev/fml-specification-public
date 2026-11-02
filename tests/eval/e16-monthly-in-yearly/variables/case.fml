@@ -1,0 +1,11 @@
+# [EVAL-4a], the calendar exception: a reference held by YearMonth carries Years
+# (and Months), so a yearly formula over monthly data has cells where that data
+# is; an operand that lacks Region only adds its value there [EVAL-12].
+# Expected: Delta North 2026 = 100 - 30 = 70; no cell for South, which only the
+# region-free Base reaches, and none in 2027, where only Base has data.
+"Sales IN" { Region, YearMonth }
+  @notes "North: 2026-03 = 100."
+"Base IN" { YearMonth }
+  @notes "2026-03 = 30, 2027-05 = 40."
+Delta { Region, Years } = "Sales IN" - "Base IN"
+  @readonly true

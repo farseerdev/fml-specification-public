@@ -1,0 +1,4 @@
+# expect: FML-E0613
+# An inline list has no column for attributes [DIM-12].
+dimension Product { P1, P2 }
+  @attribute Color string

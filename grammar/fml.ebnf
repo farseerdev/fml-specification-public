@@ -1,0 +1,104 @@
+(* Financial Modeling Language (FML) — Grammar, Version 1.0
+   Copyright (c) 2026 Farseer d.o.o., Zagreb, Croatia. Licensed under CC BY 4.0.
+   This file is identical to Annex A of spec/fml-1.0.md; the specification
+   text governs where prose adds constraints (sections 4.9, 10.1, 15).
+   Notation: ISO/IEC 14977 EBNF. *)
+
+(* ==================================================================== *)
+(* A.2 Lexical grammar *)
+(* ==================================================================== *)
+(* ---------- characters ---------- *)
+letter        = "A" | … | "Z" | "a" | … | "z" ;
+digit         = "0" | … | "9" ;
+nl            = [ CR ], LF ;                      (* line terminator *)
+ws            = " " | TAB ;
+
+(* ---------- comments ---------- *)
+comment       = ( "#" | "//" ), { any-char - nl } ;
+
+(* ---------- tokens ---------- *)
+identifier    = ( letter | "_" ), { letter | digit | "_" } ;
+string        = '"', { string-char | escape }, '"' ;
+string-char   = any-char - ( '"' | "\" | nl ) ;
+escape        = "\", ( '"' | "\" | "n" | "t" | "r" | any-char ) ;
+                                                  (* unknown escapes keep both characters, LEX-4 *)
+number        = [ "-" ], digit, { digit }, [ ".", digit, { digit } ] ;
+                                                  (* "-" binds only when immediately followed by a digit, LEX-5 *)
+punctuator    = "{" | "}" | "(" | ")" | "," | "=" | ":" | "@" | ">" | "->" ;
+operator      = "+" | "-" | "*" | "/" ;
+
+(* ==================================================================== *)
+(* A.3 Document grammar *)
+(* ==================================================================== *)
+document          = { statement | nl } ;
+
+statement         = dimension-declaration | defaults-block | variable-declaration ;
+
+dimension-declaration
+                  = "dimension", name, [ member-source ], line-end,
+                    { property-line } ;           (* dimension properties: DIM-13 *)
+member-source     = "{", { nl }, [ name, { ",", { nl }, name } ], { nl }, "}"
+                  | "from", string ;
+
+defaults-block    = "@", "defaults", nl, { { nl }, property-line } ;
+                                                  (* applies to the declarations below it, up to the next block, PROP-3 *)
+
+variable-declaration
+                  = name, { nl }, "{", grain, "}",
+                    ( { nl }, "=", formula, line-end, { property-line }
+                    | inline-properties
+                    | line-end, { property-line } ) ;
+                                                  (* VAR-1: inline properties only without a formula *)
+inline-properties = property, line-end, { property-line } ;
+
+grain             = { nl }, [ grain-entry, { ",", { nl }, grain-entry }, [ ",", { nl } ] ], { nl } ;
+grain-entry       = name, [ "=", name ] ;
+
+property-line     = { nl }, property, line-end ;
+property          = "@", identifier, [ property-value ] ;
+                                                  (* no value only for @null, DIM-13 *)
+property-value    = string
+                  | number
+                  | "true" | "false"
+                  | identifier, [ "(", balanced-tokens, ")" ]
+                  | name, identifier, { identifier }
+                                                  (* @attribute <name> <type>; @parent <dim> [many] [required] *)
+                  | object ;
+object            = "{", { nl },
+                    [ pair, { ( "," | nl ), { nl }, pair }, [ "," ] ],
+                    { nl }, "}" ;
+pair              = ( identifier | string ), ":", ( string | number | identifier ) ;
+
+name              = identifier | string ;
+line-end          = nl | EOF ;
+
+(* ==================================================================== *)
+(* A.4 Formula grammar *)
+(* ==================================================================== *)
+formula           = expression ;                  (* continuation rules: §4.9, LEX-6 *)
+expression        = term, { ( "+" | "-" ), term } ;
+term              = factor, { ( "*" | "/" ), factor } ;
+factor            = "-", factor
+                  | number
+                  | reference
+                  | call
+                  | "(", expression, ")" ;
+reference         = name ;
+call              = identifier, "(", [ argument, { ",", argument } ], ")" ;
+argument          = member-ref | expression ;
+member-ref        = name, ">", name ;
+
+(* ==================================================================== *)
+(* A.5 Member file grammar *)
+(* ==================================================================== *)
+member-file       = header, { member-row } ;          (* RFC 4180, UTF-8; no comments,
+                                                         no blank lines, DIM-3 *)
+header            = csv-cell, { ",", csv-cell }, nl ; (* the dimension name, then
+                                                         "@description", then parent
+                                                         dimensions and attributes *)
+member-row        = csv-cell, { ",", csv-cell }, nl ;
+csv-cell          = quoted-cell | plain-cell ;
+quoted-cell       = '"', { any-char - '"' | '""' }, '"' ;
+plain-cell        = { any-char - ( "," | '"' | CR | LF ) } ;
+fk-cell-value     = [ member-name, { "|", member-name } ] ;
+member-name       = { any-char - "|" } ;

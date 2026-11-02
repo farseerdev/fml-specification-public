@@ -1,0 +1,81 @@
+# statements.fml — outputs: actual periods from the ledger, plan periods from
+# the plan, merged by the forecast flag (Modelling Guide §6.3); P&L subtotals (Modelling Guide §9.2).
+
+# --- P&L ---------------------------------------------------------------------------
+
+"PL Actual upstream" { Account, CostCenter, YearMonth } = "IMPORT GL Activity"
+  @folder "Import/Upstream"
+  @notes "Version-free actual feeder; broadcasts to every version."
+  @readonly true
+
+"PL ACT part"  { Account, CostCenter, Versions, YearMonth } = if(eq("FC Actual Flag", 1), "PL Actual upstream")
+  @folder "Statements"
+  @readonly true
+"PL PLAN part" { Account, CostCenter, Versions, YearMonth } = if(not(eq("FC Actual Flag", 1)), "PL Plan")
+  @folder "Statements"
+  @readonly true
+"PL OUT"           { Account, CostCenter, Versions, YearMonth } = "PL ACT part" + "PL PLAN part"
+  @folder "Statements"
+  @notes "Merged P&L on accounts. Readers: P&L report, subtotals below."
+  @readonly true
+
+# Subtotals. Every filter crosses the Account -> PLLine parent, so each cell holds
+# its own account's contribution and the cells add up to the subtotal (Modelling Guide §3.4).
+
+"PL Gross Profit" { Account, CostCenter, Versions, YearMonth } =
+    sum("PL OUT", PLLine > "Operating revenue")
+  - sum("PL OUT", PLLine > "Cost of sales")
+  @folder "Statements"
+  @readonly true
+
+"PL EBITDA" { Account, CostCenter, Versions, YearMonth } =
+    "PL Gross Profit"
+  - sum("PL OUT", PLLine > "Personnel expenses")
+  - sum("PL OUT", PLLine > "Other operating expenses")
+  @folder "Statements"
+  @readonly true
+
+"PL EBIT" { Account, CostCenter, Versions, YearMonth } =
+    "PL EBITDA" - sum("PL OUT", PLLine > "Depreciation and amortisation")
+  @folder "Statements"
+  @readonly true
+
+"PL Profit Before Tax" { Account, CostCenter, Versions, YearMonth } =
+    "PL EBIT" - sum("PL OUT", PLLine > "Financial expense")
+  @folder "Statements"
+  @readonly true
+
+"PL Net Income OUT" { Account, CostCenter, Versions, YearMonth } =
+    "PL Profit Before Tax" - sum("PL OUT", PLLine > "Income tax")
+  @folder "Statements"
+  @notes "Readers: P&L report, management dashboard."
+  @readonly true
+
+"Gross Margin Pct" { Versions, YearMonth } =
+  "PL Gross Profit" / sum("PL OUT", PLLine > "Operating revenue")
+  @rollup none
+  @format percentage
+  @folder "Statements"
+  @notes "Monthly ratio. A ratio is neither summed nor averaged, so quarters and years read null; a period's margin is the ratio of its totals. Nothing reads it."
+  @readonly true
+
+# --- Balance sheet ------------------------------------------------------------------------
+
+"BS Actual upstream" { Account, YearMonth } = "IMPORT GL Balance"
+  @rollup closing_state
+  @folder "Import/Upstream"
+  @readonly true
+
+"BS ACT part"  { Account, Versions, YearMonth } = if(eq("FC Actual Flag", 1), "BS Actual upstream")
+  @rollup closing_state
+  @folder "Statements"
+  @readonly true
+"BS PLAN part" { Account, Versions, YearMonth } = if(not(eq("FC Actual Flag", 1)), "BS Plan")
+  @rollup closing_state
+  @folder "Statements"
+  @readonly true
+"BS OUT"           { Account, Versions, YearMonth } = "BS ACT part" + "BS PLAN part"
+  @rollup closing_state
+  @folder "Statements"
+  @notes "Merged balance sheet on accounts. Readers: balance-sheet report, controls."
+  @readonly true

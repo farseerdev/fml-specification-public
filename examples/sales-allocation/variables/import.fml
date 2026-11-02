@@ -1,0 +1,45 @@
+# import.fml — facts landed by integrations, without Versions (Modelling Guide §6.1)
+# All amounts are positive; quantities are in base units.
+
+"IMPORT Sales Qty" { Customer, Item, YearMonth }
+  @folder "Import"
+  @notes "Units invoiced. Writer: sales integration. Reader: Sales Qty upstream."
+  @readonly true
+
+"IMPORT Net Revenue" { Customer, Item, YearMonth }
+  @folder "Import"
+  @notes "Invoiced revenue after discounts. Writer: sales integration. Reader: Net Revenue upstream."
+  @readonly true
+
+"IMPORT Orders" { Customer, YearMonth }
+  @folder "Import"
+  @notes "Number of orders delivered. Writer: logistics integration. Reader: Orders upstream."
+  @readonly true
+
+"IMPORT Location Opex" { Location, YearMonth }
+  @folder "Import"
+  @notes "Warehouse and delivery cost per location. Writer: ledger integration. Reader: Location Opex upstream."
+  @readonly true
+
+"IMPORT List Price" { Item }
+  @rollup average
+  @folder "Import"
+  @notes "List price per unit from the item master. Writer: master-data integration. Reader: Price Fallback Item."
+  @readonly true
+
+"Sales Qty upstream" { Customer, Item, YearMonth } = "IMPORT Sales Qty"
+  @folder "Import/Upstream"
+  @notes "Version-free actual feeder; broadcasts to every version."
+  @readonly true
+
+"Net Revenue upstream" { Customer, Item, YearMonth } = "IMPORT Net Revenue"
+  @folder "Import/Upstream"
+  @readonly true
+
+"Orders upstream" { Customer, YearMonth } = "IMPORT Orders"
+  @folder "Import/Upstream"
+  @readonly true
+
+"Location Opex upstream" { Location, YearMonth } = "IMPORT Location Opex"
+  @folder "Import/Upstream"
+  @readonly true

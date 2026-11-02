@@ -1,0 +1,39 @@
+# Dimension declarations (§6.1, [DIM-12], [DIM-13]): every member source and every
+# dimension property.
+dimension Region { North, South, "East & West" }   # inline, in order
+dimension Scenario {
+  Base,
+  Upside,
+  Downside
+}                                                  # an inline list across lines (§4.9 item 7)
+  @rollup none
+  @desc "Never aggregated across"
+dimension Single { Only }
+dimension Customer                                 # no source: members are data
+  @parent Segment many required
+  @attribute Country string
+  @attribute Employees integer
+  @attribute Revenue number
+  @attribute Active boolean
+  @attribute Since date
+  @folder "Sales/Customers"
+dimension Segment
+  @null
+  @desc "Customer segment"
+dimension "Cost Center"
+  @parent "Cost Center"                            # a tree (§6.6)
+  @null
+dimension Week
+  @semantic time
+  @parent YearMonth
+
+"Sales IN" { Customer, Region, Scenario, Versions, YearMonth }
+  @notes "Writer: CRM."
+"Sales by Segment" { Segment, Region, Scenario, Versions, YearMonth } = "Sales IN"
+  @readonly true
+"Base Sales" { Segment, Versions, YearMonth } = sum("Sales IN", Scenario > Base)
+  @readonly true
+"Weekly Cost IN" { "Cost Center", Week }
+  @notes "Writer: feed."
+"Cost to Date" { "Cost Center", Week } = cumsum("Weekly Cost IN")
+  @readonly true

@@ -1,0 +1,12 @@
+# expect: FML-W1101
+dimension Board
+dimension Channel
+dimension RevenueAccount
+
+"Allocation Key IN" { Board, Channel, YearMonth }
+  @notes "Writer: form."
+"Revenue by Board IN" { Board, YearMonth }
+  @notes "Writer: form."
+"Package Revenue OUT" { Board, Channel, RevenueAccount, YearMonth } = "Allocation Key IN" * "Revenue by Board IN"
+  @notes "Reader: revenue report."
+  @readonly true

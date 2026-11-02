@@ -1,0 +1,5 @@
+# expect: FML-E0105
+dimension Product
+
+"A IN" { Product, YearMonth }
+  @readonly false @notes "two on one line"

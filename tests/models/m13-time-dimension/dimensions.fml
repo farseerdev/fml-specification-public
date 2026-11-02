@@ -1,0 +1,8 @@
+# Declared time dimensions (§6.9, [DIM-11]). Day has a member file whose row
+# order is its period order; Shift lists no members (they are data).
+dimension Day from "dimensions/Day.csv"
+  @semantic time
+  @parent YearMonth
+dimension Shift
+  @semantic time
+dimension Product from "dimensions/Product.csv"

@@ -1,0 +1,5 @@
+# expect: FML-E0105
+# `dimension` is reserved: a variable named dimension is written in string form [§4.5], [§4.8].
+dimension Product
+
+dimension { Product, YearMonth }

@@ -1,0 +1,6 @@
+# expect: FML-E0105
+# may: FML-E0208
+dimension Product
+
+"A IN" { Product, YearMonth
+"B IN" { Product, YearMonth }

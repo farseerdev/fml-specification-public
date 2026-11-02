@@ -1,0 +1,5 @@
+# expect: FML-E0105
+dimension Product
+
+C { Product, YearMonth } =
+  @readonly true

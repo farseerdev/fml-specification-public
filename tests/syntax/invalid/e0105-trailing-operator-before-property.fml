@@ -1,0 +1,7 @@
+# expect: FML-E0105
+# A formula ends before a property line even after a trailing operator [LEX-6].
+dimension Product
+
+"A IN" { Product, YearMonth }
+C { Product, YearMonth } = "A IN" +
+  @readonly true

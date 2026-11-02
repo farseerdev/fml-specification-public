@@ -1,0 +1,72 @@
+{
+  "_comment": "Assertions the reference renderer (tools/fml2xlsx) and its independent evaluator cannot check yet. The expected values in targets.json stay the specification's; this list only tells tests/run.py which ones to leave out when it uses fml2xlsx. kind: unsupported = the renderer does not translate the construct; deviation = the renderer's translation disagrees with the rule cited; evaluator = the Python evaluator `formulas` disagrees with Excel. A target is {var, keys?, period} for a value, or {var, rows: true} for a row count.",
+  "e02-anchoring-literals": {
+    "kind": "deviation",
+    "rule": "EVAL-5",
+    "reason": "if(gt(X, 100), 1, 0) has cells on X's cells only; the renderer writes 0 in every period of a row, also where X has no data (I1 2026-03).",
+    "targets": [{"var": "Big Flag 0", "keys": {"Item": "I1"}, "period": "2026-03"}]
+  },
+  "e03-hasvalue-default": {
+    "kind": "deviation",
+    "rule": "EVAL-4 consequence 2",
+    "reason": "if(hasValue(F), F, 1) has cells only where F has data; the renderer anchors whole rows, not cells, so the literal 1 appears in periods of a row where F is empty.",
+    "targets": [{"var": "Weight", "keys": {"Position": "P1"}, "period": "2026-02"},
+                {"var": "Weight", "keys": {"Position": "P3"}, "period": "2026-01"}]
+  },
+  "e04-full-grain-rule": {
+    "kind": "deviation",
+    "rule": "EVAL-4a rule 1",
+    "reason": "X + Rate has cells exactly where X has data; the renderer guards a +/- chain by COUNT over all its terms, so Rate's value appears in periods where X is empty.",
+    "targets": [{"var": "T1", "period": "2026-02"}, {"var": "T1", "period": "2026-03"}]
+  },
+  "e05b-multi-parent": {
+    "kind": "unsupported",
+    "rule": "PARENT-2",
+    "reason": "a foreign-key cell naming two parents (G1|G2) is looked up as one string, so SUMIFS matches neither parent.",
+    "all": true
+  },
+  "e06b-lookup-alone": {
+    "kind": "unsupported",
+    "rule": "EVAL-14",
+    "reason": "a formula whose only operand is read by lookup from a parent places no rows in the renderer.",
+    "all": true
+  },
+  "e07b-filters-and-selectors": {
+    "kind": "unsupported",
+    "rule": "EVAL-21",
+    "reason": "the or() selector is not translated, and two filters on one dimension keep only the last one.",
+    "all": true
+  },
+  "e08b-unary-minus-null": {
+    "kind": "deviation",
+    "rule": "EXPR-2",
+    "reason": "the renderer translates -x as 0 - x, which is 0 where x is null; [EXPR-2] keeps x's cells (null there), so A * -B has no value where B is null.",
+    "targets": [{"var": "Times Neg", "keys": {"Item": "I1"}, "period": "2026-02"}]
+  },
+  "e09-conditions-and-null": {
+    "kind": "evaluator",
+    "rule": "EVAL-26",
+    "reason": "the evaluator `formulas` returns TRUE, not 1, for --(AND(…)), and COUNT then ignores it; Excel returns 1. Not verified in Excel here.",
+    "targets": [{"var": "Carrier Times And", "keys": {"Item": "I1"}, "period": "2026-01"},
+                {"var": "Carrier Times And", "keys": {"Item": "I1"}, "period": "2026-05"}]
+  },
+  "e10b-years-consumer": {
+    "kind": "unsupported",
+    "rule": "EVAL-28",
+    "reason": "the renderer evaluates a calculated variable held by Years month by month and has no column for a Years member.",
+    "all": true
+  },
+  "e15-moving-average-edges": {
+    "kind": "unsupported",
+    "rule": "FUN-6a",
+    "reason": "the renderer does not translate avg (tools/fml2xlsx/README.md, Limits).",
+    "all": true
+  },
+  "e16-monthly-in-yearly": {
+    "kind": "unsupported",
+    "rule": "EVAL-28",
+    "reason": "as for e10b: the renderer evaluates a calculated variable held by Years month by month and has no column for a Years member; the row count (no row for South) is checked.",
+    "targets": [{"var": "Delta", "keys": {"Region": "North"}, "period": "2026"},
+                {"var": "Delta", "keys": {"Region": "North"}, "period": "2027"}]
+  }
+}

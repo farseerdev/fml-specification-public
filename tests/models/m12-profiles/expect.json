@@ -1,0 +1,36 @@
+{
+  "description": "Severity by profile (§15.4): W1204 and W0701 are errors under strict; I1206 and I1208 are not reported under lenient.",
+  "profile": "standard",
+  "diagnostics": [
+    {
+      "code": "FML-W0701",
+      "file": "dimensions.fml",
+      "line": 2
+    },
+    {
+      "code": "FML-I1208",
+      "file": "variables/v.fml",
+      "line": 1
+    },
+    {
+      "code": "FML-I1206",
+      "file": "variables/v.fml",
+      "line": 2
+    },
+    {
+      "code": "FML-W1204",
+      "file": "variables/v.fml",
+      "line": 3
+    }
+  ],
+  "exit": {
+    "lenient": 0,
+    "standard": 0,
+    "strict": 1
+  },
+  "counts": {
+    "lenient": 2,
+    "standard": 4,
+    "strict": 4
+  }
+}

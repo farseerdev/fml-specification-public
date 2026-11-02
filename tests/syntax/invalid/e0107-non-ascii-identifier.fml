@@ -1,0 +1,3 @@
+# expect: FML-E0107
+# Identifiers are ASCII; other names are written in string form [§4.4].
+Umsatz_Ö { Product, YearMonth }

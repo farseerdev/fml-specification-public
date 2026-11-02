@@ -1,0 +1,22 @@
+# [EVAL-4] consequence 1: a formula of literals only creates no cells.
+# [EVAL-5]: a whole-formula if with ONE variable in the condition and literal
+# branches takes that variable's cells; with two variables it creates none
+# ([EVAL-4] consequence 3) — unless a branch returns a carrier.
+"X IN" { Item, YearMonth }
+  @notes "I1: 2026-01 = 50, 2026-02 = 150; I2: 2026-01 = 200."
+"Y IN" { Item, YearMonth }
+  @notes "I1: 2026-01 = 1."
+Probe { Item, YearMonth } = if(hasDMember(Item > I1), 1, 2)
+  @readonly true
+Literal { Item, YearMonth } = 7
+  @readonly true
+"Big Flag" { Item, YearMonth } = if(gt("X IN", 100), 1)
+  @readonly true
+"Big Flag 0" { Item, YearMonth } = if(gt("X IN", 100), 1, 0)
+  @readonly true
+Present { Item, YearMonth } = if(hasValue("X IN"), 1)
+  @readonly true
+"Two Var" { Item, YearMonth } = if(and(gt("X IN", 0), gt("Y IN", 0)), 1)
+  @readonly true
+"Two Var Carrier" { Item, YearMonth } = if(and(gt("X IN", 0), gt("Y IN", 0)), "X IN")
+  @readonly true

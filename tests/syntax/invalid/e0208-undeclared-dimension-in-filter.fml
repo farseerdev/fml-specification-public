@@ -1,0 +1,7 @@
+# expect: FML-E0208
+# A member reference never creates a dimension: Nowhere is not declared [DOC-6].
+dimension Product
+
+"A IN" { Product, YearMonth }
+C { Product, YearMonth } = sum("A IN", Nowhere > North)
+  @readonly true

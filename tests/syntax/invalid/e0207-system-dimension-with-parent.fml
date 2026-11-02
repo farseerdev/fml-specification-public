@@ -1,0 +1,5 @@
+# expect: FML-E0207
+# A model cannot add a parent to a system dimension: it cannot declare one (§6.7).
+dimension Season
+dimension Months
+  @parent Season

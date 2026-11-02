@@ -1,0 +1,13 @@
+# controls.fml — identity checks (Modelling Guide §7). A zero here is read together with
+# the balance-sheet positions, never on its own.
+
+"CHECK BS A" { Versions, YearMonth } =
+  round(sum("BS OUT", BSGroup > "Total assets") - sum("BS OUT", BSGroup > "Total equity and liabilities"), 2)
+  @folder "Controls"
+  @notes "Assets minus equity and liabilities. Zero in every period."
+  @readonly true
+
+"CHECK BS FINAL" { Versions, YearMonth } = if(gt(abs("CHECK BS A"), 0), "CHECK BS A" * 0 + 1)
+  @folder "Controls"
+  @notes "1 where the balance sheet does not balance; empty = balanced."
+  @readonly true

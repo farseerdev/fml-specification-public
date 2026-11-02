@@ -1,0 +1,11 @@
+# A full-line comment
+dimension Entity
+
+// Also a full-line comment
+"A IN" { Entity, Versions, YearMonth }    # an end-of-line comment
+  @notes "Numerator. Writer: form."        // another end-of-line comment
+"B IN" { Entity, Versions, YearMonth }
+  @notes "Denominator. Writer: form."
+Ratio { Entity, Versions, YearMonth } = "A IN" / "B IN"   # division needs a space before the operand
+  @rollup average
+  @readonly true

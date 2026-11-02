@@ -1,0 +1,4 @@
+# expect: FML-E0205
+dimension Product
+
+"A\tB IN" { Product, YearMonth }

@@ -1,0 +1,22 @@
+# [EVAL-11]: + and - treat a null operand as 0 unless both are null; * is null
+# if either is; a / b is null where b is null or 0 and 0 where only a is null.
+# [EVAL-11a]: inside an anchored cell, (1 - B) is 1 where B is null.
+# A: 2026-01 = 6, 02 = 6, 04 = 6.   B: 2026-01 = 3, 03 = 3, 04 = 0.   05: both null.
+"A IN" { Item, YearMonth }
+  @notes "See the header."
+"B IN" { Item, YearMonth }
+  @notes "See the header."
+"Sum" { Item, YearMonth } = "A IN" + "B IN"
+  @readonly true
+"Diff" { Item, YearMonth } = "A IN" - "B IN"
+  @readonly true
+"Prod" { Item, YearMonth } = "A IN" * "B IN"
+  @readonly true
+"Quot" { Item, YearMonth } = "A IN" / "B IN"
+  @readonly true
+"Factor" { Item, YearMonth } = "A IN" * (1 - "B IN")
+  @readonly true
+"Neg" { Item, YearMonth } = -"A IN"
+  @readonly true
+"Plus Neg" { Item, YearMonth } = "A IN" + -"B IN"
+  @readonly true

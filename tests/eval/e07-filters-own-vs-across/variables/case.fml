@@ -1,0 +1,12 @@
+# [EVAL-23]: a filter on the consumer's own dimension ignores the context and
+# repeats the filtered total on every member; a filter on a parent dimension
+# intersects with the context. Every PLLine member holds data, so "every
+# member" and "every anchored member" agree here.
+"PL Amount IN" { PLLine, YearMonth }
+  @notes "2026-01: Revenue = 100, COGS = 40, Opex1 = 10, Opex2 = 5."
+"Probe own" { PLLine, YearMonth } = sum("PL Amount IN", PLLine > COGS)
+  @readonly true
+"Probe fk" { PLLine, YearMonth } = sum("PL Amount IN", PLSection > Opex)
+  @readonly true
+"Share of Revenue" { PLLine, YearMonth } = "PL Amount IN" / sum("PL Amount IN", PLLine > Revenue)
+  @readonly true

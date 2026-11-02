@@ -1,0 +1,41 @@
+# Every continuation point of §4.9.
+dimension Entity
+
+"Revenue IN" { Entity, Versions, YearMonth }
+  @notes "Writer: form."
+"Cost of sales IN" { Entity, Versions, YearMonth }
+  @notes "Writer: form."
+"Operating expenses IN" { Entity, Versions, YearMonth }
+  @notes "Writer: form."
+
+# 1. between the name and `{`, and between `}` and `=`
+Total1
+  { Entity, Versions, YearMonth }
+  = "Revenue IN" - "Cost of sales IN" - "Operating expenses IN"
+  @readonly true
+
+# 2. inside a grain: after `{`, after `,`, before `}`, with a trailing comma and without commas
+Total2 {
+    Entity,
+    Versions
+    YearMonth,
+  } = "Revenue IN" - "Cost of sales IN"
+  @readonly true
+
+# 3. inside parentheses, 4. after `=`
+Total3 { Entity, Versions, YearMonth } =
+  sum("Revenue IN",
+      Entity > "Parent")
+  @readonly true
+
+# 5. a trailing binary operator, and a line beginning with one
+Total4 { Entity, Versions, YearMonth } = "Revenue IN" -
+    "Cost of sales IN"
+  - "Operating expenses IN"
+  * 2
+  @readonly true
+
+# A line beginning with `- 3` (spaced) continues; LEX-5 (`-3`) would not.
+Total5 { Entity, Versions, YearMonth } = "Revenue IN"
+  - 3
+  @readonly true

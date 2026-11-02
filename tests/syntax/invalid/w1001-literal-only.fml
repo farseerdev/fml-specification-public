@@ -1,0 +1,8 @@
+# expect: FML-W1001, FML-W1002
+# A formula built only from literals creates no cells [EVAL-4] consequence 1.
+dimension Region
+
+Probe { Region, YearMonth } = if(hasDMember(Region > North), 1, 2)
+  @readonly true
+"Months In Year" { Region, YearMonth } = currentMonth() * 0 + 12
+  @readonly true

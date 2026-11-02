@@ -1,0 +1,16 @@
+# Context functions with the dimension they read [FUN-8]: YearMonth for every one,
+# Months for currentMonth(), Years for currentYear(), and a pinned YearMonth.
+dimension Product
+
+"Base IN" { Product, Versions, YearMonth }
+"Days" { Product, Versions, YearMonth } = "Base IN" * 0 + daysInCurrentMonth()
+  @readonly true
+"Season IN" { Product, Months }
+"Month No" { Product, Months } = "Season IN" * 0 + currentMonth()
+  @readonly true
+"Rate IN" { Product, Years }
+"Year No" { Product, Years } = "Rate IN" * 0 + currentYear()
+  @readonly true
+"Opening IN" { Product, YearMonth = "2026-01" }
+"Opening Date" { Product, YearMonth = "2026-01" } = "Opening IN" * 0 + currentDate()
+  @readonly true

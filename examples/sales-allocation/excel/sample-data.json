@@ -1,0 +1,72 @@
+{
+  "version": "Plan",
+  "periods": ["2026-12", "2027-01", "2027-02", "2027-03"],
+  "inputs": {
+    "FC Actual IN": [{"keys": {}, "values": {"2026-12": 1}}],
+    "IMPORT Sales Qty": [
+      {"keys": {"Customer": "C01", "Item": "I01"}, "values": {"2026-12": 100}},
+      {"keys": {"Customer": "C04", "Item": "I01"}, "values": {"2026-12": 200}},
+      {"keys": {"Customer": "C02", "Item": "I02"}, "values": {"2026-12": 50}},
+      {"keys": {"Customer": "C05", "Item": "I02"}, "values": {"2026-12": 150}},
+      {"keys": {"Customer": "C03", "Item": "I03"}, "values": {"2026-12": 80}}
+    ],
+    "IMPORT Net Revenue": [
+      {"keys": {"Customer": "C01", "Item": "I01"}, "values": {"2026-12": 100}},
+      {"keys": {"Customer": "C04", "Item": "I01"}, "values": {"2026-12": 200}},
+      {"keys": {"Customer": "C02", "Item": "I02"}, "values": {"2026-12": 100}},
+      {"keys": {"Customer": "C05", "Item": "I02"}, "values": {"2026-12": 300}},
+      {"keys": {"Customer": "C03", "Item": "I03"}, "values": {"2026-12": 120}}
+    ],
+    "IMPORT Orders": [
+      {"keys": {"Customer": "C01"}, "values": {"2026-12": 10}},
+      {"keys": {"Customer": "C02"}, "values": {"2026-12": 5}},
+      {"keys": {"Customer": "C03"}, "values": {"2026-12": 5}},
+      {"keys": {"Customer": "C04"}, "values": {"2026-12": 20}},
+      {"keys": {"Customer": "C05"}, "values": {"2026-12": 10}}
+    ],
+    "IMPORT Location Opex": [
+      {"keys": {"Location": "WH1"}, "values": {"2026-12": 120}},
+      {"keys": {"Location": "WH2"}, "values": {"2026-12": 180}}
+    ],
+    "IMPORT List Price": [
+      {"keys": {"Item": "I01"}, "value": 1.2},
+      {"keys": {"Item": "I02"}, "value": 2.4},
+      {"keys": {"Item": "I03"}, "value": 1.8},
+      {"keys": {"Item": "I04"}, "value": 3.0}
+    ],
+    "Qty Plan IN": [
+      {"keys": {"Customer": "C01", "Item": "I01"}, "from": "2027-01", "value": 120},
+      {"keys": {"Customer": "C02", "Item": "I02"}, "from": "2027-01", "value": 60},
+      {"keys": {"Customer": "C03", "Item": "I03"}, "from": "2027-01", "value": 100},
+      {"keys": {"Customer": "C04", "Item": "I01"}, "from": "2027-01", "value": 220},
+      {"keys": {"Customer": "C04", "Item": "I04"}, "from": "2027-01", "value": 50},
+      {"keys": {"Customer": "C05", "Item": "I02"}, "from": "2027-01", "value": 160}
+    ],
+    "Price Change IN": [{"keys": {"Item": "I01"}, "values": {"2027-02": 0.05}}],
+    "Price Set IN": [{"keys": {"Item": "I03"}, "values": {"2027-03": 1.6}}],
+    "Customer Discount IN": [
+      {"keys": {"Customer": "C01"}, "years": {"2027": 0}},
+      {"keys": {"Customer": "C02"}, "years": {"2027": 0}},
+      {"keys": {"Customer": "C03"}, "years": {"2027": 0.1}},
+      {"keys": {"Customer": "C04"}, "years": {"2027": 0}},
+      {"keys": {"Customer": "C05"}, "years": {"2027": 0.05}}
+    ],
+    "Unit Cost IN": [
+      {"keys": {"Item": "I01"}, "years": {"2026": 0.5, "2027": 0.5}},
+      {"keys": {"Item": "I02"}, "years": {"2026": 1.0, "2027": 1.0}},
+      {"keys": {"Item": "I03"}, "years": {"2026": 0.7, "2027": 0.7}},
+      {"keys": {"Item": "I04"}, "years": {"2026": 1.5, "2027": 1.5}}
+    ],
+    "Orders Plan IN": [
+      {"keys": {"Customer": "C01"}, "from": "2027-01", "value": 12},
+      {"keys": {"Customer": "C02"}, "from": "2027-01", "value": 6},
+      {"keys": {"Customer": "C03"}, "from": "2027-01", "value": 6},
+      {"keys": {"Customer": "C04"}, "from": "2027-01", "value": 24},
+      {"keys": {"Customer": "C05"}, "from": "2027-01", "value": 12}
+    ],
+    "Location Opex Plan IN": [
+      {"keys": {"Location": "WH1"}, "from": "2027-01", "value": 150},
+      {"keys": {"Location": "WH2"}, "from": "2027-01", "value": 250}
+    ]
+  }
+}

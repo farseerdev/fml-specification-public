@@ -1,0 +1,8 @@
+# [PARENT-2]: I3 names two parents (G1|G2) and is counted under each, so the
+# parents' totals overlap: 35 + 5 + 7 = 47 against 42 entered.
+"Sales IN" { Item, YearMonth }
+  @notes "2026-01: I1 = 10, I2 = 20, I3 = 5, I4 = 7."
+"Sales at Group" { Group, YearMonth } = "Sales IN"
+  @readonly true
+"Group Total" { YearMonth } = "Sales at Group"
+  @readonly true

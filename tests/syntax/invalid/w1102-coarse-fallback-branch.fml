@@ -1,0 +1,11 @@
+# expect: FML-W1102
+# The list price lacks Versions and YearMonth: as a whole branch it has values only
+# where the full-grain branch anchors cells [EVAL-4a] consequence 5.
+dimension Item
+
+"Set Price IN" { Item, Versions, YearMonth }
+  @notes "Writer: pricing form."
+"List Price IN" { Item }
+  @notes "Writer: pricing form."
+"Price eff" { Item, Versions, YearMonth } = if(hasValue("Set Price IN"), "Set Price IN", "List Price IN")
+  @readonly true

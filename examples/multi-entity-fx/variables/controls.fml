@@ -1,0 +1,19 @@
+# controls.fml — balance identity before and after translation
+
+"CHECK BS Local A" { Entity, YearMonth } =
+  round(sum("BS Local", BSSide > Assets) - sum("BS Local", BSSide > "Liabilities and equity"), 2)
+  @folder "Controls"
+  @notes "Local balance sheets balance before translation. Zero in every period."
+  @readonly true
+
+"CHECK BS Reporting A" { Entity, YearMonth } =
+  round(sum("BS Reporting OUT", BSSide > Assets) - sum("BS Reporting OUT", BSSide > "Liabilities and equity"), 2)
+  @folder "Controls"
+  @notes "Translated balance sheets balance after the translation reserve. Zero in every period."
+  @readonly true
+
+"CHECK Mapping A" { Entity, YearMonth } =
+  round("PL Local" - "IMPORT GL Activity E1" - "IMPORT GL Activity E2", 2)
+  @folder "Controls"
+  @notes "Local activity is fully carried onto the group chart. Non-zero means a local account without a group account."
+  @readonly true

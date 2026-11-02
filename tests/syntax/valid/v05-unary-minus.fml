@@ -1,0 +1,25 @@
+# Unary minus [EXPR-2] and negative literals [LEX-5].
+dimension Product
+
+"X IN" { Product, Versions, YearMonth }
+  @notes "Writer: form."
+"Y IN" { Product, Versions, YearMonth }
+  @notes "Writer: form."
+N1 { Product, Versions, YearMonth } = -"X IN"
+  @readonly true
+N2 { Product, Versions, YearMonth } = -("X IN" + "Y IN")
+  @readonly true
+N3 { Product, Versions, YearMonth } = -"X IN" * "Y IN"
+  @readonly true
+N4 { Product, Versions, YearMonth } = "X IN" - -"Y IN"
+  @readonly true
+N5 { Product, Versions, YearMonth } = "X IN" * -1
+  @readonly true
+N6 { Product, Versions, YearMonth } = "X IN" - -3
+  @readonly true
+N7 { Product, Versions, YearMonth } = - 3 * "X IN"
+  @readonly true
+N8 { Product, Versions, YearMonth } = "X IN" - 3
+  @readonly true
+N9 { Product, Versions, YearMonth } = --"X IN"
+  @readonly true

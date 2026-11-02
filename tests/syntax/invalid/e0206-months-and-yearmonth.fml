@@ -1,0 +1,4 @@
+# expect: FML-E0206
+dimension Product
+
+"A IN" { Product, Months, YearMonth = "2026-01" }

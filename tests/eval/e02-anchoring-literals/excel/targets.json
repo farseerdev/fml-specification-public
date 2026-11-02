@@ -1,0 +1,114 @@
+{
+ "values": [
+  {
+   "var": "Big Flag",
+   "period": "2026-01",
+   "expect": null,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Big Flag",
+   "period": "2026-02",
+   "expect": 1,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Big Flag",
+   "period": "2026-01",
+   "expect": 1,
+   "keys": {
+    "Item": "I2"
+   }
+  },
+  {
+   "var": "Big Flag 0",
+   "period": "2026-01",
+   "expect": 0,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Big Flag 0",
+   "period": "2026-02",
+   "expect": 1,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Big Flag 0",
+   "period": "2026-03",
+   "expect": null,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Big Flag 0",
+   "period": "2026-01",
+   "expect": 1,
+   "keys": {
+    "Item": "I2"
+   }
+  },
+  {
+   "var": "Present",
+   "period": "2026-01",
+   "expect": 1,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Present",
+   "period": "2026-02",
+   "expect": 1,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Present",
+   "period": "2026-03",
+   "expect": null,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Two Var Carrier",
+   "period": "2026-01",
+   "expect": 50,
+   "keys": {
+    "Item": "I1"
+   }
+  },
+  {
+   "var": "Two Var Carrier",
+   "period": "2026-02",
+   "expect": null,
+   "keys": {
+    "Item": "I1"
+   }
+  }
+ ],
+ "row_counts": [
+  {
+   "var": "Probe",
+   "rows": 0
+  },
+  {
+   "var": "Literal",
+   "rows": 0
+  },
+  {
+   "var": "Two Var",
+   "rows": 0
+  }
+ ]
+}

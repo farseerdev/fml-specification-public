@@ -1,0 +1,59 @@
+# inputs.fml — planner inputs per position and global assumptions
+
+"Contract Start IN" { Position, Versions }
+  @type date
+  @format date
+  @folder "Inputs/Positions"
+  @notes "First day of the contract. Writer: HR."
+
+"Contract End IN" { Position, Versions }
+  @type date
+  @format date
+  @folder "Inputs/Positions"
+  @notes "Last day of the contract; empty for an open-ended contract. Writer: HR."
+
+"Base Salary IN" { Position, Versions, Years }
+  @rollup average
+  @folder "Inputs/Positions"
+  @notes "Monthly gross base salary for a full-time equivalent, before the annual raise. Writer: HR."
+
+"FTE IN" { Position, Versions, Years }
+  @rollup average
+  @decimals 2
+  @folder "Inputs/Positions"
+  @notes "Contracted full-time equivalent of the position. Writer: HR."
+
+"Tenure Years IN" { Position, Versions, Years }
+  @rollup average
+  @decimals 0
+  @folder "Inputs/Positions"
+  @notes "Completed years of service at the start of the year. Writer: HR."
+
+"Seniority Rate IN" { Versions, Years }
+  @rollup average
+  @format percentage
+  @folder "Inputs/Assumptions"
+  @notes "Seniority allowance per completed year of service, as a share of base pay. Writer: HR."
+
+"Raise Pct IN" { PayGrade, Versions, Years }
+  @rollup average
+  @format percentage
+  @folder "Inputs/Assumptions"
+  @notes "Annual raise per pay grade. Writer: HR."
+
+"Raise Month IN" { Versions, Years }
+  @type integer
+  @rollup average
+  @folder "Inputs/Assumptions"
+  @notes "Month number (1–12) from which the annual raise applies. Writer: HR."
+
+"Gift Amount IN" { PayGrade, Versions, Years }
+  @rollup average
+  @folder "Inputs/Assumptions"
+  @notes "Year-end gift per head, paid in December. Writer: HR."
+
+"Employer Rate IN" { Versions, Years }
+  @rollup average
+  @format percentage
+  @folder "Inputs/Assumptions"
+  @notes "Employer contribution rate on liable pay. Writer: HR."

@@ -1,0 +1,10 @@
+# expect: FML-I0905
+dimension Product
+
+"Margin Pct" { Product, YearMonth } = "Margin IN" / "Revenue IN"
+  @rollup formula
+  @readonly true
+"Margin IN" { Product, YearMonth }
+  @notes "Writer: form."
+"Revenue IN" { Product, YearMonth }
+  @notes "Writer: form."

@@ -1,0 +1,26 @@
+# Parents (§7.1): @parent on the child's declaration, with many and required.
+dimension SKU
+  @parent Product
+dimension Product
+  @parent Category
+  @null
+dimension Category
+  @parent Segment
+  @null
+dimension Segment
+  @null
+dimension OrgUnit
+  @parent OrgUnit                   # a tree: parent–child hierarchy (§6.6)
+dimension "Cost Center"
+  @parent "Cost Group" many         # a member MAY have several parents [PARENT-2]
+dimension "Cost Group"
+  @null
+dimension Account
+  @parent PLLine many required      # the two words in either order
+  @parent BSLine required many
+dimension PLLine { Revenue, "Cost of sales" }
+dimension BSLine { Assets, Liabilities }
+dimension Contract
+  @parent Months                    # a parent that is a system dimension
+dimension SKU2
+  @parent Product

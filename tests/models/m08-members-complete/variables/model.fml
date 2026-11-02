@@ -1,0 +1,17 @@
+@defaults
+  @readonly true
+
+"Sales IN" { Product, Customer, Versions, YearMonth }
+  @readonly false
+  @notes "Writer: sales form."
+"Budget Sales IN" { Product, Versions = Budget, YearMonth }
+  @readonly false
+  @notes "Pinned on a version the manifest does not list."
+"P9 Sales" { Versions, YearMonth } = sum("Sales IN", Product > P9)
+"Late Sales" { Product, Versions } = sum("Sales IN", YearMonth > "2031-01")
+"Old Year Sales" { Product, Versions } = sum("Sales IN", Years > "2019")
+"Bad Month Sales" { Product, Versions } = sum("Sales IN", Months > "00")
+"Gadget Sales" { Versions, YearMonth } = sum("Sales IN", Category > Gadgets)
+"Retail Sales" { Product, Versions, YearMonth } = sum("Sales IN", Segment > Retail)
+"Unqualified" { Versions, YearMonth } = sum("Sales IN", Nowhere9)
+"Case Sales" { Versions, YearMonth } = sum("Sales IN", Product > p1)

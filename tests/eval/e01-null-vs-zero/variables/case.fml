@@ -1,0 +1,9 @@
+# [EVAL-3] null is not zero: x * 0 is a cell holding 0, x * null is no cell.
+# [EVAL-4a] rule 1: "A IN" carries the whole grain, so only its cells exist;
+# the literal 1 in `"A IN" + 1` contributes a value, never a coordinate [EVAL-4].
+"A IN" { Item, YearMonth }
+  @notes "I1: 2026-01 = 0, 2026-02 = 5; I2: 2026-01 = 3. Everything else is null."
+Twice { Item, YearMonth } = "A IN" * 2
+  @readonly true
+"Plus One" { Item, YearMonth } = "A IN" + 1
+  @readonly true

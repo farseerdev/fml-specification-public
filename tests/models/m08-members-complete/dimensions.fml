@@ -1,0 +1,9 @@
+dimension Category from "dimensions/Category.csv"
+  @null
+dimension Product from "dimensions/Product.csv"
+  @parent Category
+  @null
+dimension Customer
+  @parent Segment
+dimension Segment
+  @null

@@ -1,0 +1,24 @@
+# import.fml — local-currency ledgers, one pair of imports per entity
+# All amounts positive (Modelling Guide §9.1). Each import is pinned to its entity.
+
+"IMPORT GL Activity E1" { LocalAccountE1, YearMonth, Entity = E1 }
+  @folder "Import"
+  @notes "P&L period activity of entity E1, in its local currency. Writer: ledger integration E1."
+  @readonly true
+
+"IMPORT GL Activity E2" { LocalAccountE2, YearMonth, Entity = E2 }
+  @folder "Import"
+  @notes "P&L period activity of entity E2, in its local currency. Writer: ledger integration E2."
+  @readonly true
+
+"IMPORT GL Balance E1" { LocalAccountE1, YearMonth, Entity = E1 }
+  @rollup closing_state
+  @folder "Import"
+  @notes "Balance-sheet closing balances of entity E1, local currency. Writer: ledger integration E1."
+  @readonly true
+
+"IMPORT GL Balance E2" { LocalAccountE2, YearMonth, Entity = E2 }
+  @rollup closing_state
+  @folder "Import"
+  @notes "Balance-sheet closing balances of entity E2, local currency. Writer: ledger integration E2."
+  @readonly true

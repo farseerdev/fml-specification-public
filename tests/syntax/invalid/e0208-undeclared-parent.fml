@@ -1,0 +1,4 @@
+# expect: FML-E0208
+# @parent names a declared or system dimension [DOC-6].
+dimension Product
+  @parent Category

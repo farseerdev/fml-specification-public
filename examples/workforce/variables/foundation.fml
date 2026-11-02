@@ -1,0 +1,17 @@
+# foundation.fml — version routing and the planning horizon
+
+"FC Actual IN" { Versions, YearMonth }
+  @type integer
+  @folder "Foundation"
+  @notes "1 = this period of this version is closed and has payroll actuals; empty = plan. Writer: model administrator."
+
+"FC Actual Flag" { Versions, YearMonth } = "FC Actual IN"
+  @type integer
+  @rollup average
+  @folder "Foundation"
+  @readonly true
+
+"Planning Horizon IN" { Versions, YearMonth }
+  @type integer
+  @folder "Foundation"
+  @notes "1 in every month of the planning horizon; the monthly carrier for position-level calculations. Writer: model administrator."

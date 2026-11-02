@@ -1,0 +1,7 @@
+Position,@description,Employee,CostCenter,PayGrade
+P001,Sales manager,E01,CC100,G2
+P002,Sales assistant,E02,CC100,G1
+P003,Head of operations (part time),E03,CC200,G3
+P004,Warehouse operator (new hire),E04,CC200,G1
+P005,Planner (leaving),E05,CC200,G2
+P006,Account manager (vacancy),NULL (Employee),CC100,G2

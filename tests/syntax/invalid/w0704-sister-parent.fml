@@ -1,0 +1,8 @@
+# expect: FML-W0704, FML-I0702
+# Employee and CostCenter are both parents of Position; making one the parent of the other is ambiguous [DIMD-11].
+dimension Position
+  @parent Employee
+  @parent CostCenter
+dimension Employee
+  @parent CostCenter
+dimension CostCenter

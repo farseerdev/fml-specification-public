@@ -1,0 +1,19 @@
+# margin.fml — contribution after cost of goods and cost to serve
+
+"COGS OUT" { Customer, Item, Versions, YearMonth } = "Sales Qty OUT" * "Unit Cost IN"
+  @folder "Margin"
+  @notes "Standard cost; Unit Cost IN is broadcast across customers and months."
+  @readonly true
+
+"Contribution OUT" { Customer, Item, Versions, YearMonth } =
+  "Net Revenue OUT" - "COGS OUT" - "Cost to Serve OUT"
+  @folder "Margin"
+  @notes "Contribution per customer and item. Readers: customer profitability report."
+  @readonly true
+
+"Contribution Margin Pct" { Versions, YearMonth } = "Contribution OUT" / "Net Revenue OUT"
+  @rollup formula
+  @format percentage
+  @folder "Margin"
+  @notes "Recomputed from the totals at quarter and year (Farseer extension: @rollup formula). Nothing reads it."
+  @readonly true

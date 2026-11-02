@@ -1,0 +1,34 @@
+# dimensions.fml — every dimension of the example model
+#
+# Account is the analytic level (chart of accounts). Each account has exactly
+# one statement line as parent: P&L accounts a PLLine member, balance-sheet
+# accounts a BSLine member; the other parent is the NULL member.
+#
+# BSGroup is a tree with no NULL member: every BSLine maps to a real group, and
+# the NULL BSLine has no group, so accounts without a balance-sheet line stay
+# out of the totals.
+
+dimension Account from "dimensions/Account.csv"
+  @parent BSLine
+  @parent PLLine
+  @null
+
+dimension BSGroup from "dimensions/BSGroup.csv"
+  @parent BSGroup                # balance-sheet tree; never in a variable grain
+
+dimension BSLine from "dimensions/BSLine.csv"
+  @parent BSGroup
+  @null
+
+dimension CostCenter from "dimensions/CostCenter.csv"
+  @null
+
+dimension PLLine from "dimensions/PLLine.csv"
+  @null
+
+dimension Product from "dimensions/Product.csv"
+  @parent ProductGroup
+  @null
+
+dimension ProductGroup from "dimensions/ProductGroup.csv"
+  @null

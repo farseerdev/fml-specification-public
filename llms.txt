@@ -1,0 +1,37 @@
+# Financial Modeling Language (FML) Specification 1.0 (draft)
+
+> FML is an open, declarative, text-based language for multidimensional financial planning and analysis models, originally developed and published by Farseer (CC BY 4.0). Files use the extension `.fml`. A model declares dimensions with their parents, and variables with a grain, an optional formula and properties. The specification defines the syntax, the evaluation semantics, modeling best practices (with emphasis on dimension design) and an authoring protocol for AI agents.
+
+Key facts for language models:
+
+- Syntax: `"Name" { Dim1, Dim2, Versions, YearMonth } = formula`, followed by `@property value` lines; every dimension is declared, as `dimension Child from "dimensions/Child.csv"` with a `@parent Parent` line.
+- A grain holds at most one time dimension — `YearMonth` (members such as `"2026-01"`), `Years`, `Months`, or one the model declares itself with `@semantic time` — and the time-series functions (`cumsum`, `delay`, `spread`, `avg`) run along it. Quarters, half years and year to date are read, never stored: the first quarter of 2026 is `Years > "2026"` with `Quarters > Q1`. Time members are ISO 8601 strings: `"2026-03"`, `"2026"`, `"03"`.
+- Member references in formulas are always qualified: `sum(X, Dim > Member)`.
+- Null is not zero; storage is sparse; a formula creates cells only where a value-position variable reference has data — and where a reference carries the whole output grain, only such references place cells [EVAL-4a]. A monthly reference carries `Years` and `Months` (the calendar exception), so a yearly formula over monthly data has its cells where that data is.
+- A `sum` filter on the consumer's own grain broadcasts; a filter through a parent intersects. Never mix them.
+- Follow the Agent Authoring Protocol when generating models.
+
+## Specification
+
+- [FML Specification 1.0](spec/fml-1.0.md): the language, self-contained
+- [FML Agent Authoring Protocol](spec/fml-agent-protocol-1.0.md): the procedure an AI agent follows when it writes or changes a model
+- [FML Modelling Guide](spec/fml-modelling-guide-1.0.md): informative; architecture, dimension design, grain, sparsity, patterns and anti-patterns
+- [Farseer Implementation Profile](spec/fml-farseer-profile-1.0.md): informative; constructs Farseer accepts beyond the standard (not part of FML), and its interchange format
+- [Grammar (EBNF)](grammar/fml.ebnf): machine-readable grammar, identical to Annex A
+- [Instructions for AI agents](AGENTS.md): reading order and non-negotiable rules
+- [FML to Excel Translation](spec/fml-excel-1.0.md): companion specification for rendering an FML model as a workbook of live formulas
+
+## Examples
+
+- [Three-statement example model](examples/three-statement/): P&L, balance sheet, cash flow and controls, with dimension member files
+- [Sales and allocation](examples/sales-allocation/): driver-based sales, carried prices, cost-to-serve allocation, price controls
+- [Workforce](examples/workforce/): positions with contract dates, salary elements, employer contributions, payroll variance
+- [Multi-entity with FX](examples/multi-entity-fx/): two local charts on a group chart, currency translation, translation reserve
+- Each example has an `excel/` folder: the translated workbook, sample data and hand-computed verification targets
+- [Reference renderer](tools/fml2xlsx/): renders an FML model as an Excel workbook and verifies it
+
+## Optional
+
+- [Changelog](CHANGELOG.md)
+- [Contributing](CONTRIBUTING.md)
+- [Attribution notice](NOTICE)

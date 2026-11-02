@@ -1,0 +1,7 @@
+# expect: FML-E0107
+dimension Product
+
+"A IN" { Product, YearMonth }
+"B IN" { Product, YearMonth }
+C { Product, YearMonth } = if("A IN" && "B IN", 1)
+  @readonly true

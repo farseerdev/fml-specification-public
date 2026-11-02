@@ -1,0 +1,20 @@
+{
+ "values": [
+  {
+   "var": "Union",
+   "period": "2026-01",
+   "expect": 140
+  },
+  {
+   "var": "Union",
+   "period": "2026-02",
+   "expect": null
+  }
+ ],
+ "row_counts": [
+  {
+   "var": "Two Members",
+   "rows": 0
+  }
+ ]
+}

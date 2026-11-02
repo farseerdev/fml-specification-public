@@ -1,0 +1,7 @@
+# expect: FML-E0302
+# Months has the members "01" … "12" (§6.7).
+dimension Product
+
+"A IN" { Product, YearMonth }
+C { Product, YearMonth } = sum("A IN", Months > "13")
+  @readonly true

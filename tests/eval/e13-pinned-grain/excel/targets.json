@@ -1,0 +1,71 @@
+{
+ "values": [
+  {
+   "var": "Pinned Unfiltered",
+   "period": "2026-01",
+   "expect": 150,
+   "keys": {
+    "PLLine": "COGS"
+   }
+  },
+  {
+   "var": "COGS Total",
+   "period": "2026-01",
+   "expect": 40
+  },
+  {
+   "var": "Vol at COGS",
+   "period": "2026-01",
+   "expect": 100,
+   "keys": {
+    "PLLine": "COGS"
+   }
+  },
+  {
+   "var": "Rate x Vol",
+   "period": "2026-01",
+   "expect": 50,
+   "keys": {
+    "PLLine": "COGS"
+   }
+  },
+  {
+   "var": "Collector",
+   "period": "2026-01",
+   "expect": 100,
+   "keys": {
+    "PLLine": "Revenue"
+   }
+  },
+  {
+   "var": "Collector",
+   "period": "2026-01",
+   "expect": 10,
+   "keys": {
+    "PLLine": "Opex"
+   }
+  },
+  {
+   "var": "Collector",
+   "period": "2026-02",
+   "expect": null,
+   "keys": {
+    "PLLine": "Revenue"
+   }
+  }
+ ],
+ "row_counts": [
+  {
+   "var": "Pinned Unfiltered",
+   "rows": 1
+  },
+  {
+   "var": "Rate x Vol",
+   "rows": 1
+  },
+  {
+   "var": "Collector",
+   "rows": 2
+  }
+ ]
+}

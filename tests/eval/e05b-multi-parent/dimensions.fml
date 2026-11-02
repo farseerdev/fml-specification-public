@@ -1,0 +1,6 @@
+dimension Group from "dimensions/Group.csv"
+  @null
+
+dimension Item from "dimensions/Item.csv"
+  @parent Group many
+  @null

@@ -1,0 +1,5 @@
+# expect: FML-W1001
+dimension Region
+
+Twelve { Region, YearMonth } = 12
+  @readonly true

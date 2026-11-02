@@ -1,0 +1,9 @@
+# expect: FML-I1003
+dimension Product
+  @parent Category
+dimension Category
+
+"A IN" { Product, YearMonth }
+  @notes "Writer: form."
+"A at Category" { Category, YearMonth } = sum("A IN")
+  @readonly true

@@ -1,0 +1,4 @@
+# expect: FML-E0614
+# `@description` is the description column, never an attribute [DIM-3].
+dimension Product
+  @attribute "@description" string
