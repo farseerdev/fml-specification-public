@@ -68,5 +68,14 @@
     "reason": "as for e10b: the renderer evaluates a calculated variable held by Years month by month and has no column for a Years member; the row count (no row for South) is checked.",
     "targets": [{"var": "Delta", "keys": {"Region": "North"}, "period": "2026"},
                 {"var": "Delta", "keys": {"Region": "North"}, "period": "2027"}]
+  },
+  "e10c-closing-state-ended-member": {
+    "kind": "unsupported",
+    "rule": "EVAL-28",
+    "reason": "as for e10b: the renderer evaluates a calculated variable held by Years month by month and has no column for a Years member, and it places a row for B, whose December is empty. The same rule read through YearMonth (Stock Total and its 2026 Total column) is checked.",
+    "targets": [{"var": "Stock by Product", "keys": {"Product": "A"}, "period": "2026"},
+                {"var": "Stock by Product", "keys": {"Product": "C"}, "period": "2026"},
+                {"var": "Stock Year", "period": "2026"},
+                {"var": "Stock by Product", "rows": true}]
   }
 }

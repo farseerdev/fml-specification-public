@@ -7,6 +7,14 @@ follow `MAJOR.MINOR` (see CONTRIBUTING.md).
 
 ### Changes during the draft
 
+- **2026-11-08** — Erratum, [PROP-4a]: a `closing_state` or `beginning_state`
+  read over several dimensions at once reads the period's closing or opening
+  month as the calendar gives it, for each combination of the other
+  dimensions, as [EVAL-28] says. Its example of a product whose data ends in
+  March contributing March to the year contradicted [EVAL-28] and is
+  replaced: such a product contributes nothing to the year. Eval vector
+  `e10c-closing-state-ended-member` pins it. No engine changes: the reference
+  engines already read it so.
 - **2026-10-28** — A second `@parent` naming the same parent dimension on
   one declaration is an error (`FML-E0707`), even when its modifiers are
   identical. Linting and formatting reject it [PARENT-4].

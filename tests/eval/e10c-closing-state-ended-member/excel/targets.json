@@ -1,0 +1,66 @@
+{
+ "values": [
+  {
+   "var": "Stock by Product",
+   "period": "2026",
+   "expect": 150,
+   "keys": {
+    "Product": "A"
+   }
+  },
+  {
+   "var": "Stock by Product",
+   "period": "2026",
+   "expect": null,
+   "keys": {
+    "Product": "B"
+   }
+  },
+  {
+   "var": "Stock by Product",
+   "period": "2026",
+   "expect": 60,
+   "keys": {
+    "Product": "C"
+   }
+  },
+  {
+   "var": "Stock Year",
+   "period": "2026",
+   "expect": 210
+  },
+  {
+   "var": "Stock Total",
+   "period": "2026-03",
+   "expect": 140
+  },
+  {
+   "var": "Stock Total",
+   "period": "2026-06",
+   "expect": 140
+  },
+  {
+   "var": "Stock Total",
+   "period": "2026 Total",
+   "expect": 210
+  },
+  {
+   "var": "Stock IN",
+   "period": "2026 Total",
+   "expect": null,
+   "keys": {
+    "Product": "B"
+   }
+  }
+ ],
+ "row_counts": [
+  {
+   "var": "Stock by Product",
+   "rows": 2
+  },
+  {
+   "var": "Stock IN",
+   "rows": 3
+  }
+ ]
+}
