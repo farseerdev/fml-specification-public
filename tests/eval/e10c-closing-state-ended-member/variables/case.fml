@@ -1,0 +1,18 @@
+# [EVAL-28], [PROP-4a]: a balance read at a year over several products takes December, the calendar's closing
+# month, for each product, and sums what is there. A product whose data ends in March contributes nothing to the
+# year: on 31 December it holds nothing. A month reads what the products hold that month.
+"Stock IN" { Product, YearMonth }
+  @rollup closing_state
+  @notes "A: 2026-01 … 2026-12 = 100, 105, 110, 112, 118, 120, 125, 130, 136, 140, 145, 150. B: 2026-01 … 2026-03 = 40, 35, 30, then nothing. C: 2026-06 … 2026-12 = 20, 28, 35, 42, 48, 55, 60."
+"Stock by Product" { Product, Years } = "Stock IN"
+  @rollup closing_state
+  @readonly true
+  @notes "Each product's December: A = 150, B = null, C = 60."
+"Stock Year" { Years } = "Stock IN"
+  @rollup closing_state
+  @readonly true
+  @notes "Over the products and the months at once: A's December + C's December = 210 (not 240 with B's March)."
+"Stock Total" { YearMonth } = "Stock IN"
+  @rollup closing_state
+  @readonly true
+  @notes "The products summed in each month: March = 110 + 30 = 140; the year (December) = 210."

@@ -1389,12 +1389,13 @@ the values are summed.
 dimensions at once is one aggregation over the union of the source cells it
 covers: `sum`, `average`, `min` and `max` are taken over all of those cells
 together, `average` dividing by their number. For `closing_state` and
-`beginning_state`, the last or first period is chosen separately for each
-combination of the other dimensions, and the chosen values are summed: a
-product whose last month is March and one whose last month is December each
-contribute their own last month to the year. A balance
-therefore rolls up from lines to groups and from entities to the group as a
-sum, and from months to the year as the last month.
+`beginning_state`, the last or first period of the period read, taken from the
+calendar and not from where the data ends [EVAL-28], is read separately for
+each combination of the other dimensions, and the values found there are
+summed: a product with a value in December contributes it to the year, one
+whose data ends in March contributes nothing. A balance therefore rolls up
+from lines to groups and from entities to the group as a sum, and from months
+to the year as its December (to a quarter as its last month).
 
 **[PROP-5]** Processors MUST accept `last` as an alias of `closing_state` and
 `first` as an alias of `beginning_state`, and MUST accept `avg` as an alias of

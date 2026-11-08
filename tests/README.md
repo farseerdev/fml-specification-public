@@ -144,6 +144,7 @@ it pins; the expected values are worked out by hand from that rule.
 | e09-conditions-and-null | [EVAL-24]–[EVAL-26], [EVAL-6] |
 | e10-time-aggregation | [EVAL-28], [PROP-4]: sum, closing_state and beginning_state strictly, average |
 | e10b-years-consumer | [EVAL-28] a variable held by `Years` reading a monthly one |
+| e10c-closing-state-ended-member | [PROP-4a], [EVAL-28] a balance over several products at a year: each product's December, a product whose data ends in March contributes nothing |
 | e11-years-read-monthly | [EVAL-28a] `Years` and `Months` variables read by a monthly one |
 | e12-time-series-year-boundary | [FUN-2], [FUN-6a], half-up shifts, `cumsum` with a factor, `spread` |
 | e13-pinned-grain | [EVAL-18] a pin writes, [EVAL-19] transfer, aligned collector (§11.5) |
